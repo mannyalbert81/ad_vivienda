@@ -43,12 +43,12 @@ $controladores=$_SESSION['controladores'];
         
         <!--  <li class="active"><a href="index.php?controller=Usuarios&action=loguear"><span class="glyphicon glyphicon-home" ><?php echo " Inicio" ;?></span> <span class="sr-only">(current)</span></a></li>
         -->
-        <li class="dropdown">
+        <li class="dropdown"  style="<?php echo getcontrolador("MenuAdministracion",$controladores) ?>">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-modal-window" ><?php echo " Administración" ;?> </span> <span class="caret"></span></a>
           <ul class="dropdown-menu">
 		    
 			<li style="<?php echo getcontrolador("Usuarios",$controladores) ?>">
-			<a href="index.php?controller=Usuarios&action=index"><span class="glyphicon glyphicon-user" aria-hidden="true">Usuarios</span></a>
+			<a href="index.php?controller=Usuarios&action=index"><span class="glyphicon glyphicon-user" aria-hidden="true"> Usuarios</span></a>
 		    </li>
 			
 			<li style="<?php echo getcontrolador("Roles",$controladores) ?>">
