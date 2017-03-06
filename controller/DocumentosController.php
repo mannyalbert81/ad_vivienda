@@ -569,8 +569,9 @@ class DocumentosController extends ControladorBase{
 						}
 						
 						
-						
+		
 						$where_to  = $where .  $where_0 . $where_1 . $where_2 . $where_3 . $where_4 . $where_5 . $where_6. $where_7 . $where_10. $where_11. $where_12. $where_13. $where_14. $where_15. $where_16 ;
+
 							
 						$resultSet=$documentos->getCantidad("*", $tablas, $where_to);
 						
