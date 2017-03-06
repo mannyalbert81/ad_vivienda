@@ -109,7 +109,13 @@
 							<th>Carpeta Documentos</th>
 							<th>Numero Credito</th>
 							<th>Numero Comprobantes</th>
-							<th>Fecha de Subida</th>
+							<th>Numero Páginas</th>
+							<th>Nombre Referencia</th>
+							<th>Tipo Comprobantes</th>
+							<th>Nombre Regionales</th>
+							<th>Nombre Sucursales</th>
+							<th>Nombre Agencias</th>
+							
 							<th></th>
 							<th></th>
 						</tr>
@@ -127,7 +133,16 @@
 							<td style="color:#000000;font-size:80%;"><?php echo $res->numero_carton_documentos; ?></td>
 							<td style="color:#000000;font-size:80%;"><?php echo $res->numero_credito_documentos_legal; ?></td>
 							<td style="color:#000000;font-size:80%;"><?php echo $res->numero_comprobantes; ?></td>
-							<td style="color:#000000;font-size:80%;"><?php echo $res->creado; ?></td>
+							<td style="color:#000000;font-size:80%;"><?php echo $res->paginas_documentos_legal; ?></td>
+							<td style="color:#000000;font-size:80%;"><?php echo $res->nombre_referencia; ?></td>
+							<td style="color:#000000;font-size:80%;"><?php echo $res->nombre_tipo_comprobantes; ?></td>
+							<td style="color:#000000;font-size:80%;"><?php echo $res->nombre_regionales; ?></td>
+							<td style="color:#000000;font-size:80%;"><?php echo $res->nombre_sucursales; ?></td>
+							<td style="color:#000000;font-size:80%;"><?php echo $res->nombre_agencias; ?></td>
+							
+							
+							 
+							
 							<td><div class="right">						
 							<?php  if ($_SESSION["tipo_usuario"]=="usuario_local") {  ?>
 			            		 <a href=" <?php echo IP_INT . $res->id_documentos_legal; ?>  " class="btn btn-warning" target="blank">Ver</a>
