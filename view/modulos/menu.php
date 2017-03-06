@@ -21,6 +21,7 @@ $controladores=$_SESSION['controladores'];
 ?>
 
 
+
 <div class="container" style="margin-top: 20px; " >
 <div class="row">
 
@@ -46,8 +47,8 @@ $controladores=$_SESSION['controladores'];
         <li class="dropdown"  style="<?php echo getcontrolador("MenuAdministracion",$controladores) ?>">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-modal-window" ><?php echo " Administración" ;?> </span> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-		    
-			<li style="<?php echo getcontrolador("Usuarios",$controladores) ?>">
+		  
+        	<li style="<?php echo getcontrolador("Usuarios",$controladores) ?>">
 			<a href="index.php?controller=Usuarios&action=index"><span class="glyphicon glyphicon-user" aria-hidden="true"> Usuarios</span></a>
 		    </li>
 			
@@ -57,6 +58,7 @@ $controladores=$_SESSION['controladores'];
 			<li style="<?php echo getcontrolador("PermisosRoles",$controladores) ?>">
 			<a href="index.php?controller=PermisosRoles&action=index"><span class="glyphicon glyphicon-plus" aria-hidden="true"> Permisos Roles</span> </a>
             </li>
+		    
 		
 	          
           </ul>
@@ -83,10 +85,7 @@ $controladores=$_SESSION['controladores'];
           <ul class="dropdown-menu">
         	<li><a href="index.php?controller=Categorias&action=ReporteTotal" target="blank">Documentos por Categorías</a>
 			</li>
-			<li><a href="index.php?controller=Categorias&action=ReporteTotalM" target="blank">Documentos por Categorías MDIGITAL</a>
-			</li>
-			<li><a href="index.php?controller=Categorias&action=ReporteTotalO" target="blank">Documentos por Categorías ODIGITAL</a>
-			</li>
+			
 			<li><a href="index.php?controller=SubCategorias&action=ReporteTotal" target="blank">Documentos por SubCategorías</a>
 			</li>
 			<li><a href="index.php?controller=Documentos&action=BuscaxCarton" >Documentos por Carpeta</a>
@@ -96,30 +95,16 @@ $controladores=$_SESSION['controladores'];
 			<li><a href="index.php?controller=CartonDocumentos&action=ReporteTotal" >Listado de Carpetas Registrados</a>
 			</li>
 			
-	        <li role="separator" class="divider"></li>
-           <li><a href="index.php?controller=ErroresImportacion&action=index" target="blank">Errores de Importación</a>
-		    </li>
-		
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-modal-window" ><?php echo " Utilitarios" ;?> </span> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="index.php?controller=CartonImpreso&action=index">Impresión de Etiqueta de Cartón</a>
-			</li>
+           
 			<li><a href="index.php?controller=Documentos&action=ActualizarDocumentos">Actualizar Documentos</a>
 			</li>
 		  </ul>
         </li>
-		
-		<li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-modal-window" ><?php echo " Control" ;?> </span> <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="index.php?controller=CartonDocumentos&action=cierre">Cierre de Cartones</a>
-			</li>
-		  </ul>
-        </li>
-        
       </ul>
      
      
