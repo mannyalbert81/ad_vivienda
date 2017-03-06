@@ -135,17 +135,6 @@
 
 	
 		
-	
-	
-		
-
-	
-	
-	
-
-	
-	
-	
 		
      <script>
 			function myFunction() {
@@ -356,6 +345,100 @@
 		
 					
     </script>
+       
+       
+       <script>
+
+		$(document).ready(function(){
+
+		    $("#fecha_documento_hasta").change(function() {
+
+
+		    	var startDate = new Date($('#fecha_documento_desde').val());
+		    	var endDate = new Date($('#fecha_documento_hasta').val());
+
+		    	if (startDate > endDate){
+
+		    		$("#fecha_documento_hasta").val("");
+		    		alert('Fecha documento DESDE mayor a  fecha FINAL');
+		    		die();
+		    	}
+
+		    	var fecha_actual = new Date();
+		    	if (endDate>fecha_actual){
+
+		    		$("#fecha_documento_hasta").val("");
+		    		alert('Fecha documento mayor a fecha actual');
+		    		die();
+		    	}
+		    	
+			  });
+
+		}); 
+
+	</script>
+		
+
+	
+	<script>
+
+		$(document).ready(function(){
+
+		    $("#fecha_poliza_hasta").change(function() {
+
+
+		    	var startDate = new Date($('#fecha_poliza_desde').val());
+		    	var endDate = new Date($('#fecha_poliza_hasta').val());
+
+		    	if (startDate > endDate){
+		    		$("#fecha_poliza_hasta").val("");
+		    		alert('Fecha poliza DESDE mayor a  fecha FINAL');
+		    		die();
+		    	}
+
+		    	var fecha_actual = new Date();
+		    	if (endDate>fecha_actual){
+
+		    		$("#fecha_documento_hasta").val("");
+		    		alert('Fecha poliza mayor a fecha actual');
+		    		die();
+		    	}
+			  });
+		}); 
+
+	</script>
+	
+	
+
+	<script>
+
+		$(document).ready(function(){
+
+		    $("#fecha_subida_hasta").change(function() {
+
+
+		    	var startDate = new Date($('#fecha_subida_desde').val());
+		    	var endDate = new Date($('#fecha_subida_hasta').val());
+
+		    	if (startDate > endDate){
+		    		$("#fecha_subida_hasta").val("");
+
+		    		alert('Fecha subida DESDE mayor a  fecha FINAL');
+		    		die();
+		    	}
+
+		    	var fecha_actual = new Date();
+		    	if (endDate>fecha_actual){
+
+		    		$("#fecha_documento_hasta").val("");
+		    		alert('Fecha subida mayor a fecha actual');
+		    		die();
+		    	}
+			  });
+		}); 
+
+	</script>
+       
        
        <style>
             input{

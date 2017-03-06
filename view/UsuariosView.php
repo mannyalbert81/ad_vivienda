@@ -1,37 +1,26 @@
+      <?php include("view/modulos/head.php"); ?>
+       
+
 <!DOCTYPE HTML>
 <html lang="es">
       <head>
         <meta charset="utf-8"/>
         <title>Usuarios - aDocument 2015</title>
-   
-        <style>
-            input{
-                margin-top:5px;
-                margin-bottom:5px;
-            }
-            .right{
-                float:right;
-            }
-                
-            
-        </style>
-        
-        <style>
-		@media print
-		{
-		  .no_imprimir{
-		    visibility:hidden;
-		    display:none;
-		  }
-		 }
-		</style>
+
+          <link rel="stylesheet" href="view/css/bootstrap.css">
+          <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.7.2.custom.css" />
+          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>  
+          <script src="view/css/jquery.js"></script>
+		  <script src="view/css/bootstrapValidator.min.js"></script>
+		  <script src="view/css/ValidarUsuarios.js"></script>
+       
         
         
     </head>
     <body style="background-color: #F6FADE">
     
-       <?php include("view/modulos/head.php"); ?>
-       
+ 
        <?php include("view/modulos/menu.php"); ?>
 	   
 	   
@@ -54,147 +43,218 @@
       <div class="row" style="background-color: #FAFAFA;">
       
        
-      <form action="<?php echo $helper->url("Usuarios","InsertaUsuarios"); ?>" method="post" class="col-lg-5 no_imprimir">
-            
+      <form id="form-usuarios" action="<?php echo $helper->url("Usuarios","InsertaUsuarios"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-5">
+  
             
              <h4 style="color:#ec971f;">Insertar Usuarios</h4>
             	
             <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
-            <table class="table">
-            	<tr>
-            		<th style="width: 50%">Nombres Usuario </th>
-            		<th style="width: 50%">Usuario </th>
-            		
-            	</tr>
-            	<tr>
-				   <td>	<input type="text" name="nombre_usuario" value="<?php echo $resEdit->nombre_usuario; ?>" class="form-control"/> </td>
-		           <td> <input type="text" name="usuario_usuario" value="<?php echo $resEdit->usuario_usuario; ?>" class="form-control"/> </td>
-	            </tr>
-	            <tr>
-            		<th style="width: 50%">Clave Usuario </th>
-            		<th style="width: 50%">Repita Clave Usuario </th>
-            	</tr>
-	            <tr>
-		            <td> <input type="password" name="clave_usuario" value="" class="form-control"/></td>
-		            <td> <input type="password" name="clave_usuario_r" value="" class="form-control"/></td>
-	            </tr>
-	            <tr>
-            		<th style="width: 50%">Teléfono Usuario </th>
-            		<th style="width: 50%">Celular  Usuario </th>
-            	</tr>
-	            <tr>
-	        		<td> <input type="text" name="telefono_usuario" value="<?php echo $resEdit->telefono_usuario; ?>" class="form-control"/> </td>
-            		<td> <input type="text" name="celular_usuario" value="<?php echo $resEdit->celular_usuario; ?>" class="form-control"/> </td>    
-	            </tr>
-                <tr>
-            		<th style="width: 50%">Correo Usuario </th>
-            		<th style="width: 50%">Rol Usuario </th>
-            	</tr>
-                <tr>
-                	<td>
-            		<select name="id_rol" id="id_rol"  class="form-control">
-									<?php foreach($resultRol as $resRol) {?>
-				 						<option value="<?php echo $resRol->id_rol; ?>" <?php if ($resRol->id_rol == $resEdit->id_rol )  echo  ' selected="selected" '  ;  ?> ><?php echo $resRol->nombre_rol; ?> </option>
-						            <?php } ?>
-								    	
-									</select>
-									
-					</td>    
-                
-                   <td> <input type="email" name="correo_usuario" value="<?php echo $resEdit->correo_usuario; ?>" class="form-control"/> </td>
-                </tr>
-                <tr>
-            		
-            		<th style="width: 50%">Estado Usuario </th>
-            	</tr>
-                
-                <tr>
-                
-                
-                	<td>
-						<select name="id_estado" id="id_estado"  class="form-control">
-									<?php foreach($resultEst as $resEst) {?>
-				 						<option value="<?php echo $resEst->id_estado; ?>" <?php if ($resEst->id_estado == $resEdit->id_estado )  echo  ' selected="selected" '  ;  ?> ><?php echo $resEst->nombre_estado; ?> </option>
-						            <?php } ?>
-								    	
-									</select>
-		   		                
-                	</td>
-                	<td></td>
-            	</tr>
-		   	
-		    </table>        
             
+            <div class="row">
+		    <div class="col-xs-6 col-md-6">
+		    <div class="form-group">
+                                  <label for="nombre_usuario" class="control-label">Nombres Usuario</label>
+                                  <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" value="<?php echo $resEdit->nombre_usuario; ?>"  placeholder="Nombres">
+                                  <span class="help-block"></span>
+            </div>
+		    </div>
+		    
+		    <div class="col-xs-6 col-md-6">
+		    <div class="form-group">
+                                  <label for="usuario_usuario" class="control-label">Usuario</label>
+                                  <input type="text" class="form-control" id="usuario_usuario" name="usuario_usuario" value="<?php echo $resEdit->usuario_usuario; ?>"  placeholder="Usuario">
+                                  <span class="help-block"></span>
+            </div>
+            </div>
+			</div>
+			
+           <div class="row">
+		    <div class="col-xs-6 col-md-6">
+		    <div class="form-group">
+                                  <label for="clave_usuario" class="control-label">Password</label>
+                                  <input type="password" class="form-control" id="clave_usuario" name="clave_usuario" value=""  placeholder="Password">
+                                  <span class="help-block"></span>
+            </div>
+		    </div>
+		    
+		    <div class="col-xs-6 col-md-6">
+		    <div class="form-group">
+                                  <label for="clave_usuario_r" class="control-label">Repita Password</label>
+                                  <input type="password" class="form-control" id="clave_usuario_r" name="clave_usuario_r" value=""  placeholder="Repita Password">
+                                  <span class="help-block"></span>
+            </div>
+            </div>
+			</div> 
+            
+              <div class="row">
+		    <div class="col-xs-6 col-md-6">
+		    <div class="form-group">
+                                  <label for="telefono_usuario" class="control-label">Teléfono Usuario</label>
+                                  <input type="text" class="form-control" id="telefono_usuario" name="telefono_usuario" value="<?php echo $resEdit->telefono_usuario; ?>"  placeholder="Teléfono">
+                                  <span class="help-block"></span>
+            </div>
+		    </div>
+		    
+		    <div class="col-xs-6 col-md-6">
+		    <div class="form-group">
+                                  <label for="celular_usuario" class="control-label">Celular Usuario</label>
+                                  <input type="text" class="form-control" id="celular_usuario" name="celular_usuario" value="<?php echo $resEdit->celular_usuario; ?>"  placeholder="Celular">
+                                  <span class="help-block"></span>
+            </div>
+            </div>
+			</div>
+			
+			
+			<div class="row">
+		    <div class="col-xs-6 col-md-6">
+		    <div class="form-group">
+                                  <label for="correo_usuario" class="control-label">Correo Usuario</label>
+                                  <input type="text" class="form-control" id="correo_usuario" name="correo_usuario" value="<?php echo $resEdit->correo_usuario; ?>"  placeholder="Correo">
+                                  <span class="help-block"></span>
+            </div>
+		    </div>
+		    
+		    <div class="col-xs-6 col-md-6">
+		   <div class="form-group">
+                                  <label for="id_rol" class="control-label">Rol </label>
+                                  <select name="id_rol" id="id_rol"  class="form-control" >
+                                  <option value="" selected="selected">--Seleccione--</option>
+									<?php foreach($resultRol as $res) {?>
+										<option value="<?php echo $res->id_rol; ?>" <?php if ($res->id_rol == $resEdit->id_rol )  echo  ' selected="selected" '  ;  ?> ><?php echo $res->nombre_rol; ?> </option>
+							        <?php } ?>
+								   </select> 
+                                  <span class="help-block"></span>
+            </div>
+            </div>
+			</div>
+            
+            <div class="row">
+		    <div class="col-xs-6 col-md-6">
+		   <div class="form-group">
+                                  <label for="id_estado" class="control-label">Estado </label>
+                                  <select name="id_estado" id="id_estado"  class="form-control" >
+                                  <option value="" selected="selected">--Seleccione--</option>
+									<?php foreach($resultEst as $res) {?>
+										<option value="<?php echo $res->id_estado; ?>" <?php if ($res->id_estado == $resEdit->id_estado )  echo  ' selected="selected" '  ;  ?> ><?php echo $res->nombre_estado; ?> </option>
+							        <?php } ?>
+								   </select> 
+                                  <span class="help-block"></span>
+            </div>
+            </div>
+			</div>
+           
 		     <?php } } else {?>
 		    
-		    <table class="table">
-            	<tr>
-            		<th style="width: 50%">Nombres Usuario </th>
-            		<th style="width: 50%">Usuario </th>
-            		
-            	</tr>
-            	<tr>
-				   <td>	<input type="text" name="nombre_usuario" value="" class="form-control"/> </td>
-		           <td> <input type="text" name="usuario_usuario" value="" class="form-control"/> </td>
-	            </tr>
-	            <tr>
-            		<th style="width: 50%">Clave Usuario </th>
-            		<th style="width: 50%">Repita Clave Usuario </th>
-            	</tr>
-	            <tr>
-		            <td> <input type="password" name="clave_usuario" value="" class="form-control"/></td>
-		            <td> <input type="password" name="clave_usuario_r" value="" class="form-control"/></td>
-	            </tr>
-	            <tr>
-            		<th style="width: 50%">Teléfono Usuario </th>
-            		<th style="width: 50%">Celular  Usuario </th>
-            	</tr>
-	            <tr>
-	        		<td> <input type="text" name="telefono_usuario" value="" class="form-control"/> </td>
-            		<td> <input type="text" name="celular_usuario" value="" class="form-control"/> </td>    
-	            </tr>
-                <tr>
-            		<th style="width: 50%">Rol Usuario </th>
-            		<th style="width: 50%">Correo Usuario </th>
-            	</tr>
-                <tr>
-                	<td>
-            		<select name="id_rol" id="id_rol"  class="form-control">
-									<?php foreach($resultRol as $resRol) {?>
-				 						<option value="<?php echo $resRol->id_rol; ?>" ><?php echo $resRol->nombre_rol; ?> </option>
-						            <?php } ?>
-								    	
-									</select>
-									
-					</td>    
-                
-                   <td> <input type="email" name="correo_usuario" value="" class="form-control"/> </td>
-                </tr>
-                <tr>
-            		
-            		<th style="width: 50%">Estado Usuario </th>
-            	</tr>
-                
-                <tr>
-                
-                
-                	<td>
-						<select name="id_estado" id="id_estado"  class="form-control">
-									<?php foreach($resultEst as $resEst) {?>
-				 						<option value="<?php echo $resEst->id_estado; ?>" ><?php echo $resEst->nombre_estado; ?> </option>
-						            <?php } ?>
-								    	
-									</select>
-		   		                
-                	</td>
-                	<td></td>
-            	</tr>
-		   	
-		    </table>        
-               	
+		   
+		   
+		     <div class="row">
+		    <div class="col-xs-6 col-md-6">
+		    <div class="form-group">
+                                  <label for="nombre_usuario" class="control-label">Nombres Usuario</label>
+                                  <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" value=""  placeholder="Nombres">
+                                  <span class="help-block"></span>
+            </div>
+		    </div>
+		    
+		    <div class="col-xs-6 col-md-6">
+		    <div class="form-group">
+                                  <label for="usuario_usuario" class="control-label">Usuario</label>
+                                  <input type="text" class="form-control" id="usuario_usuario" name="usuario_usuario" value=""  placeholder="Usuario">
+                                  <span class="help-block"></span>
+            </div>
+            </div>
+			</div>
+			
+           <div class="row">
+		    <div class="col-xs-6 col-md-6">
+		    <div class="form-group">
+                                  <label for="clave_usuario" class="control-label">Password</label>
+                                  <input type="password" class="form-control" id="clave_usuario" name="clave_usuario" value=""  placeholder="Password">
+                                  <span class="help-block"></span>
+            </div>
+		    </div>
+		    
+		    <div class="col-xs-6 col-md-6">
+		    <div class="form-group">
+                                  <label for="clave_usuario_r" class="control-label">Repita Password</label>
+                                  <input type="password" class="form-control" id="clave_usuario_r" name="clave_usuario_r" value=""  placeholder="Repita Password">
+                                  <span class="help-block"></span>
+            </div>
+            </div>
+			</div> 
+            
+              <div class="row">
+		    <div class="col-xs-6 col-md-6">
+		    <div class="form-group">
+                                  <label for="telefono_usuario" class="control-label">Teléfono Usuario</label>
+                                  <input type="text" class="form-control" id="telefono_usuario" name="telefono_usuario" value=""  placeholder="Teléfono">
+                                  <span class="help-block"></span>
+            </div>
+		    </div>
+		    
+		    <div class="col-xs-6 col-md-6">
+		    <div class="form-group">
+                                  <label for="celular_usuario" class="control-label">Celular Usuario</label>
+                                  <input type="text" class="form-control" id="celular_usuario" name="celular_usuario" value=""  placeholder="Celular">
+                                  <span class="help-block"></span>
+            </div>
+            </div>
+			</div>
+			
+			
+			<div class="row">
+		    <div class="col-xs-6 col-md-6">
+		    <div class="form-group">
+                                  <label for="correo_usuario" class="control-label">Correo Usuario</label>
+                                  <input type="text" class="form-control" id="correo_usuario" name="correo_usuario" value=""  placeholder="Correo">
+                                  <span class="help-block"></span>
+            </div>
+		    </div>
+		    
+		    <div class="col-xs-6 col-md-6">
+		   <div class="form-group">
+                                  <label for="id_rol" class="control-label">Rol </label>
+                                  <select name="id_rol" id="id_rol"  class="form-control" >
+                                  <option value="" selected="selected">--Seleccione--</option>
+									<?php foreach($resultRol as $res) {?>
+										<option value="<?php echo $res->id_rol; ?>" ><?php echo $res->nombre_rol; ?> </option>
+							    
+							        <?php } ?>
+								   </select> 
+                                  <span class="help-block"></span>
+            </div>
+            </div>
+			</div>
+            
+            <div class="row">
+		    <div class="col-xs-6 col-md-6">
+		   <div class="form-group">
+                                  <label for="id_estado" class="control-label">Estado </label>
+                                  <select name="id_estado" id="id_estado"  class="form-control" >
+                                  <option value="" selected="selected">--Seleccione--</option>
+									<?php foreach($resultEst as $res) {?>
+										<option value="<?php echo $res->id_estado; ?>"><?php echo $res->nombre_estado; ?> </option>
+							        <?php } ?>
+								   </select> 
+                                  <span class="help-block"></span>
+            </div>
+            </div>
+			</div>
+		   
+		   
+		       	
 		     <?php } ?>
+		      
+		    <div class="row">
+		    <div class="col-xs-12 col-md-12 col-lg-12" style="text-align: center; margin-top:40px">
+		    <div class="form-group">
+                                  <button type="submit" id="Guardar" name="Guardar" class="btn btn-success">Guardar</button>
+            </div>
+		    </div>
+		    </div>
+		      
 		        
-           <input type="submit" value="Guardar" class="btn btn-success"/>
+          
           </form>
        
        
