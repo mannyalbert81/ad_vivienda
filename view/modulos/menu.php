@@ -76,6 +76,8 @@ $controladores=$_SESSION['controladores'];
 			</li>
 			<li><a href="index.php?controller=DocumentosNumeroCredito&action=index">Busqueda Categorias + Numero de Credito</a>
 			</li>
+			<li><a href="index.php?controller=DocumentosNumeroComprobantes&action=index">Busqueda Categorias + Numero de Comprobantes</a>
+			</li>
 			
 			
           </ul>
