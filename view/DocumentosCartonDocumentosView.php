@@ -132,72 +132,15 @@
 		
 
 	
-	<script>
-
-		$(document).ready(function(){
-
-		    $("#fecha_documento_hasta").change(function() {
-
-
-		    	var startDate = new Date($('#fecha_documento_desde').val());
-		    	var endDate = new Date($('#fecha_documento_hasta').val());
-
-		    	if (startDate > endDate){
-
-		    		$("#fecha_documento_hasta").val("");
-		    		alert('Fecha documento DESDE mayor a  fecha FINAL');
-		    	}
-
-
-		    	
-			  });
-
-		}); 
-
-	</script>
+	
 		
 
 	
-	<script>
-
-		$(document).ready(function(){
-
-		    $("#fecha_poliza_hasta").change(function() {
-
-
-		    	var startDate = new Date($('#fecha_poliza_desde').val());
-		    	var endDate = new Date($('#fecha_poliza_hasta').val());
-
-		    	if (startDate > endDate){
-		    		$("#fecha_poliza_hasta").val("");
-		    		alert('Fecha poliza DESDE mayor a  fecha FINAL');
-		    	}
-			  });
-		}); 
-
-	</script>
+	
 	
 	
 
-	<script>
-
-		$(document).ready(function(){
-
-		    $("#fecha_subida_hasta").change(function() {
-
-
-		    	var startDate = new Date($('#fecha_subida_desde').val());
-		    	var endDate = new Date($('#fecha_subida_hasta').val());
-
-		    	if (startDate > endDate){
-		    		$("#fecha_subida_hasta").val("");
-
-		    		alert('Fecha subida DESDE mayor a  fecha FINAL');
-		    	}
-			  });
-		}); 
-
-	</script>
+	
 	
 	
 
@@ -656,11 +599,13 @@
     <?php */?>
       
        </form>
-        <br>
-      <br>
-      <br>
        </div>
        </div>
+	   <br>
+	   <br>
+	   <br>
+	   <br>
+	   <br>
         <footer class="col-lg-12">
            <?php include("view/modulos/footer.php"); ?>
         </footer>

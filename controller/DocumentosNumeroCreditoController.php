@@ -316,13 +316,18 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 					}
 					if ($_fecha_documento_desde != "" && $_fecha_documento_hasta != "")
 					{
-						$where_8 = " AND documentos_legal.fecha_documentos_legal BETWEEN '$_fecha_documento_desde' AND '$_fecha_documento_hasta'  ";
+						$where_8 = " AND DATE(documentos_legal.fecha_documentos_legal) BETWEEN '$_fecha_documento_desde' AND '$_fecha_documento_hasta'  ";
 					}
 					
 					if ($_fecha_subida_desde != "" && $_fecha_subida_hasta != "")
 					{
-						$where_9 = " AND documentos_legal.creado BETWEEN '$_fecha_subida_desde' AND '$_fecha_subida_hasta'  ";
+						$where_9 = " AND DATE(documentos_legal.creado) BETWEEN '$_fecha_subida_desde' AND '$_fecha_subida_hasta'  ";
 					}
+					if ($_year >0)
+					{
+							
+						$where_10 = "  AND TO_CHAR(documentos_legal.fecha_documentos_legal,'YYYY') = '$_year' ";
+					}	
 						
 					$where_to  = $where . $where_1 . $where_2 . $where_3 . $where_4  . $where_8 . $where_9 . $where_10. $where_11. $where_12. $where_13;
 						

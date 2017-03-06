@@ -169,7 +169,8 @@ public function index(){
 		//_nombre_categorias character varying, _path_categorias character varying
 		if (isset ($_POST["usuario_usuario"]) && isset ($_POST["nombre_usuario"]) && isset ($_POST["clave_usuario"]) && isset($_POST["id_rol"])  )
 		{
-
+            
+		
 			
 			$_nombre_usuario     = $_POST["nombre_usuario"];
 			
@@ -184,14 +185,10 @@ public function index(){
 	
 	
 			$funcion = "ins_usuarios";
-			
 			$parametros = " '$_nombre_usuario' ,'$_clave_usuario' , '$_telefono_usuario', '$_celular_usuario', '$_correo_usuario' , '$_id_rol', '$_id_estado' , '$_usuario_usuario'";
 			$usuarios->setFuncion($funcion);
-	
-			$usuarios->setParametros($parametros);
-	
-	
-			$resultado=$usuarios->Insert();
+	        $usuarios->setParametros($parametros);
+	        $resultado=$usuarios->Insert();
 	
 			/*
 			 $this->view("Categorias",array(

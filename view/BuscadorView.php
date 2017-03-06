@@ -114,7 +114,8 @@
 							<th>Tipo Comprobantes</th>
 							<th>Nombre Regionales</th>
 							<th>Nombre Sucursales</th>
-							<th>Fecha de Subida</th>
+							<th>Nombre Agencias</th>
+							
 							<th></th>
 							<th></th>
 						</tr>
@@ -137,7 +138,8 @@
 							<td style="color:#000000;font-size:80%;"><?php echo $res->nombre_tipo_comprobantes; ?></td>
 							<td style="color:#000000;font-size:80%;"><?php echo $res->nombre_regionales; ?></td>
 							<td style="color:#000000;font-size:80%;"><?php echo $res->nombre_sucursales; ?></td>
-							<td style="color:#000000;font-size:80%;"><?php echo $res->creado; ?></td>
+							<td style="color:#000000;font-size:80%;"><?php echo $res->nombre_agencias; ?></td>
+							
 							
 							 
 							
