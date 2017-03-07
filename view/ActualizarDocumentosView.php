@@ -131,8 +131,85 @@
 				   </td>
 	            </tr>
            	
-		    </table>  
-			
+		    </table> 
+		    
+
+              <table class="col-sm-12">
+      
+      
+            <tr>
+           	<th class="col-sm-2">Agencias</th>
+	    		<th class="col-sm-2">Sucursales</th>
+	    		<th class="col-sm-2">Regionales</th>
+	    		
+	  		</tr>
+            
+               <tr>
+           
+            
+            	<td>
+	            <select name="id_agencias" id="id_agencias"  class="form-control"   >
+	                <option value="0"  > --TODOS--</option>
+			    	 <?php foreach($resultAgen as $res) {?>
+					 		<?php if ($sel_agencias > 0){?>
+					 			<option value="<?php echo $res->id_agencias; ?>"  <?php if ($res->id_agencias == $sel_agencias) {echo "selected"; }  ?>     > <?php echo $res->nombre_agencias; ?> </option>
+					 		
+					 		<?php  } else { ?>
+					 			
+					 			<option value="<?php echo $res->id_agencias; ?>"  > <?php echo $res->nombre_agencias; ?> </option>
+					 		
+					 		<?php }  ?>
+	 		
+				 	 <?php } ?>
+				</select>
+				</td>
+            	
+            	
+            	<td>
+	            <select name="id_sucursales" id="id_sucursales"  class="form-control"   >
+	                <option value="0"  > --TODOS--</option>
+			    	 <?php foreach($resultSuc as $res) {?>
+					 		<?php if ($sel_sucursales > 0){?>
+					 			<option value="<?php echo $res->id_sucursales; ?>"  <?php if ($res->id_sucursales == $sel_sucursales) {echo "selected"; }  ?>     > <?php echo $res->nombre_sucursales; ?> </option>
+					 		
+					 		<?php  } else { ?>
+					 			
+					 			<option value="<?php echo $res->id_sucursales; ?>"  > <?php echo $res->nombre_sucursales; ?> </option>
+					 		
+					 		<?php }  ?>
+	 		
+				 	 <?php } ?>
+				</select>
+				</td>
+				
+				
+				
+				<td>
+	            <select name="id_regionales" id="id_regionales"  class="form-control"   >
+	                <option value="0"  > --TODOS--</option>
+			    	 <?php foreach($resultReg as $res) {?>
+					 		<?php if ($sel_regionales > 0){?>
+					 			<option value="<?php echo $res->id_regionales; ?>"  <?php if ($res->id_regionales == $sel_regionales) {echo "selected"; }  ?>     > <?php echo $res->nombre_regionales; ?> </option>
+					 		
+					 		<?php  } else { ?>
+					 			
+					 			<option value="<?php echo $res->id_regionales; ?>"  > <?php echo $res->nombre_regionales; ?> </option>
+					 		
+					 		<?php }  ?>
+	 		
+				 	 <?php } ?>
+				</select>
+				</td>
+      
+		    
+		    </tr>
+           
+		     </table>
+		     
+			<br>
+			<br>
+			<br>
+			<br>
     
            <input type="submit"name="btnGuardar" value="Guardar" class="btn btn-success"/>
 			<hr>
@@ -151,6 +228,9 @@
         <table class="table table-hover">
 	         <tr>
 	    		<th>Id</th>
+	    		<th>Agencia</th>
+	    		<th>Sucursal</th>
+	    		<th>Regional</th>
 	    		<th>Subcategroria</th>
 	    		<th>Tipo de Documentos</th>
 	    		<th>RUC/CI</th>
@@ -161,6 +241,9 @@
             
 	          <tr>
 	              <td> <?php echo $res->id_documentos_legal; ?>  </td>
+	               <td> <?php echo $res->nombre_agencias; ?>  </td>
+	                <td> <?php echo $res->nombre_sucursales; ?>  </td>
+	                 <td> <?php echo $res->nombre_regionales; ?>  </td>
 	              <td> <?php echo $res->nombre_subcategorias; ?>  </td>
 		          <td> <?php echo $res->nombre_tipo_documentos; ?>     </td> 
 		          <td> <?php echo $res->ruc_cliente_proveedor; ?>  </td>

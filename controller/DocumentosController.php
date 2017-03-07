@@ -879,7 +879,36 @@ class DocumentosController extends ControladorBase{
 		$lecturas = new LecturasModel();
 	
 		$archivos_pdf = new ArchivosPdfModel();
-	
+	     
+		
+		$agencias=new AgenciasModel();
+		$columnas_agen="agencias.id_agencias, agencias.nombre_agencias";
+		$tablas_agen=" public.agencias,
+                               public.documentos_legal";
+		$where_agen="documentos_legal.id_agencias = agencias.id_agencias GROUP BY agencias.nombre_agencias, agencias.id_agencias";
+		$id_agen="agencias.nombre_agencias";
+		$resultAgen=$agencias->getCondiciones($columnas_agen, $tablas_agen, $where_agen, $id_agen);
+		
+		
+		$sucursales=new SucursalesModel();
+		$columnas_suc="sucursales.id_sucursales,
+                               sucursales.nombre_sucursales";
+		$tablas_suc="public.documentos_legal,
+                               public.sucursales";
+		$where_suc="documentos_legal.id_sucursales = sucursales.id_sucursales GROUP BY sucursales.id_sucursales, sucursales.nombre_sucursales";
+		$id_suc="sucursales.nombre_sucursales";
+		$resultSuc=$sucursales->getCondiciones($columnas_suc, $tablas_suc, $where_suc, $id_suc);
+		
+		
+		$regionales=new RegionalesModel();
+		$columnas_reg="regionales.id_regionales,
+                                regionales.nombre_regionales";
+		$tablas_reg="public.documentos_legal,
+                             public.regionales";
+		$where_reg="regionales.id_regionales = documentos_legal.id_regionales GROUP BY regionales.id_regionales, regionales.nombre_regionales";
+		$id_reg="regionales.nombre_regionales";
+		$resultReg=$regionales->getCondiciones($columnas_reg, $tablas_reg, $where_reg, $id_reg);
+		
 	
 	
 		$resultSet = "";
@@ -892,23 +921,15 @@ class DocumentosController extends ControladorBase{
 		if (isset ($_POST["btnComprobar"]) && isset ($_POST["id_documentos_legal"])    )
 		{
 			$_id_documentos_legal = $_POST["id_documentos_legal"];
-			$columnas = "documentos_legal.id_documentos_legal,
-  							subcategorias.nombre_subcategorias,
-  							cliente_proveedor.ruc_cliente_proveedor,
-  							cliente_proveedor.nombre_cliente_proveedor,
-  							tipo_documentos.nombre_tipo_documentos,
-  							documentos_legal.fecha_documentos_legal";
-			$tablas = " public.documentos_legal,
-  							public.subcategorias,
-  							public.cliente_proveedor,
-  							public.tipo_documentos";
-			$where_to = " subcategorias.id_subcategorias = documentos_legal.id_subcategorias AND
-			cliente_proveedor.id_cliente_proveedor = documentos_legal.id_cliente_proveedor AND
-			tipo_documentos.id_tipo_documentos = documentos_legal.id_tipo_documentos
-			AND documentos_legal.id_documentos_legal = '$_id_documentos_legal' 	";
-			$id = "documentos_legal.id_documentos_legal";
+			
+			$columnas = "documentos_legal.id_documentos_legal, cliente_proveedor.ruc_cliente_proveedor, documentos_legal.fecha_documentos_legal, categorias.nombre_categorias, subcategorias.nombre_subcategorias, tipo_documentos.nombre_tipo_documentos, cliente_proveedor.nombre_cliente_proveedor, carton_documentos.numero_carton_documentos, documentos_legal.paginas_documentos_legal, documentos_legal.fecha_desde_documentos_legal, documentos_legal.fecha_hasta_documentos_legal, documentos_legal.ramo_documentos_legal, documentos_legal.numero_poliza_documentos_legal, documentos_legal.ciudad_emision_documentos_legal, soat.cierre_ventas_soat,   documentos_legal.creado, documentos_legal.numero_credito_documentos_legal, referencia.nombre_referencia , tipo_comprobantes.nombre_tipo_comprobantes, comprobantes.numero_comprobantes , detalle_documentos.nombre_detalle_documentos, regionales.nombre_regionales, sucursales.nombre_sucursales, agencias.nombre_agencias  ";
+			$tablas   = "public.documentos_legal, public.categorias, public.subcategorias, public.tipo_documentos, public.carton_documentos, public.cliente_proveedor, public.soat, public.referencia, public.tipo_comprobantes , public.comprobantes, public.detalle_documentos, public.sucursales, public.agencias, public.regionales";
+			$where    = "categorias.id_categorias = subcategorias.id_categorias AND subcategorias.id_subcategorias = documentos_legal.id_subcategorias AND tipo_documentos.id_tipo_documentos = documentos_legal.id_tipo_documentos AND carton_documentos.id_carton_documentos = documentos_legal.id_carton_documentos AND cliente_proveedor.id_cliente_proveedor = documentos_legal.id_cliente_proveedor   AND documentos_legal.id_soat = soat.id_soat  AND documentos_legal.id_referencia = referencia.id_referencia AND documentos_legal.id_tipo_comprobantes = tipo_comprobantes.id_tipo_comprobantes AND documentos_legal.id_comprobantes = comprobantes.id_comprobantes AND documentos_legal.id_detalle_comprobantes = detalle_documentos.id_detalle_documentos AND documentos_legal.id_regionales = regionales.id_regionales AND documentos_legal.id_sucursales = sucursales.id_sucursales AND documentos_legal.id_agencias = agencias.id_agencias AND documentos_legal.id_documentos_legal = '$_id_documentos_legal'";
+			$id       = "documentos_legal.id_documentos_legal";
 				
-			$resultSet=$documentos_legal->getCondiciones($columnas ,$tablas ,$where_to, $id);
+			
+					
+			$resultSet=$documentos_legal->getCondiciones($columnas ,$tablas ,$where, $id);
 				
 		}
 	
@@ -1083,6 +1104,103 @@ class DocumentosController extends ControladorBase{
 		
 		
 		}
+		
+		
+		///maycol nuevo
+		
+		
+		if (isset ($_POST["id_agencias"])  && isset ($_POST["btnGuardar"])   )
+		{
+			$_id_agencias =  rtrim($_POST["id_agencias"]);
+			$_id_documentos_legal = rtrim($_POST["id_documentos_legal"]);
+		
+			if ($_id_agencias > 0 )
+			{
+		
+				$colval = "id_agencias = '$_id_agencias'";
+				$tabla  = "documentos_legal";
+				$where  = "id_documentos_legal = '$_id_documentos_legal'  ";
+		
+				$resultado = $documentos_legal->UpdateBy($colval ,$tabla , $where);
+		
+					
+			}else{}
+		}else{
+			
+			
+		}
+		
+		
+		if (isset ($_POST["id_sucursales"]) && isset ($_POST["btnGuardar"])   )
+		{
+			$_id_sucursales = rtrim($_POST["id_sucursales"]);
+			$_id_documentos_legal = rtrim($_POST["id_documentos_legal"]);
+		
+			if ($_id_sucursales > 0)
+			{
+		
+				$colval = "id_sucursales='$_id_sucursales'";
+				$tabla  = "documentos_legal";
+				$where  = "id_documentos_legal = '$_id_documentos_legal'  ";
+		
+				$resultado = $documentos_legal->UpdateBy($colval ,$tabla , $where);
+		
+					
+			}else{}
+		}else{
+			
+			
+		}
+		
+		if ( isset ($_POST["id_regionales"]) && isset ($_POST["btnGuardar"])   )
+		{
+			$_id_regionales = rtrim($_POST["id_regionales"]);
+			$_id_documentos_legal = rtrim($_POST["id_documentos_legal"]);
+		
+			if ($_id_regionales > 0)
+			{
+		
+				$colval = "id_regionales='$_id_regionales' ";
+				$tabla  = "documentos_legal";
+				$where  = "id_documentos_legal = '$_id_documentos_legal'  ";
+		
+				$resultado = $documentos_legal->UpdateBy($colval ,$tabla , $where);
+		
+					
+			}else{}
+		}else{
+			
+			
+		}
+		
+		
+		
+		if (isset ($_POST["id_agencias"]) && isset ($_POST["id_sucursales"])  && isset ($_POST["id_regionales"]) && isset ($_POST["btnGuardar"])   )
+		{
+			$_id_agencias =  rtrim($_POST["id_agencias"]);
+			$_id_sucursales = rtrim($_POST["id_sucursales"]);
+			$_id_regionales = rtrim($_POST["id_regionales"]);
+			$_id_documentos_legal = rtrim($_POST["id_documentos_legal"]);
+		
+			if ($_id_agencias > 0 && $_id_sucursales > 0 && $_id_regionales > 0)
+			{
+		
+				$colval = "id_agencias = '$_id_agencias', id_sucursales='$_id_sucursales', id_regionales='$_id_regionales' ";
+				$tabla  = "documentos_legal";
+				$where  = "id_documentos_legal = '$_id_documentos_legal'  ";
+		
+				$resultado = $documentos_legal->UpdateBy($colval ,$tabla , $where);
+		
+					
+			}else{}
+		}else{
+			
+			
+		}
+		
+		
+		
+		////termina maycol
 	
 		if (isset ($_POST["id_documentos_legal"]) && isset ($_POST["btnBorrar"])   )
 		{
@@ -1114,7 +1232,7 @@ class DocumentosController extends ControladorBase{
 	
 	
 		$this->view("ActualizarDocumentos",array(
-				"resultSet"=>$resultSet
+				"resultSet"=>$resultSet, "resultAgen"=>$resultAgen, "resultSuc"=>$resultSuc, "resultReg"=>$resultReg
 		));
 	
 	
