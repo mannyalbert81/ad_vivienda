@@ -131,10 +131,7 @@
 		}); 
 
 	</script>
-		
-
 	
-		
 		
      <script>
 			function myFunction() {
@@ -771,8 +768,8 @@
 	    		
 	    		<th>Fecha Documento Desde</th>
 	    		<th>Fecha Documento Hasta</th>
-	    		<th>Fecha Subida Desde</th>
-	    		<th>Fecha Subida Hasta</th>
+	    		<th></th>
+	    		<th></th>
 	    		
 	    		<th></th>
 	    		
@@ -812,14 +809,14 @@
 		   		<td>
 				   <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
 						
-						<input type="date" name="fecha_subida_desde" id="fecha_subida_desde"  class="form-control"   value="<?php echo date('d/m/Y', strtotime($resEdit->creado));   ?>"     /> 	
+						<input type="hidden" name="fecha_subida_desde" id="fecha_subida_desde"  class="form-control"   value="<?php echo date('d/m/Y', strtotime($resEdit->creado));   ?>"     /> 	
 						    
 				     <?php } } else {?>
 				   		
 				   			<?php if ($sel_fecha_subida_desde == "" ) { ?>	
-						   		<input type="date" name="fecha_subida_desde"  id="fecha_subida_desde"  class="form-control"  />
+						   		<input type="hidden" name="fecha_subida_desde"  id="fecha_subida_desde"  class="form-control"  />
 							 <?php } else {?>	
-							 	<input type="date" value="<?php echo $sel_fecha_subida_desde ?>"  name="fecha_subida_desde" id="fecha_subida_desde"   class="form-control"   />
+							 	<input type="hidden" value="<?php echo $sel_fecha_subida_desde ?>"  name="fecha_subida_desde" id="fecha_subida_desde"   class="form-control"   />
 							 <?php }?>        
 				   			
 		   			                
@@ -828,9 +825,9 @@
 		   		</td>
 		   		<td>
 		   			<?php if ($sel_fecha_subida_hasta == "" ) { ?>	
-						   		<input type="date" name="fecha_subida_hasta"  id="fecha_subida_hasta"  class="form-control"  />
+						   		<input type="hidden" name="fecha_subida_hasta"  id="fecha_subida_hasta"  class="form-control"  />
 							 <?php } else {?>	
-							 	<input type="date" value="<?php echo $sel_fecha_subida_hasta ?>"  name="fecha_subida_hasta" id="fecha_subida_hasta"   class="form-control"   />
+							 	<input type="hidden" value="<?php echo $sel_fecha_subida_hasta ?>"  name="fecha_subida_hasta" id="fecha_subida_hasta"   class="form-control"   />
 							 <?php }?>        
 				   			
 		   		</td>

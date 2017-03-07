@@ -63,7 +63,7 @@ $controladores=$_SESSION['controladores'];
 	          
           </ul>
         </li>
-        <li class="dropdown">
+        <li class="dropdown" >
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-file" ><?php echo " Gestión Documental" ;?> </span> <span class="caret"></span></a>
           <ul class="dropdown-menu">
          
@@ -71,18 +71,13 @@ $controladores=$_SESSION['controladores'];
 			</li>
 			<li><a href="index.php?controller=DocumentosClienteProveedor&action=index">Busqueda Categorias + Cliente / Proveedor</a>
 			</li>
-			
-	        <li><a href="index.php?controller=DocumentosCartonDocumentos&action=index">Busqueda Categorias + Carpeta Documentos</a>
-			</li>
 			<li><a href="index.php?controller=DocumentosNumeroCredito&action=index">Busqueda Categorias + Numero de Credito</a>
-			</li>
-			<li><a href="index.php?controller=DocumentosNumeroComprobantes&action=index">Busqueda Categorias + Numero de Comprobantes</a>
 			</li>
 			
 			
           </ul>
         </li>
-        <li class="dropdown">
+        <li class="dropdown" >
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-print	" ><?php echo " Informes" ;?> </span> <span class="caret"></span></a>
           <ul class="dropdown-menu">
         	<li><a href="index.php?controller=Categorias&action=ReporteTotal" target="blank">Documentos por Categorías</a>
@@ -99,7 +94,7 @@ $controladores=$_SESSION['controladores'];
 			
           </ul>
         </li>
-        <li class="dropdown">
+        <li class="dropdown" style="<?php echo getcontrolador("MenuUtilitarios",$controladores) ?>">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-modal-window" ><?php echo " Utilitarios" ;?> </span> <span class="caret"></span></a>
           <ul class="dropdown-menu">
            

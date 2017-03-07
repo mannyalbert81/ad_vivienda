@@ -422,8 +422,8 @@
 	    		
 	    		<th>Fecha Documento Desde</th>
 	    		<th>Fecha Documento Hasta</th>
-	    		<th>Fecha Subida Desde</th>
-	    		<th>Fecha Subida Hasta</th>
+	    		<th></th>
+	    		<th></th>
 	    		
 	    		<th></th>
 	    		
@@ -456,17 +456,17 @@
 		   		<td>
 				   <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
 						
-						<input type="date" name="fecha_subida_desde" id="fecha_subida_desde"  class="form-control"   value="<?php echo $resEdit->creado ?>"     /> 	
+						<input type="hidden" name="fecha_subida_desde" id="fecha_subida_desde"  class="form-control"   value="<?php echo $resEdit->creado ?>"     /> 	
 						    
 				     <?php } } else {?>
 				   		
-				   		<input type="date" name="fecha_subida_desde" id="fecha_subida_desde"  class="form-control"   />
+				   		<input type="hidden" name="fecha_subida_desde" id="fecha_subida_desde"  class="form-control"   />
 						        
 				    <?php } ?>
 		
 		   		</td>
 		   		<td>
-		   			<input type="date" name="fecha_subida_hasta" id="fecha_subida_hasta" class="form-control"  />
+		   			<input type="hidden" name="fecha_subida_hasta" id="fecha_subida_hasta" class="form-control"  />
 		   		</td>
 		   		
 		   		
