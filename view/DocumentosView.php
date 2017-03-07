@@ -526,10 +526,10 @@
             <tr>
 	    		<th class="col-sm-2">Nombre Categoria</th>
 	    		<th class="col-sm-2">Nombre SubCategoria</th>
-	    		<th class="col-sm-1">Año</th>
+	    		<th class="col-sm-2">Año</th>
 	    		<th class="col-sm-1">Ruc Cliente/Proveedor</th>
 	    		<th class="col-sm-2">Nombre Cliente/Proveedor</th>
-	    		<th class="col-sm-2">Tipo Documento</th>
+	    		<th class="col-sm-1">Tipo Documento</th>
 	    		<th class="col-sm-2">Numero Carpeta</th>
 	    		
 	  		</tr>

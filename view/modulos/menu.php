@@ -67,11 +67,11 @@ $controladores=$_SESSION['controladores'];
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-file" ><?php echo " Gestión Documental" ;?> </span> <span class="caret"></span></a>
           <ul class="dropdown-menu">
          
-			<li><a href="index.php?controller=Documentos&action=index">Busqueda de Documentos</a>
+			<li><a href="index.php?controller=Documentos&action=index"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Busqueda de Documentos</span> </a>
 			</li>
-			<li><a href="index.php?controller=DocumentosClienteProveedor&action=index">Busqueda Categorias + Cliente / Proveedor</a>
+			<li><a href="index.php?controller=DocumentosClienteProveedor&action=index"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Busqueda Categorias + Cliente / Proveedor + Agencias</span> </a>
 			</li>
-			<li><a href="index.php?controller=DocumentosNumeroCredito&action=index">Busqueda Categorias + Numero de Credito</a>
+			<li><a href="index.php?controller=DocumentosNumeroCredito&action=index"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Busqueda Categorias + Numero de Credito</span> </a>
 			</li>
 			
 			
@@ -80,16 +80,16 @@ $controladores=$_SESSION['controladores'];
         <li class="dropdown" >
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-print	" ><?php echo " Informes" ;?> </span> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-        	<li><a href="index.php?controller=Categorias&action=ReporteTotal" target="blank">Documentos por Categorías</a>
+        	<li><a href="index.php?controller=Categorias&action=ReporteTotal" target="blank"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Documentos por Categorías</span> </a>
 			</li>
 			
-			<li><a href="index.php?controller=SubCategorias&action=ReporteTotal" target="blank">Documentos por SubCategorías</a>
+			<li><a href="index.php?controller=SubCategorias&action=ReporteTotal" target="blank"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Documentos por SubCategorías</span> </a>
 			</li>
-			<li><a href="index.php?controller=Documentos&action=BuscaxCarton" >Documentos por Carpeta</a>
+			<li><a href="index.php?controller=Documentos&action=BuscaxCarton"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Documentos por Carpeta</span> </a>
 			</li>
 			<li role="separator" class="divider"></li>
 			
-			<li><a href="index.php?controller=CartonDocumentos&action=ReporteTotal" >Listado de Carpetas Registrados</a>
+			<li><a href="index.php?controller=CartonDocumentos&action=ReporteTotal"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Listado de Carpetas Registrados</span> </a>
 			</li>
 			
           </ul>
@@ -98,7 +98,7 @@ $controladores=$_SESSION['controladores'];
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-modal-window" ><?php echo " Utilitarios" ;?> </span> <span class="caret"></span></a>
           <ul class="dropdown-menu">
            
-			<li><a href="index.php?controller=Documentos&action=ActualizarDocumentos">Actualizar Documentos</a>
+			<li><a href="index.php?controller=Documentos&action=ActualizarDocumentos"><span class="glyphicon glyphicon-refresh" aria-hidden="true"> Actualizar Documentos</span> </a>
 			</li>
 		  </ul>
         </li>

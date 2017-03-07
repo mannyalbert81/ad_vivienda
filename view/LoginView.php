@@ -1,29 +1,19 @@
+
+     <?php include("view/modulos/head.php"); ?>
+    
 <!DOCTYPE HTML>
 <html lang="es">
     <head>
         <meta charset="utf-8"/>
         <title>Login aDocument 2015</title>
-       
-       
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		
-		
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-		
-		
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>   
-       
-        <style>
-            input{
-                margin-top:5px;
-                margin-bottom:5px;
-            }
-            .right{
-                float:right;
-            }
-        </style>
+       <link rel="stylesheet" href="view/css/bootstrap.css">
+    
+  <script src="view/css/jquery.js"></script>
+  <script src="view/css/bootstrap.min.js"></script>
+  <script src="view/css/bootstrapValidator.min.js"></script>
+  <script src="view/css/ValidarLogin.js"></script>
+	
+	
         <style>
 			body {
 			
@@ -52,43 +42,55 @@
 			</style>
     </head>
    
-   
-   
     <body>
-     <?php include("view/modulos/head.php"); ?>
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
        
    
     
-        <form action="<?php echo $helper->url("usuarios","Loguear"); ?>" method="post"  class="col-lg-4" style=" padding-top:150px;">
+        <form id="form-login" action="<?php echo $helper->url("usuarios","Loguear"); ?>" method="post"  class="col-lg-4" style=" padding-top:100px;">
         
         
-       
-        <div class="text-center"  >
-            <div class= "col-lg-12">
-            <div class="col-lg-1">
-            </div>
-            <div class="col-lg-10">
-             <div   style="background:#F6FADE ;border-radius: 20px;  border: 5px solid #063B41;"  >
-             <br>
-             <h4 class="text-center" >Inicio de Sesión</h4>
-             <hr/>
-            
-             <strong>USUARIO</strong> <input type="text" name="usuario" class="form-control"  style="text-align: center; " />
-            
-            <strong>CLAVE</strong> <input type="password" name="clave" class="form-control"  style="text-align: center; "/>
-            
-            <div class="text-center" style="height: 60px">
-            <input type="submit" value="Login" class="btn btn-warning" style="width: 50%; "/>
-            </div>
-            </div>
-            </div>
-            <div class="col-lg-1">
-            </div>
-           </div>
-        
-        </div>    
-        
-        
+		 <div id="login-overlay" class="modal-dialog" style="padding-left: 50px" >
+      <div class="modal-content" >
+          
+          <div class="modal-body" >
+              
+              <div class="row">
+               <div class="col-lg-6 col-md-3">
+                      <div class="well">
+                              <div class="form-group">
+                                  <label for="usuario" class="control-label">Usuario</label>
+                                  <input type="text" class="form-control" id="usuario" name="usuario" value=""  placeholder="Usuario">
+                                  <span class="help-block"></span>
+                              </div>
+                              <div class="form-group">
+                                  <label for="clave" class="control-label">Password</label>
+                                  <input type="password" class="form-control" id="clave" name="clave" value="" placeholder="Password">
+                                  <span class="help-block"></span>
+                              </div>
+                             
+                              <button type="submit" class="btn btn-success btn-block" onclick="verificar()">Login</button>
+                               
+                      </div>
+                  </div>
+                  
+                		  <div class="col-lg-6 col-md-3">
+		                      <p class="lead">Consejos de Seguridad <span class="text-success"></span></p>
+		                      <ul class="list-unstyled" style="line-height: 2">
+		                          <li><span class="fa fa-check text-success"></span> Recuerda tu usuario y tu clave.</li>
+		                          <li><span class="fa fa-check text-success"></span> No enseñes a nadie tu clave.</li>
+		                          <li><span class="fa fa-check text-success"></span> La clave es personal.</li>
+		                          <li><span class="fa fa-check text-success"></span> Cuidala.</li>
+		                     
+		                      </ul>
+		                  </div>
+              </div>
+              
+          </div>
+      </div>
+ </div>
+		
+		
         </form>
         
     	   <?php include("view/modulos/footer.php"); ?>
