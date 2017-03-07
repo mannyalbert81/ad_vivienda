@@ -31,6 +31,37 @@ class DocumentosClienteProveedorController extends ControladorBase{
 				$resultCat=$categorias->getAll("nombre_categorias");
 				
 				
+				$agencias=new AgenciasModel();
+				$columnas_agen="agencias.id_agencias, agencias.nombre_agencias";
+				$tablas_agen=" public.agencias, 
+                               public.documentos_legal";
+				$where_agen="documentos_legal.id_agencias = agencias.id_agencias GROUP BY agencias.nombre_agencias, agencias.id_agencias";
+				$id_agen="agencias.nombre_agencias";
+				$resultAgen=$agencias->getCondiciones($columnas_agen, $tablas_agen, $where_agen, $id_agen);
+				
+				
+				$sucursales=new SucursalesModel();
+				$columnas_suc="sucursales.id_sucursales, 
+                               sucursales.nombre_sucursales";
+				$tablas_suc="public.documentos_legal, 
+                               public.sucursales";
+				$where_suc="documentos_legal.id_sucursales = sucursales.id_sucursales GROUP BY sucursales.id_sucursales, sucursales.nombre_sucursales";
+				$id_suc="sucursales.nombre_sucursales";
+				$resultSuc=$sucursales->getCondiciones($columnas_suc, $tablas_suc, $where_suc, $id_suc);
+				
+				
+				$regionales=new RegionalesModel();
+				$columnas_reg="regionales.id_regionales, 
+                                regionales.nombre_regionales";
+				$tablas_reg="public.documentos_legal, 
+                             public.regionales";
+				$where_reg="regionales.id_regionales = documentos_legal.id_regionales GROUP BY regionales.id_regionales, regionales.nombre_regionales";
+				$id_reg="regionales.nombre_regionales";
+				$resultReg=$regionales->getCondiciones($columnas_reg, $tablas_reg, $where_reg, $id_reg);
+				
+				
+				
+				
 				$subcategorias=new SubCategoriasModel();
 				$resultSub=$subcategorias->getAll("nombre_subcategorias");
 				
@@ -40,7 +71,7 @@ class DocumentosClienteProveedorController extends ControladorBase{
 				$tablas_cp   = " public.documentos_legal, public.cliente_proveedor";
 				$where_cp  = " cliente_proveedor.id_cliente_proveedor = documentos_legal.id_cliente_proveedor GROUP BY  cliente_proveedor.ruc_cliente_proveedor, cliente_proveedor.nombre_cliente_proveedor ,cliente_proveedor.id_cliente_proveedor";
 				$id_cp = " cliente_proveedor.nombre_cliente_proveedor";
-				$resultCli=$cliente_proveedor->getCondiciones($columnas_cp, $tablas_cp, $where_cp, $id_cp);;
+				$resultCli=$cliente_proveedor->getCondiciones($columnas_cp, $tablas_cp, $where_cp, $id_cp);
 				
 		         
 				//documentos Legl
@@ -296,7 +327,7 @@ class DocumentosClienteProveedorController extends ControladorBase{
 			
 			
 				$this->view("DocumentosClienteProveedor",array(
-						"resultCat"=>$resultCat, "resultSub"=>$resultSub, "resultCli"=>$resultCli, "resultSet"=>$resultSet, "arraySel"=>$arraySel, "resultEdit"=>$resultEdit, "resul"=>$resul  , "paginasTotales"=>$paginasTotales, "registrosTotales"=> $registrosTotales,"hojasTotales"=>$hojasTotales, "pagina_actual"=>$paginaActual
+						"resultCat"=>$resultCat, "resultSub"=>$resultSub, "resultCli"=>$resultCli, "resultSet"=>$resultSet, "arraySel"=>$arraySel, "resultEdit"=>$resultEdit, "resul"=>$resul  , "paginasTotales"=>$paginasTotales, "registrosTotales"=> $registrosTotales,"hojasTotales"=>$hojasTotales, "pagina_actual"=>$paginaActual, "resultAgen"=>$resultAgen, "resultSuc"=>$resultSuc, "resultReg"=>$resultReg
 					 
 							));
 			
@@ -361,6 +392,9 @@ class DocumentosClienteProveedorController extends ControladorBase{
 					$where_2 = "";
 					$where_3 = "";
 					$where_4 = "";
+					$where_5 = "";
+					$where_6 = "";
+					$where_7 = "";
 					$where_8 = "";
 					$where_9 = "";
 					$where_10 = "";
@@ -374,11 +408,17 @@ class DocumentosClienteProveedorController extends ControladorBase{
 					$_id_subcategorias = $_POST["subcategorias"];
 					$_id_cliente_proveedor = $_POST["ruc_cliente_proveedor"];
 					$_year     = 	$_POST["year"];
-					
+					$_id_agencias = $_POST["id_agencias"];
+					$_id_sucursales= $_POST["id_sucursales"];
+					$_id_regionales = $_POST["id_regionales"];
+					$_numero_comprobantes = $_POST["numero_comprobantes"];
 					$_fecha_documento_desde = $_POST["fecha_documento_desde"];
 					$_fecha_documento_hasta = $_POST["fecha_documento_hasta"];
 					$_fecha_subida_desde = $_POST["fecha_subida_desde"];
 					$_fecha_subida_hasta = $_POST["fecha_subida_hasta"];
+					
+					
+					
 			     	if ($_id_categorias > 0)
 					{
 		
@@ -396,8 +436,30 @@ class DocumentosClienteProveedorController extends ControladorBase{
 					{
 						
 						$where_4 = " AND cliente_proveedor.id_cliente_proveedor = '$_id_cliente_proveedor' ";
-					}	
+					}
 					
+					
+					///lo nuevo maycol
+					if ($_id_agencias > 0)
+					{
+					
+						$where_5 = " AND documentos_legal.id_agencias = '$_id_agencias' ";
+					}
+					if ($_id_sucursales > 0)
+					{
+					
+						$where_6 = " AND documentos_legal.id_sucursales = '$_id_sucursales' ";
+					}if ($_id_regionales > 0)
+					{
+						
+						$where_7 = " AND documentos_legal.id_regionales = '$_id_regionales' ";
+					}if ($_numero_comprobantes > 0)
+					{
+						
+						$where_10 = " AND comprobantes.numero_comprobantes LIKE '$_numero_comprobantes' ";
+					}
+					
+					///termina maycol
 					
 					if ($_fecha_documento_desde != "" && $_fecha_documento_hasta != "")
 					{
@@ -414,7 +476,7 @@ class DocumentosClienteProveedorController extends ControladorBase{
 						$where_12 = "  AND TO_CHAR(documentos_legal.fecha_documentos_legal,'YYYY') = '$_year' ";
 					}
 					
-					$where_to  = $where . $where_1 . $where_2 . $where_3 . $where_4  . $where_8 . $where_9 . $where_10. $where_11. $where_12. $where_13;
+					$where_to  = $where . $where_1 . $where_2 . $where_3 . $where_4 . $where_5 . $where_6 . $where_7  . $where_8 . $where_9 . $where_10. $where_11. $where_12. $where_13;
 					
 	
 					//$resul = $where_to;
@@ -475,7 +537,6 @@ class DocumentosClienteProveedorController extends ControladorBase{
 							$html.='<th>Nombre Regionales</th>';
 							$html.='<th>Nombre Sucursales</th>';
 							$html.='<th>Nombre Agencias</th>';
-							$html.='<th>Fecha de Subida</th>';
 							$html.='<th></th>';
 							$html.='<th></th>';
 							$html.='</tr>';
@@ -503,7 +564,6 @@ class DocumentosClienteProveedorController extends ControladorBase{
 								$html.='<td style="color:#000000;font-size:80%;">'.$res->nombre_regionales.'</td>';
 								$html.='<td style="color:#000000;font-size:80%;">'.$res->nombre_sucursales.'</td>';
 								$html.='<td style="color:#000000;font-size:80%;">'.$res->nombre_agencias.'</td>';
-								$html.='<td style="color:#000000;font-size:80%;">'.$res->creado.'</td>';
 								$html.='<td><div class="right">';
 								if ($_SESSION["tipo_usuario"]=="usuario_local") {
 									$html.='<a href="'.IP_INT . $res->id_documentos_legal.'" class="btn btn-warning" target="blank">Ver</a>';
@@ -681,6 +741,40 @@ class DocumentosClienteProveedorController extends ControladorBase{
 		{
 			echo json_encode(array(array('id' =>'0,NO DATA', 'value' =>'NO DATA')));
 		}
+	}
+	
+	
+	public function AutocompleteNumeroComprobantes(){
+	
+		session_start();
+		
+		$comprobantes= new ComprobantesModel();
+		$numero_comprobantes = $_GET['term'];
+	
+			
+			
+		$columnas ="comprobantes.id_comprobantes, 
+                    comprobantes.numero_comprobantes";
+		$tablas=" public.documentos_legal, 
+                   public.comprobantes";
+	
+		$where ="comprobantes.numero_comprobantes LIKE '$numero_comprobantes%' AND
+		documentos_legal.id_comprobantes = comprobantes.id_comprobantes GROUP BY comprobantes.id_comprobantes, comprobantes.numero_comprobantes";
+		$id ="comprobantes.numero_comprobantes";
+	
+	
+		$resultSet=$comprobantes->getCondiciones($columnas, $tablas, $where, $id);
+	
+	
+		if(!empty($resultSet)){
+	
+			foreach ($resultSet as $res){
+	
+				$_numero_comprobantes[] = $res->numero_comprobantes;
+			}
+			echo json_encode($_numero_comprobantes);
+		}
+	
 	}
 	
 }

@@ -317,6 +317,12 @@
 		 var doc_subcategorias=$("#subcategorias").val();
 		 var doc_ruc_cli=$("#ruc_cliente_proveedor").val();
 		 var doc_nombre_cli=$("#nombre_cliente_proveedor").val();
+		 var doc_id_agencias=$("#id_agencias").val();
+		 var doc_id_sucursales=$("#id_sucursales").val();
+		 var doc_id_regionales=$("#id_regionales").val();
+		 var doc_numero_comprobantes=$("#numero_comprobantes").val();
+
+		 
 		 var doc_fecha_doc_desde=$("#fecha_documento_desde").val();
 		 var doc_fecha_doc_hasta=$("#fecha_documento_hasta").val();
 		 var doc_fecha_subida_desde=$("#fecha_subida_desde").val();
@@ -330,6 +336,10 @@
 				  subcategorias:doc_subcategorias,
 				  ruc_cliente_proveedor:doc_ruc_cli,
 				  nombre_cliente_proveedor:doc_nombre_cli,
+				  id_agencias:doc_id_agencias,
+				  id_sucursales:doc_id_sucursales,
+				  id_regionales:doc_id_regionales,
+				  numero_comprobantes:doc_numero_comprobantes,
 				  fecha_documento_desde:doc_fecha_doc_desde,
 				  fecha_documento_hasta:doc_fecha_doc_hasta,
 				  fecha_subida_desde:doc_fecha_subida_desde,
@@ -434,6 +444,17 @@
 					
     </script>
        
+        <script>
+	       	$(document).ready(function(){ 	
+				$( "#numero_comprobantes" ).autocomplete({
+      				source: "<?php echo $helper->url("DocumentosClienteProveedor","AutocompleteNumeroComprobantes"); ?>",
+      				minLength: 1
+    			});
+	
+    		});
+
+     </script>
+       
        <style>
             input{
                 margin-top:5px;
@@ -462,6 +483,9 @@
 		   $sel_subcategorias = 0;
 		   $sel_year = 0;
 		   $sel_cliente_proveedor = 0;
+		   $sel_agencias = 0;
+		   $sel_sucursales = 0;
+		   $sel_regionales = 0;
 		   //$sel_tipo_documentos = 0;
 		   //$sel_carton_documentos = 0;
 		   //$sel_numero_poliza = 0;
@@ -477,6 +501,9 @@
 		      $sel_subcategorias = $_POST['subcategorias'];
 		      $sel_year = $_POST['year'];
 		      $sel_cliente_proveedor = $_POST['nombre_cliente_proveedor'];
+		      $sel_agencias = $_POST['id_agencias'];
+		      $sel_sucursales = $_POST['id_sucursales'];
+		      $sel_regionales = $_POST['id_regionales'];
 		      //$sel_tipo_documentos = $_POST['tipo_documentos'];
 		      //$sel_carton_documentos = $_POST['carton_documentos'];
 		      //$sel_numero_poliza = $_POST['numero_poliza'];
@@ -616,22 +643,85 @@
 			
         </table>
       
-      	<table class="table">
+      	<table class="col-sm-12">
       
       
             <tr>
+            <th class="col-sm-2"># Comprobante</th>
+	    		<th class="col-sm-2">Agencias</th>
+	    		<th class="col-sm-2">Sucursales</th>
+	    		<th class="col-sm-2">Regionales</th>
+	    		<th class="col-sm-2">Fecha Documento Desde</th>
+	    		<th class="col-sm-2">Fecha Documento Hasta</th>
 	    		
-	    		<th>Fecha Documento Desde</th>
-	    		<th>Fecha Documento Hasta</th>
-	    		<th></th>
-	    		<th></th>
-	    		
-	    		<th></th>
 	    		
 	  		</tr>
             
                 <tr>
             
+            <td>
+	            
+		   		 <input type="text"  class="form-control" id="numero_comprobantes" name="numero_comprobantes" placeholder="# Comprobante" >
+                	  
+		   		
+		   		
+           	 		
+           		
+				</td>
+            
+            	<td>
+	            <select name="id_agencias" id="id_agencias"  class="form-control"   >
+	                <option value="0"  > --TODOS--</option>
+			    	 <?php foreach($resultAgen as $res) {?>
+					 		<?php if ($sel_agencias > 0){?>
+					 			<option value="<?php echo $res->id_agencias; ?>"  <?php if ($res->id_agencias == $sel_agencias) {echo "selected"; }  ?>     > <?php echo $res->nombre_agencias; ?> </option>
+					 		
+					 		<?php  } else { ?>
+					 			
+					 			<option value="<?php echo $res->id_agencias; ?>"  > <?php echo $res->nombre_agencias; ?> </option>
+					 		
+					 		<?php }  ?>
+	 		
+				 	 <?php } ?>
+				</select>
+				</td>
+            	
+            	
+            	<td>
+	            <select name="id_sucursales" id="id_sucursales"  class="form-control"   >
+	                <option value="0"  > --TODOS--</option>
+			    	 <?php foreach($resultSuc as $res) {?>
+					 		<?php if ($sel_sucursales > 0){?>
+					 			<option value="<?php echo $res->id_sucursales; ?>"  <?php if ($res->id_sucursales == $sel_sucursales) {echo "selected"; }  ?>     > <?php echo $res->nombre_sucursales; ?> </option>
+					 		
+					 		<?php  } else { ?>
+					 			
+					 			<option value="<?php echo $res->id_sucursales; ?>"  > <?php echo $res->nombre_sucursales; ?> </option>
+					 		
+					 		<?php }  ?>
+	 		
+				 	 <?php } ?>
+				</select>
+				</td>
+				
+				
+				
+				<td>
+	            <select name="id_regionales" id="id_regionales"  class="form-control"   >
+	                <option value="0"  > --TODOS--</option>
+			    	 <?php foreach($resultReg as $res) {?>
+					 		<?php if ($sel_regionales > 0){?>
+					 			<option value="<?php echo $res->id_regionales; ?>"  <?php if ($res->id_regionales == $sel_regionales) {echo "selected"; }  ?>     > <?php echo $res->nombre_regionales; ?> </option>
+					 		
+					 		<?php  } else { ?>
+					 			
+					 			<option value="<?php echo $res->id_regionales; ?>"  > <?php echo $res->nombre_regionales; ?> </option>
+					 		
+					 		<?php }  ?>
+	 		
+				 	 <?php } ?>
+				</select>
+				</td>
             	
             	<td>
             	
