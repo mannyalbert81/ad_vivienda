@@ -487,8 +487,8 @@
        	<table class="col-sm-12">     	
             	
             <tr>
-	    		<th class="col-sm-1">Nombre Categoria</th>
-	    		<th class="col-sm-1">Nombre SubCategoria</th>
+	    		<th class="col-sm-1">Nombre Categoría</th>
+	    		<th class="col-sm-1">Nombre SubCategoría</th>
 	    		<th class="col-sm-1">Año</th>
 	    		<th class="col-sm-1">Identificación Cliente</th>
 	    		<th class="col-sm-2">Nombre Cliente</th>
@@ -596,7 +596,7 @@
             <tr>
 	    		
 	    		 <th># Comprobante</th>
-	    		<th >Agéncias</th>
+	    		<th >Agencias</th>
 	    		<th >Sucursales</th>
 	    		<th >Regionales</th>
 	    		<th >Fecha Documento Desde</th>
