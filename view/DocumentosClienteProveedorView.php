@@ -484,14 +484,15 @@
      <div class="table-responsive">
      
     
-       	<table class="col-sm-12">     	
+       	<table class="table">     	
             	
             <tr>
-	    		<th class="col-sm-1">Nombre Categoria</th>
-	    		<th class="col-sm-1">Nombre SubCategoria</th>
-	    		<th class="col-sm-1">Año</th>
-	    		<th class="col-sm-1">Identificación Cliente</th>
-	    		<th class="col-sm-2">Nombre Cliente</th>
+	    		<th class="col-sm-2">Nombre Categoria</th>
+	    		<th class="col-sm-2">Nombre SubCategoria</th>
+	    		<th class="col-sm-2">Año</th>
+	    		<th class="col-sm-2">Identificación Cliente</th>
+	    		<th >Nombre Cliente</th>
+	    		
 	    	
 	  		</tr>
             <tr>
@@ -601,8 +602,9 @@
 	    		<th >Regionales</th>
 	    		<th >Fecha Documento Desde</th>
 	    		<th >Fecha Documento Hasta</th>
+	    		<th ></th>
 	    		
-	    		<th></th>
+	    		
 	    		
 	  		</tr>
             
@@ -669,28 +671,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	 
             	<td>
             	
@@ -709,24 +689,6 @@
 		   		</td>
 		   		<td>
 		   			<input type="date" name="fecha_documento_hasta"  id="fecha_documento_hasta"  class="form-control"  />
-		   		</td>
-		   		
-		   		
-		   		
-		   		<td>
-				   <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
-						
-						<input type="hidden" name="fecha_subida_desde" id="fecha_subida_desde"  class="form-control"   value="<?php echo $resEdit->creado ?>"     /> 	
-						    
-				     <?php } } else {?>
-				   		
-				   		<input type="hidden" name="fecha_subida_desde" id="fecha_subida_desde"  class="form-control"   />
-						        
-				    <?php } ?>
-		
-		   		</td>
-		   		<td>
-		   			<input type="hidden" name="fecha_subida_hasta" id="fecha_subida_hasta" class="form-control"  />
 		   		</td>
 		   		
 		   		
@@ -753,22 +715,10 @@
 	  
 	  
 	  
-      	<table class="col-sm-12">
+      	
       
       
-            <tr>
-            
-          
-            
-            	
-				<input type="hidden" name="fecha_subida_desde" id="fecha_subida_desde"  class="form-control"   value="<?php echo date('d/m/Y', strtotime($resEdit->creado));   ?>"     /> 	
-				<input type="hidden" name="fecha_subida_hasta"  id="fecha_subida_hasta"  class="form-control"  />
-				
-		  
-			</tr>
       
-      
-      	</table>
       
       	</div>
         </div>  
@@ -789,6 +739,12 @@
 				  
 		 </div>
         
+        
+        <input type="hidden" name="fecha_subida_desde" id="fecha_subida_desde"  class="form-control"   />
+						        
+				   
+		   			<input type="hidden" name="fecha_subida_hasta" id="fecha_subida_hasta" class="form-control"  />
+		   		
       <!--termina paginacion ajax -->
      
 

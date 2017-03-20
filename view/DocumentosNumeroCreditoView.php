@@ -405,13 +405,17 @@
       <div class="table-responsive">
      
     
-       	<table class="col-sm-12">     	
+       	<table class="table">     	
             	
             <tr>
-	    		<th class="col-sm-1">Nombre Categoría</th>
-	    		<th class="col-sm-1">Nombre SubCategoría</th>
-	    		<th class="col-sm-1">Año</th>
-	    		<th class="col-sm-1">Número Crédito</th>
+	    		<th class="col-sm-2">Nombre Categoría</th>
+	    		<th class="col-sm-2">Nombre SubCategoría</th>
+	    		<th class="col-sm-2">Año</th>
+	    		<th class="col-sm-2">Número Crédito</th>
+	    		<th class="col-sm-2">Fecha Documento Desde</th>
+	    		<th class="col-sm-2">Fecha Documento Hasta</th>
+	    		<th ></th>
+	    		
 	    		
 	    	
 	  		</tr>
@@ -503,31 +507,8 @@
 					
            	 	</td>
 		
-		   		
-		   	   		
-		   	</tr>
 		
-			
-        </table>
-      
-      	<table class="table">
-      
-      
-            <tr>
-	    		
-	    		<th>Fecha Documento Desde</th>
-	    		<th>Fecha Documento Hasta</th>
-	    		<th></th>
-	    		<th></th>
-	    		
-	    		<th></th>
-	    		
-	  		</tr>
-            
-            <tr>
-            
-            	
-            	<td>
+		<td>
             	
             	  <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
 						
@@ -546,26 +527,6 @@
 		   			<input type="date" name="fecha_documento_hasta"  id="fecha_documento_hasta"  class="form-control"  />
 		   		</td>
 		   		
-		   		
-		   		
-		   		<td>
-				   <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
-						
-						<input type="hidden" name="fecha_subida_desde" id="fecha_subida_desde"  class="form-control"   value="<?php echo $resEdit->creado ?>"     /> 	
-						    
-				     <?php } } else {?>
-				   		
-				   		<input type="hidden" name="fecha_subida_desde" id="fecha_subida_desde"  class="form-control"   />
-						        
-				    <?php } ?>
-		
-		   		</td>
-		   		<td>
-		   			<input type="hidden" name="fecha_subida_hasta" id="fecha_subida_hasta" class="form-control"  />
-		   		</td>
-		   		
-		   		
-		   		
 		   		<td>  	
 		        	<?php if ($resultEdit !="" ) { ?>
 		  	  			<input type="submit" value="Guardar" id="btnGuardar" name="btnGuardar" class="btn btn-success"/>
@@ -577,10 +538,13 @@
 		        	
 		        	
 				</td>
-			</tr>
+		   	   		
+		   	</tr>
+		
+			
+        </table>
       
-      	</table>
-      
+      	
       	</div>
         </div>  
         
@@ -599,6 +563,14 @@
 				  
 		 </div>
         
+		   		
+				   		<input type="hidden" name="fecha_subida_desde" id="fecha_subida_desde"  class="form-control"   />
+						        
+				    
+		   			<input type="hidden" name="fecha_subida_hasta" id="fecha_subida_hasta" class="form-control"  />
+		   		
+		   		
+		   		
      <!--termina paginacion ajax -->
 
 <?php /*?>

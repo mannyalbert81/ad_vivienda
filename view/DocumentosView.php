@@ -521,14 +521,14 @@
       <div class="table-responsive">
      
     
-       	<table class="col-sm-12">     	
+       	<table class="table">     	
             	
             <tr>
 	    		<th class="col-sm-2">Nombre Categoría</th>
 	    		<th class="col-sm-2">Nombre SubCategoría</th>
 	    		<th class="col-sm-2">Año</th>
 	    		<th class="col-sm-2">Identificación Cliente</th>
-	    		<th class="col-sm-3">Nombre Cliente</th>
+	    		<th >Nombre Cliente</th>
 	    		
 	    		
 	  		</tr>
@@ -638,68 +638,14 @@
 						  unset($resCli);?>
 		   		</td>
 		
-		   		
-		
-		
-		   		<td>
-		   			<select name="numero_poliza" id="numero_poliza"  class="form-control" style="visibility:hidden" >
-				   		 <option value="0"  > --TODOS--</option>
-		   			      <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
-							 <?php foreach($resultPol as $resPol) {?>
-								<option value="<?php echo $resPol->numero_poliza_documentos_legal; ?>" <?php if ($resPol->numero_poliza_documentos_legal == $resEdit->numero_poliza_documentos_legal )  echo  ' selected="selected" '  ;  ?> ><?php echo $resPol->numero_poliza_documentos_legal; ?> </option>
-						     <?php } ?>
-			
-				
-					      <?php } } else {?>
-						 
-							<?php foreach($resultPol as $resPol) {?>
-						 		<?php if ($sel_numero_poliza > 0){?>
-						 			<option value="<?php echo $resPol->numero_poliza_documentos_legal;?>"  <?php if ($resPol->numero_poliza_documentos_legal == $sel_numero_poliza) {echo "selected"; }  ?>     > <?php echo $resPol->numero_poliza_documentos_legal; ?> </option>
-					 			<?php  } else { ?>
-					 			
-					 				<option value="<?php echo $resPol->numero_poliza_documentos_legal;?>" > <?php echo $resPol->numero_poliza_documentos_legal; ?> </option>
-					 		
-					 			<?php }  ?>
-	 		
-					 	 	<?php } ?>					        
-						 <?php } ?>
-		
-					</select>
-					<?php unset($resultPol);
-						  unset($resPol); ?>
-		   		</td>
-		
-				<td>
-		   			<select name="cierre_ventas_soat" id="cierre_ventas_soat"  class="form-control" style="visibility:hidden">
-							<option value="0"  > --TODOS--</option>
-					      <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
-							 <?php foreach($resultSoa as $resSoa) {?>
-								<option value="<?php echo $resSoa->id_soat; ?>" <?php if ($resSoa->id_soat == $resEdit->id_soat )  echo  ' selected="selected" '  ;  ?> ><?php echo $resSoa->cierre_ventas_soat; ?> </option>
-						     <?php } ?>
-					    
-					      <?php } } else {?>
-						 
-							 <?php foreach($resultSoa as $resSoa) {?>
-						 		<?php if ($sel_cierre_ventas_soat > 0){?>
-						 			<option value="<?php echo $resSoa->id_soat;?>"  <?php if ($resSoa->id_soat == $sel_cierre_ventas_soat) {echo "selected"; }  ?>     > <?php echo $resSoa->cierre_ventas_soat; ?> </option>
-					 			<?php  } else { ?>
-					 			
-					 				<option value="<?php echo $resSoa->id_soat;?>" > <?php echo $resSoa->cierre_ventas_soat; ?> </option>
-					 		
-					 			<?php }  ?>
-	 		
-					 	 	<?php } ?>	
-			        
-						 <?php } ?>
-					</select>
-					<?php unset($resultSoa);
-						  unset($resSoa);	?>
-		   		</td>
-		   		
-		   	</tr>
+		   		</tr>
 		
 			
         </table>
+		
+		   			
+		   		
+		   	
       
       	<table class="table">
       
@@ -708,8 +654,8 @@
 	    		
 	    		<th>Fecha Documento Desde</th>
 	    		<th>Fecha Documento Hasta</th>
-	    		<th>Tipo Documento</th>
-	    		<th>Número Carpeta</th>
+	    		<th class="col-sm-3">Tipo Documento</th>
+	    		<th class="col-sm-2">Número Carpeta</th>
 	    		
 	    		<th></th>
 	    		
@@ -811,65 +757,7 @@
 		   		</td>
 		
 		
-		 <td>
-				   <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
-						
-						<input type="hidden" name="fecha_subida_desde" id="fecha_subida_desde"  class="form-control"   value="<?php echo date('d/m/Y', strtotime($resEdit->creado));   ?>"     /> 	
-						    
-				     <?php } } else {?>
-				   		
-				   			<?php if ($sel_fecha_subida_desde == "" ) { ?>	
-						   		<input type="hidden" name="fecha_subida_desde"  id="fecha_subida_desde"  class="form-control"  />
-							 <?php } else {?>	
-							 	<input type="hidden" value="<?php echo $sel_fecha_subida_desde ?>"  name="fecha_subida_desde" id="fecha_subida_desde"   class="form-control"   />
-							 <?php }?>        
-				   			
-		   			                
-				    <?php } ?>
-		
-		   		</td>
-		   		<td>
-		   			<?php if ($sel_fecha_subida_hasta == "" ) { ?>	
-						   		<input type="hidden" name="fecha_subida_hasta"  id="fecha_subida_hasta"  class="form-control"  />
-							 <?php } else {?>	
-							 	<input type="hidden" value="<?php echo $sel_fecha_subida_hasta ?>"  name="fecha_subida_hasta" id="fecha_subida_hasta"   class="form-control"   />
-							 <?php }?>        
-				   			
-		   		</td>
-		   		<td>
-		   		  <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
-						
-						<input type="hidden" name="fecha_poliza_desde" id="fecha_poliza_desde"  class="form-control"   value="<?php echo  date('d/m/Y', strtotime($resEdit->fecha_desde_documentos_legal));  ?>"      /> 	
-						    
-				  <?php } } else {?>
-				   	<?php if ($sel_fecha_poliza_desde == "" ) { ?>	
-				   		<input type="hidden" name="fecha_poliza_desde"  id="fecha_poliza_desde"  class="form-control"  />
-					 <?php } else {?>	
-					 	<input type="hidden" value="<?php echo $sel_fecha_poliza_desde ?>"  name="fecha_poliza_desde" id="fecha_poliza_desde"   class="form-control"  hidden />
-					 <?php }?>        
 		   			
-		   			        
-				  <?php } ?>
-		
-		   		</td>
-		   		<td>
-		   		  <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
-						
-						<input type="hidden" name="fecha_poliza_hasta" id="fecha_poliza_hasta"  class="form-control"   value="<?php echo date('d/m/Y', strtotime($resEdit->fecha_hasta_documentos_legal));  ?>"  hidden   /> 	
-						    
-				  <?php } } else {?>
-				   		
-				   		<?php if ($sel_fecha_poliza_hasta == "" ) { ?>	
-				   			<input type="hidden" name="fecha_poliza_hasta"  id="fecha_poliza_hasta"  class="form-control" hidden />
-					 	<?php } else {?>	
-					 		<input type="hidden" value="<?php echo $sel_fecha_poliza_hasta ?>"  name="fecha_poliza_hasta" id="fecha_poliza_hasta"   class="form-control"   />
-					 	<?php }?>        
-		   			
-		   			                
-				  <?php } ?>
-		   		</td>
-		   		
-		   		   		
 		   		
 		   		
 		   		<td>  	
@@ -887,6 +775,8 @@
       
       	</table>
       
+
+		   		
       	</div>
         </div>  
       
@@ -905,6 +795,71 @@
 		       <br>
 				  
 		 </div>
+		 
+		 
+		       <select name="numero_poliza" id="numero_poliza"  class="form-control" style="visibility:hidden" >
+				   		 <option value="0"  > --TODOS--</option>
+		   			      <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
+							 <?php foreach($resultPol as $resPol) {?>
+								<option value="<?php echo $resPol->numero_poliza_documentos_legal; ?>" <?php if ($resPol->numero_poliza_documentos_legal == $resEdit->numero_poliza_documentos_legal )  echo  ' selected="selected" '  ;  ?> ><?php echo $resPol->numero_poliza_documentos_legal; ?> </option>
+						     <?php } ?>
+			
+				
+					      <?php } } else {?>
+						 
+							<?php foreach($resultPol as $resPol) {?>
+						 		<?php if ($sel_numero_poliza > 0){?>
+						 			<option value="<?php echo $resPol->numero_poliza_documentos_legal;?>"  <?php if ($resPol->numero_poliza_documentos_legal == $sel_numero_poliza) {echo "selected"; }  ?>     > <?php echo $resPol->numero_poliza_documentos_legal; ?> </option>
+					 			<?php  } else { ?>
+					 			
+					 				<option value="<?php echo $resPol->numero_poliza_documentos_legal;?>" > <?php echo $resPol->numero_poliza_documentos_legal; ?> </option>
+					 		
+					 			<?php }  ?>
+	 		
+					 	 	<?php } ?>					        
+						 <?php } ?>
+		
+					</select>
+					<?php unset($resultPol);
+						  unset($resPol); ?>
+		   		
+		
+				
+		   			<select name="cierre_ventas_soat" id="cierre_ventas_soat"  class="form-control" style="visibility:hidden">
+							<option value="0"  > --TODOS--</option>
+					      <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
+							 <?php foreach($resultSoa as $resSoa) {?>
+								<option value="<?php echo $resSoa->id_soat; ?>" <?php if ($resSoa->id_soat == $resEdit->id_soat )  echo  ' selected="selected" '  ;  ?> ><?php echo $resSoa->cierre_ventas_soat; ?> </option>
+						     <?php } ?>
+					    
+					      <?php } } else {?>
+						 
+							 <?php foreach($resultSoa as $resSoa) {?>
+						 		<?php if ($sel_cierre_ventas_soat > 0){?>
+						 			<option value="<?php echo $resSoa->id_soat;?>"  <?php if ($resSoa->id_soat == $sel_cierre_ventas_soat) {echo "selected"; }  ?>     > <?php echo $resSoa->cierre_ventas_soat; ?> </option>
+					 			<?php  } else { ?>
+					 			
+					 				<option value="<?php echo $resSoa->id_soat;?>" > <?php echo $resSoa->cierre_ventas_soat; ?> </option>
+					 		
+					 			<?php }  ?>
+	 		
+					 	 	<?php } ?>	
+			        
+						 <?php } ?>
+					</select>
+					<?php unset($resultSoa);
+						  unset($resSoa);	?>
+						  
+						  
+						  
+						  <input type="hidden" name="fecha_subida_desde"  id="fecha_subida_desde"  class="form-control"  />
+				<input type="hidden" name="fecha_subida_hasta"  id="fecha_subida_hasta"  class="form-control"  />
+							
+		   			<input type="hidden" name="fecha_poliza_desde"  id="fecha_poliza_desde"  class="form-control"  />
+					 	<input type="hidden" name="fecha_poliza_hasta"  id="fecha_poliza_hasta"  class="form-control" hidden />
+					 	
+		   		
+		   		   	
         
         <!--termina paginacion ajax --> 	
 
