@@ -100,21 +100,21 @@
 				<table class="table table-hover">
 					<thead>
 						<tr class="info">
-							<th style=" font-weight: normal; margin: 0; max-width: 4vw; min-width: 4vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Id</th>;
-							<th style=" font-weight: normal; margin: 0; max-width: 5vw; min-width: 5vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Fecha</th>;
-							<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Subcategoria</th>;
-							<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Tipo Documentos</th>;
-							<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Cliente</th>;
-							<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Carpeta </th>;
-							<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Credito</th>;
-							<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Comprobante</th>;
-							<th style=" font-weight: normal; margin: 0; max-width: 5vw; min-width: 5vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;   ">Páginas</th>;
-							<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Referencia</th>;
-							<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ; ">Tipo Comprobante</th>;
-							<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Regionales</th>;
-							<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Sucursales</th>;
-							<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Agencias</th>;
-							<th style=" font-weight: normal; margin: 0; max-width: 4vw; min-width: 4vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  "></th>;
+							<th style=" font-weight: normal; margin: 0; max-width: 4vw; min-width: 4vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Id</th>
+							<th style=" font-weight: normal; margin: 0; max-width: 5vw; min-width: 5vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Fecha</th>
+							<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Subcategoria</th>
+							<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Tipo Documentos</th>
+							<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Cliente</th>
+							<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Carpeta </th>
+							<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Credito</th>
+							<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Comprobante</th>
+							<th style=" font-weight: normal; margin: 0; max-width: 5vw; min-width: 5vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;   ">Páginas</th>
+							<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Referencia</th>
+							<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ; ">Tipo Comprobante</th>
+							<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Regionales</th>
+							<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Sucursales</th>
+							<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  ">Agencias</th>
+							<th style=" font-weight: normal; margin: 0; max-width: 4vw; min-width: 4vw; word-wrap: break-word; font-size: 11px; height: 3.5vh ;  "></th>
 							
 						</tr>
 					</thead>
