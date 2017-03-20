@@ -522,11 +522,11 @@ class DocumentosClienteProveedorController extends ControladorBase{
 							$html.='<th style="text-align: center; font-weight: normal; margin: 0; max-width: 3.5vw; min-width: 3.5vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;     "><b>Id</b></th>';
 							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "><b>Fecha</b></th>';
 								
-							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "><b>Subcategoria</b></th>';
+							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "><b>Subcategoría</b></th>';
 							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "><b>Tipo Documentos</b></th>';
 							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "><b>Cliente</b></th>';
 							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "><b>Carpeta </b></th>';
-							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 5vw; min-width: 5vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "><b>Credito</b></th>';
+							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 5vw; min-width: 5vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "><b>Crédito</b></th>';
 							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "><b>Comprobante</b></th>';
 							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 5vw; min-width: 5vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;   "><b>Páginas</b></th>';
 							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "><b>Referencia</b></th>';

@@ -67,11 +67,11 @@ $controladores=$_SESSION['controladores'];
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-file" ><?php echo " Gestión Documental" ;?> </span> <span class="caret"></span></a>
           <ul class="dropdown-menu">
          
-			<li><a href="index.php?controller=Documentos&action=index"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Busqueda de Documentos</span> </a>
+			<li><a href="index.php?controller=Documentos&action=index"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Búsqueda de Documentos</span> </a>
 			</li>
-			<li><a href="index.php?controller=DocumentosClienteProveedor&action=index"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Busqueda Categorias + Cliente / Proveedor + Agencias</span> </a>
+			<li><a href="index.php?controller=DocumentosClienteProveedor&action=index"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Búsqueda Categorias + Cliente / Proveedor + Agencias</span> </a>
 			</li>
-			<li><a href="index.php?controller=DocumentosNumeroCredito&action=index"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Busqueda Categorias + Numero de Credito</span> </a>
+			<li><a href="index.php?controller=DocumentosNumeroCredito&action=index"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Búsqueda Categorias + Número de Crédito</span> </a>
 			</li>
 			
 			

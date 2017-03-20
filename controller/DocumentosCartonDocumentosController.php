@@ -463,9 +463,8 @@ class DocumentosCartonDocumentosController extends ControladorBase{
 							$html.='<th>Subcategoria</th>';
 							$html.='<th>Documentos</th>';
 							$html.='<th>Cliente/Proveedor</th>';
-							$html.='<th>Carpeta Documentos</th>';
-							$html.='<th>Numero Comprobante</th>';
-							$html.='<th>Numero Páginas</th>';
+							$html.='<th>Número Comprobante</th>';
+							$html.='<th>Número Páginas</th>';
 							$html.='<th>Nombre Referencia</th>';
 							$html.='<th>Tipo Comprobantes</th>';
 							$html.='<th>Nombre Regionales</th>';

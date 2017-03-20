@@ -80,7 +80,7 @@
 		                          <li><span class="fa fa-check text-success"></span> Recuerda tu usuario y tu clave.</li>
 		                          <li><span class="fa fa-check text-success"></span> No enseñes a nadie tu clave.</li>
 		                          <li><span class="fa fa-check text-success"></span> La clave es personal.</li>
-		                          <li><span class="fa fa-check text-success"></span> Cuidala.</li>
+		                          <li><span class="fa fa-check text-success"></span> Cuídala.</li>
 		                     
 		                      </ul>
 		                  </div>

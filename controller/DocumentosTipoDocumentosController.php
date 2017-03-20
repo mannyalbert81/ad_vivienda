@@ -460,12 +460,12 @@ class DocumentosTipoDocumentosController extends ControladorBase{
 							$html.='<tr class="info">';
 							$html.='<th><b>Id</b></th>';
 							$html.='<th>Fecha del Documento</th>';
-							$html.='<th>Categoria</th>';
-							$html.='<th>Subcategoria</th>';
+							$html.='<th>Categoría</th>';
+							$html.='<th>Subcategoría</th>';
 							$html.='<th>Tipo Documentos</th>';
 							$html.='<th>Cliente/Proveedor</th>';
 							$html.='<th>Carton Documentos</th>';
-							$html.='<th>Numero Credito</th>';
+							$html.='<th>Número Crédito</th>';
 							$html.='<th>Fecha de Subida</th>';
 							$html.='<th></th>';
 							$html.='<th></th>';

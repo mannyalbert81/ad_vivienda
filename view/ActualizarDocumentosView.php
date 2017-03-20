@@ -86,7 +86,7 @@
             		<th style="width: 70%">  </th>
             	</tr>
     	    	<tr>
-            		<th style="width: 30%">Numero  </th>
+            		<th style="width: 30%">Número  </th>
             		<th style="width: 70%"> </th>
             		
             	</tr>
@@ -102,7 +102,7 @@
             		<th style="width: 70%">  </th>
             	</tr>
     	    	<tr>
-            		<th style="width: 30%">Numero  </th>
+            		<th style="width: 30%">Número  </th>
             		<th style="width: 70%"> </th>
             		
             	</tr>
@@ -138,7 +138,7 @@
       
       
             <tr>
-           	<th class="col-sm-2">Agencias</th>
+           	<th class="col-sm-2">Agéncias</th>
 	    		<th class="col-sm-2">Sucursales</th>
 	    		<th class="col-sm-2">Regionales</th>
 	    		
@@ -214,7 +214,7 @@
            <input type="submit"name="btnGuardar" value="Guardar" class="btn btn-success"/>
 			<hr>
 			<hr>
-			<hr>
+			<hr>	
           </form>
        
 	   
@@ -228,10 +228,10 @@
         <table class="table table-hover">
 	         <tr>
 	    		<th>Id</th>
-	    		<th>Agencia</th>
+	    		<th>Agéncia</th>
 	    		<th>Sucursal</th>
 	    		<th>Regional</th>
-	    		<th>Subcategroria</th>
+	    		<th>Subcategoría</th>
 	    		<th>Tipo de Documentos</th>
 	    		<th>RUC/CI</th>
 	    		<th>Nombre</th>

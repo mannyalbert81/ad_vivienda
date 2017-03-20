@@ -76,7 +76,7 @@
 			                	<div class="right">
 			                    <a href="<?php echo $helper->url("Roles","borrarId"); ?>&id_rol=<?php echo $res->id_rol; ?>" class="btn btn-danger" style="font-size:65%;"><i class="glyphicon glyphicon-trash"></i></a>
 			                </div>
-			                <hr/>
+			                
 		               </td>
 		    		</tr>
 		        <?php } ?>

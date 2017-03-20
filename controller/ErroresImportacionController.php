@@ -52,7 +52,7 @@ class ErroresImportacionController extends ControladorBase{
 			else 
 			{
 				$this->view("Error",array(
-						"resultado"=>"No tiene Permisos de Acceso a Errores de Importacion"
+						"resultado"=>"No tiene Permisos de Acceso a Errores de Importación"
 		
 				));
 				
