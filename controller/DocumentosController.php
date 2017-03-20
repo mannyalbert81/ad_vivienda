@@ -1426,7 +1426,7 @@ class DocumentosController extends ControladorBase{
 							$html.='<span class="form-control"><strong>Registros: </strong>'.$cantidadResult.'</span>';
 							$html.='<input type="hidden" value="'.$cantidadResult.'" id="total_query" name="total_query"/>' ;
 							$html.='</div><br>';
-<<<<<<< HEAD
+
 							$html.='<section style="height:425px; overflow-y:scroll;">';
 							$html.='<table class="table table-hover">';
 							$html.='<thead>';
@@ -1449,7 +1449,7 @@ class DocumentosController extends ControladorBase{
 							$html.='<th>Fecha de Subida</th>';
 							$html.='<th></th>';
 							$html.='<th></th>';
-=======
+
 							$html.='<section style="height:500px; overflow:scroll; ">';
 							$html.='<table class="table table-hover"  >';
 							$html.='<thead >';
@@ -1471,7 +1471,7 @@ class DocumentosController extends ControladorBase{
 							$html.='<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;  ">Agencias</th>';
 							$html.='<th style=" font-weight: normal; margin: 0; max-width: 4vw; min-width: 4vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;  "></th>';
 								
->>>>>>> branch 'master' of https://github.com/mannyalbert81/ad_vivienda.git
+
 							$html.='</tr>';
 							$html.='</thead>';
 							$html.='<tbody>';
