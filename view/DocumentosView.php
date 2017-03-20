@@ -524,13 +524,13 @@
        	<table class="col-sm-12">     	
             	
             <tr>
-	    		<th class="col-sm-2">Nombre Categoria</th>
-	    		<th class="col-sm-2">Nombre SubCategoria</th>
+	    		<th class="col-sm-2">Nombre Categoría</th>
+	    		<th class="col-sm-2">Nombre SubCategoría</th>
 	    		<th class="col-sm-2">Año</th>
 	    		<th class="col-sm-1">Ruc Cliente/Proveedor</th>
 	    		<th class="col-sm-2">Nombre Cliente/Proveedor</th>
 	    		<th class="col-sm-1">Tipo Documento</th>
-	    		<th class="col-sm-2">Numero Carpeta</th>
+	    		<th class="col-sm-2">Número Carpeta</th>
 	    		
 	  		</tr>
             <tr>

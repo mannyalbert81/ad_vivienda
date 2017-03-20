@@ -616,18 +616,18 @@ class DocumentosController extends ControladorBase{
 							$html.='<th style=" font-weight: normal; margin: 0; max-width: 3.5vw; min-width: 3.5vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;     "><b>Id</b></th>';
 							$html.='<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;  ">Fecha</th>';
 							
-							$html.='<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;  ">Subcategoria</th>';
+							$html.='<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;  ">Subcategoría</th>';
 							$html.='<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;  ">Tipo Documentos</th>';
 							$html.='<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;  ">Cliente</th>';
 							$html.='<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;  ">Carpeta </th>';
-							$html.='<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;  ">Credito</th>';
+							$html.='<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;  ">Crédito</th>';
 							$html.='<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;  ">Comprobante</th>';
 							$html.='<th style=" font-weight: normal; margin: 0; max-width: 5vw; min-width: 5vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;   ">Páginas</th>';
 							$html.='<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;  ">Referencia</th>';
 							$html.='<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;  ">Tipo Comprobante</th>';
 							$html.='<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;  ">Regionales</th>';
 							$html.='<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;  ">Sucursales</th>';
-							$html.='<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;  ">Agencias</th>';
+							$html.='<th style=" font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;  ">Agéncias</th>';
 							$html.='<th style=" font-weight: normal; margin: 0; max-width: 4vw; min-width: 4vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;  "></th>';
 							
 							$html.='</tr>';
@@ -1434,19 +1434,19 @@ class DocumentosController extends ControladorBase{
 							$html.='<tr class="info">';
 							$html.='<th><b>Id</b></th>';
 							$html.='<th>Fecha del Documento</th>';
-							$html.='<th>Categoria</th>';
-							$html.='<th>Subcategoria</th>';
+							$html.='<th>Categoría</th>';
+							$html.='<th>Subcategoría</th>';
 							$html.='<th>Tipo Documentos</th>';
 							$html.='<th>Cliente/Proveedor</th>';
 							$html.='<th>Carpeta Documentos</th>';
-							$html.='<th>Numero Credito</th>';
-							$html.='<th>Numero Comprobantes</th>';
-							$html.='<th>Numero Páginas</th>';
+							$html.='<th>Número Crédito</th>';
+							$html.='<th>Número Comprobantes</th>';
+							$html.='<th>Número Páginas</th>';
 							$html.='<th>Nombre Referencia</th>';
 							$html.='<th>Tipo Comprobantes</th>';
 							$html.='<th>Nombre Regionales</th>';
 							$html.='<th>Nombre Sucursales</th>';
-							$html.='<th>Nombre Agencias</th>';
+							$html.='<th>Nombre Agéncias</th>';
 							$html.='<th>Fecha de Subida</th>';
 							$html.='<th></th>';
 							$html.='<th></th>';
