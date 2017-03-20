@@ -99,51 +99,29 @@
 			<section style="height:425px; overflow-y:scroll;">
 				<table class="table table-hover">
 					<thead>
-						<tr class="info">
-							<th>Id</th>
-							<th>Fecha del Documento</th>
-							<th>Categoria</th>
-							<th>Subcategoria</th>
-							<th>Tipo Documentos</th>
-							<th>Cliente/Proveedor</th>
-							<th>Carpeta Documentos</th>
-							<th>Numero Credito</th>
-							<th>Numero Comprobantes</th>
-							<th>Numero Páginas</th>
-							<th>Nombre Referencia</th>
-							<th>Tipo Comprobantes</th>
-							<th>Nombre Regionales</th>
-							<th>Nombre Sucursales</th>
-							<th>Nombre Agencias</th>
-							
-							<th></th>
-							<th></th>
-						</tr>
+						<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;   "> <?php echo $res->nombre_sucursales; ?></td>;
 					</thead>
 					<tbody>
 		<?php foreach ($resultSet as $res){?>
 									
 						<tr>
-							<td style="color:#000000;font-size:80%;"><?php echo $res->id_documentos_legal; ?></td>
-							<td style="color:#000000;font-size:80%;"><?php echo $res->fecha_documentos_legal; ?></td>
-							<td style="color:#000000;font-size:80%;"><?php echo $res->nombre_categorias; ?></td>
-							<td style="color:#000000;font-size:80%;"><?php echo $res->nombre_subcategorias; ?></td>
-							<td style="color:#000000;font-size:80%;"><?php echo $res->nombre_tipo_documentos; ?></td>
-							<td style="color:#000000;font-size:80%;"><?php echo $res->nombre_cliente_proveedor; ?></td>
-							<td style="color:#000000;font-size:80%;"><?php echo $res->numero_carton_documentos; ?></td>
-							<td style="color:#000000;font-size:80%;"><?php echo $res->numero_credito_documentos_legal; ?></td>
-							<td style="color:#000000;font-size:80%;"><?php echo $res->numero_comprobantes; ?></td>
-							<td style="color:#000000;font-size:80%;"><?php echo $res->paginas_documentos_legal; ?></td>
-							<td style="color:#000000;font-size:80%;"><?php echo $res->nombre_referencia; ?></td>
-							<td style="color:#000000;font-size:80%;"><?php echo $res->nombre_tipo_comprobantes; ?></td>
-							<td style="color:#000000;font-size:80%;"><?php echo $res->nombre_regionales; ?></td>
-							<td style="color:#000000;font-size:80%;"><?php echo $res->nombre_sucursales; ?></td>
-							<td style="color:#000000;font-size:80%;"><?php echo $res->nombre_agencias; ?></td>
 							
-							
-							 
-							
-							<td><div class="right">						
+								<td style="color:#000000;font-weight: normal; margin: 0; max-width: 3.5vw; min-width: 3.5vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;  "><?php echo $res->id_documentos_legal; ?> </td>';
+								<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;   "><?php echo$res->fecha_documentos_legal;?> </td>;
+								
+								<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;   " > <?php echo $res->nombre_subcategorias; ?> </td>;
+								<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;   "> <?php echo $res->nombre_tipo_documentos; ?></td>;
+								<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;   "> <?php echo $res->nombre_cliente_proveedor; ?> </td>;
+								<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;   "> <?php echo $res->numero_carton_documentos; ?></td>;
+								<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;   "> <?php echo $res->numero_credito_documentos_legal; ?></td>;
+								<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;   "> <?php echo$res->numero_comprobantes; ?></td>;
+								<td style="color:#000000;font-weight: normal; margin: 0; max-width: 5vw; min-width: 5vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;   "> <?php echo$res->paginas_documentos_legal; ?></td>;
+								<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;   "> <?php echo $res->nombre_referencia; ?></td>;
+								<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;   "> <?php echo $res->nombre_tipo_comprobantes; ?></td>;
+								<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;   "> <?php echo $res->nombre_regionales; ?></td>;
+								<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;   "> <?php echo $res->nombre_sucursales; ?></td>;
+								<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 11px; height: 3.5vh !important;   "> <?php echo $res->nombre_agencias; ?></td>;
+								<td><div class="right">						
 							<?php  if ($_SESSION["tipo_usuario"]=="usuario_local") {  ?>
 			            		 <a href=" <?php echo IP_INT . $res->id_documentos_legal; ?>  " class="btn btn-warning" target="blank">Ver</a>
 			            	<?php } else {?>
