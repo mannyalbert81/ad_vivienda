@@ -9,11 +9,13 @@
         <title>Busqueda de Documentos - aDocument 2015</title>
    
   		
+        		
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		   
         <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 		 
 		  <link rel="stylesheet" href="/resources/demos/style.css">
+		
 		<link rel="stylesheet" href="http://jqueryvalidation.org/files/demo/site-demos.css">
         <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
         <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
@@ -221,64 +223,8 @@
 		
 
 	
-	<script>
-
-		$(document).ready(function(){
-
-		    $("#fecha_poliza_hasta").change(function() {
-
-
-		    	var startDate = new Date($('#fecha_poliza_desde').val());
-		    	var endDate = new Date($('#fecha_poliza_hasta').val());
-
-		    	if (startDate > endDate){
-		    		$("#fecha_poliza_hasta").val("");
-		    		alert('Fecha poliza DESDE mayor a  fecha FINAL');
-		    		die();
-		    	}
-
-		    	var fecha_actual = new Date();
-		    	if (endDate>fecha_actual){
-
-		    		$("#fecha_documento_hasta").val("");
-		    		alert('Fecha poliza mayor a fecha actual');
-		    		die();
-		    	}
-			  });
-		}); 
-
-	</script>
-	
 	
 
-	<script>
-
-		$(document).ready(function(){
-
-		    $("#fecha_subida_hasta").change(function() {
-
-
-		    	var startDate = new Date($('#fecha_subida_desde').val());
-		    	var endDate = new Date($('#fecha_subida_hasta').val());
-
-		    	if (startDate > endDate){
-		    		$("#fecha_subida_hasta").val("");
-
-		    		alert('Fecha subida DESDE mayor a  fecha FINAL');
-		    		die();
-		    	}
-
-		    	var fecha_actual = new Date();
-		    	if (endDate>fecha_actual){
-
-		    		$("#fecha_documento_hasta").val("");
-		    		alert('Fecha subida mayor a fecha actual');
-		    		die();
-		    	}
-			  });
-		}); 
-
-	</script>
 	
 	
 
@@ -541,11 +487,11 @@
        	<table class="col-sm-12">     	
             	
             <tr>
-	    		<th class="col-sm-1">Nombre Categoría</th>
-	    		<th class="col-sm-1">Nombre SubCategoría</th>
+	    		<th class="col-sm-1">Nombre Categoria</th>
+	    		<th class="col-sm-1">Nombre SubCategoria</th>
 	    		<th class="col-sm-1">Año</th>
-	    		<th class="col-sm-1">Ruc Cliente/Proveedor</th>
-	    		<th class="col-sm-1">Nombre Cliente/Proveedor</th>
+	    		<th class="col-sm-1">Identificación Cliente</th>
+	    		<th class="col-sm-2">Nombre Cliente</th>
 	    	
 	  		</tr>
             <tr>
@@ -613,7 +559,7 @@
                  			  <?php } ?>
 					     <?php } } else {?>
 					     
-					     <input type="text" class="form-control" id="txt_ruc_cliente_proveedor" name="txt_ruc_cliente_proveedor" value=""  placeholder="Ingrese Ruc Cliente">
+					     <input type="text" class="form-control" id="txt_ruc_cliente_proveedor" name="txt_ruc_cliente_proveedor" value=""  placeholder="Ingrese Identificación">
                  		  									
 						 <?php } ?>
 						      		
@@ -628,7 +574,7 @@
 						   <?php } ?>
 						  <?php } } else {?>	
 						  					 
-						  <input type="text" class="form-control" id="txt_nombre_cliente_proveedor" name="txt_nombre_cliente_proveedor" value=""  placeholder="Ingrese nombre Cliente">
+						  <input type="text" class="form-control" id="txt_nombre_cliente_proveedor" name="txt_nombre_cliente_proveedor" value=""  placeholder="Ingrese Nombre">
                  		  
 						 <?php } ?>
 				         <input type="hidden"  id="nombre_cliente_proveedor" name="nombre_cliente_proveedor" value="0">		 
@@ -643,31 +589,29 @@
 			
         </table>
       
-      	<table class="col-sm-12">
+	  
+		<table class="table">
       
       
             <tr>
-            <th class="col-sm-2"># Comprobante</th>
-	    		<th class="col-sm-2">Agéncias</th>
-	    		<th class="col-sm-2">Sucursales</th>
-	    		<th class="col-sm-2">Regionales</th>
-	    		<th class="col-sm-2">Fecha Documento Desde</th>
-	    		<th class="col-sm-2">Fecha Documento Hasta</th>
 	    		
+	    		 <th># Comprobante</th>
+	    		<th >Agéncias</th>
+	    		<th >Sucursales</th>
+	    		<th >Regionales</th>
+	    		<th >Fecha Documento Desde</th>
+	    		<th >Fecha Documento Hasta</th>
+	    		
+	    		<th></th>
 	    		
 	  		</tr>
             
-                <tr>
+            <tr>
             
-            <td>
-	            
-		   		 <input type="text"  class="form-control" id="numero_comprobantes" name="numero_comprobantes" placeholder="# Comprobante" >
-                	  
-		   		
-		   		
-           	 		
-           		
-				</td>
+     
+				            <td>
+			    <input type="text"  class="form-control" id="numero_comprobantes" name="numero_comprobantes" placeholder="# Comprobante" >
+            </td>
             
             	<td>
 	            <select name="id_agencias" id="id_agencias"  class="form-control"   >
@@ -722,65 +666,69 @@
 				 	 <?php } ?>
 				</select>
 				</td>
-            	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	 
             	<td>
             	
             	  <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
 						
-				 <input type="date" name="fecha_documento_desde" id="fecha_documento_desde"  class="form-control"  value="<?php echo  date('d/m/Y', strtotime($resEdit->fecha_documentos_legal));  ?>"     /> 	
+						<input type="date" name="fecha_documento_desde" id="fecha_documento_desde"  class="form-control"  value="<?php echo $resEdit->fecha_documentos_legal ?>"     /> 	
 						    
 				  <?php } } else {?>
-				   	 <?php if ($sel_fecha_subida_desde == "" ) { ?>	
+				   		
 				   		<input type="date" name="fecha_documento_desde" id="fecha_documento_desde"  class="form-control"   />
-					 <?php } else {?>	
-					 	<input type="date" value="<?php echo $sel_fecha_documento_desde ?>"  name="fecha_documento_desde" id="fecha_documento_desde"   class="form-control"   />
-					 <?php }?>        
+						        
 				  <?php } ?>
 		
             	
 		   			
 		   		</td>
 		   		<td>
-		   			<?php if ($sel_fecha_subida_desde == "" ) { ?>	
-				   		<input type="date" name="fecha_documento_hasta"  id="fecha_documento_hasta"  class="form-control"  />
-					 <?php } else {?>	
-					 	<input type="date" value="<?php echo $sel_fecha_documento_hasta ?>"  name="fecha_documento_hasta" id="fecha_documento_hasta"   class="form-control"   />
-					 <?php }?>        
-		   			
-		   			
+		   			<input type="date" name="fecha_documento_hasta"  id="fecha_documento_hasta"  class="form-control"  />
 		   		</td>
+		   		
 		   		
 		   		
 		   		<td>
 				   <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
 						
-						<input type="hidden" name="fecha_subida_desde" id="fecha_subida_desde"  class="form-control"   value="<?php echo date('d/m/Y', strtotime($resEdit->creado));   ?>"     /> 	
+						<input type="hidden" name="fecha_subida_desde" id="fecha_subida_desde"  class="form-control"   value="<?php echo $resEdit->creado ?>"     /> 	
 						    
 				     <?php } } else {?>
 				   		
-				   			<?php if ($sel_fecha_subida_desde == "" ) { ?>	
-						   		<input type="hidden" name="fecha_subida_desde"  id="fecha_subida_desde"  class="form-control"  />
-							 <?php } else {?>	
-							 	<input type="hidden" value="<?php echo $sel_fecha_subida_desde ?>"  name="fecha_subida_desde" id="fecha_subida_desde"   class="form-control"   />
-							 <?php }?>        
-				   			
-		   			                
+				   		<input type="hidden" name="fecha_subida_desde" id="fecha_subida_desde"  class="form-control"   />
+						        
 				    <?php } ?>
 		
 		   		</td>
 		   		<td>
-		   			<?php if ($sel_fecha_subida_hasta == "" ) { ?>	
-						   		<input type="hidden" name="fecha_subida_hasta"  id="fecha_subida_hasta"  class="form-control"  />
-							 <?php } else {?>	
-							 	<input type="hidden" value="<?php echo $sel_fecha_subida_hasta ?>"  name="fecha_subida_hasta" id="fecha_subida_hasta"   class="form-control"   />
-							 <?php }?>        
-				   			
+		   			<input type="hidden" name="fecha_subida_hasta" id="fecha_subida_hasta" class="form-control"  />
 		   		</td>
-		
-		
 		   		
-		   		
-		   		   		
 		   		
 		   		
 		   		<td>  	
@@ -794,6 +742,29 @@
 		        	
 		        	
 				</td>
+
+
+
+
+     	</tr>
+      
+      	</table>
+	  
+	  
+	  
+	  
+      	<table class="col-sm-12">
+      
+      
+            <tr>
+            
+          
+            
+            	
+				<input type="hidden" name="fecha_subida_desde" id="fecha_subida_desde"  class="form-control"   value="<?php echo date('d/m/Y', strtotime($resEdit->creado));   ?>"     /> 	
+				<input type="hidden" name="fecha_subida_hasta"  id="fecha_subida_hasta"  class="form-control"  />
+				
+		  
 			</tr>
       
       
