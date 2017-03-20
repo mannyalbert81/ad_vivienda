@@ -26,7 +26,7 @@
       <div class="row" style="background-color: #FAFAFA;">
       
       <form action="<?php echo $helper->url("Documentos","BuscaxCarton"); ?>" method="post" class="col-lg-3">
-            <h4 style="color:#ec971f;">Búsque da Contenido de Cartón de Documentoes</h4>
+            <h4 style="color:#ec971f;">Búsqueda Contenido de Carpeta de Documentos</h4>
             <hr/>
             
             
@@ -68,21 +68,18 @@
        </form>
        
        
-        <div class="col-lg-9">
-            <h4 style="color:#ec971f;">Documentos Contenidos en este Cartón</h4>
-            <hr/>
-        </div>
+        
        
         <section class="col-lg-9 usuario" style="height:400px;overflow-y:scroll;">
 	    <table class="table">
 	         <tr>
 	    		<th>Id</th>
 	    		<th>Fecha del Documento</th>
-	    		<th>Categoria</th>
-	    		<th>Subcategoria</th>
+	    		<th>Categoría</th>
+	    		<th>Subcategoría</th>
 	    		<th>Comprobante</th>
-	    		<th>RUC Cliente/Proveedor</th>
-	    		<th>Nombre Cliente/Proveedor</th>
+	    		<th>Identificación Cliente</th>
+	    		<th>Nombre Cliente</th>
 	    		
 	    		<th>Páginas </th>
 	    		

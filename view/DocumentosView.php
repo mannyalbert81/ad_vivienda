@@ -527,10 +527,9 @@
 	    		<th class="col-sm-2">Nombre Categoría</th>
 	    		<th class="col-sm-2">Nombre SubCategoría</th>
 	    		<th class="col-sm-2">Año</th>
-	    		<th class="col-sm-1">Ruc Cliente/Proveedor</th>
-	    		<th class="col-sm-2">Nombre Cliente/Proveedor</th>
-	    		<th class="col-sm-1">Tipo Documento</th>
-	    		<th class="col-sm-2">Número Carpeta</th>
+	    		<th class="col-sm-2">Identificación Cliente</th>
+	    		<th class="col-sm-3">Nombre Cliente</th>
+	    		
 	    		
 	  		</tr>
             <tr>
@@ -615,7 +614,7 @@
                  		<input type="hidden"  id="ruc_cliente_proveedor" name="ruc_cliente_proveedor" value="<?php  echo  $resEdit->id_cliente_proveedor; ?>">	
 					     <?php } } else {?>
 					     
-					     <input type="text" class="form-control" id="txt_ruc_cliente_proveedor" name="txt_ruc_cliente_proveedor" value=""  placeholder="Ingrese Ruc Cliente">
+					     <input type="text" class="form-control" id="txt_ruc_cliente_proveedor" name="txt_ruc_cliente_proveedor" value=""  placeholder="Ingrese Identificación Cliente">
                  		 <input type="hidden"  id="ruc_cliente_proveedor" name="ruc_cliente_proveedor" value="0">									
 						 <?php } ?>
 						      		
@@ -630,7 +629,7 @@
 						   
 						  <?php } } else {?>	
 						  					 
-						  <input type="text" class="form-control" id="txt_nombre_cliente_proveedor" name="txt_nombre_cliente_proveedor" value=""  placeholder="Ingrese nombre Cliente">
+						  <input type="text" class="form-control" id="txt_nombre_cliente_proveedor" name="txt_nombre_cliente_proveedor" value=""  placeholder="Ingrese Nombre Cliente">
                  		  <input type="hidden"  id="nombre_cliente_proveedor" name="nombre_cliente_proveedor" value="0">	
 						 <?php } ?>
 				         	 
@@ -639,66 +638,7 @@
 						  unset($resCli);?>
 		   		</td>
 		
-		   		<td>
-		   		<?php 
-		   		if($resultEdit !="" && !empty($resultTip))
-		   		{
-		   			$id_tipo_documentos=$resultEdit[0]->id_tipo_documentos;
-		   			
-		   			foreach ($resultTip as $resTip)
-		   			{
-		   				if($id_tipo_documentos==$resTip->id_tipo_documentos)
-		   				{
-		   					$nombre_tipo_doc=$resTip->nombre_tipo_documentos;
-		   					break;
-		   				}
-		   			}
-		   			
-		   			
-		   		}
-		   		?>
-					 <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
-					       	<input type="text" class="form-control" id="txt_tipo_documentos" name="txt_tipo_documentos_edit" value="<?php   echo  $nombre_tipo_doc ?>">
-                 			<input type="hidden"  id="tipo_documentos" name="tipo_documentos" value="<?php  echo  $resEdit->id_tipo_documentos; ?>">
-						   
-						  <?php } } else {?>	
-						  					 
-						  <input type="text" class="form-control" id="txt_tipo_documentos" name="txt_tipo_documentos" value=""  placeholder="Ingrese Tipo Doc">
-                 		  <input type="hidden"  id="tipo_documentos" name="tipo_documentos" value="0">
-						 <?php } ?>
-							 
-				    <?php unset($resultTip);
-						  unset($resTip)
-					?>
-		   		</td>
-		
-		   		<td>
-		   			<select name="carton_documentos" id="carton_documentos"  class="form-control">
-							<option value="0"  > --TODOS--</option>
-					      <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
-							 <?php foreach($resultCar as $resCar) {?>
-								<option value="<?php echo $resCar->id_carton_documentos; ?>" <?php if ($resCar->id_carton_documentos == $resEdit->id_carton_documentos )  echo  ' selected="selected" '  ;  ?> ><?php echo $resCar->numero_carton_documentos; ?> </option>
-						     <?php } ?>
-					    
-					      <?php } } else {?>
-						 
-							 <?php foreach($resultCar as $resCar) {?>
-						 		<?php if ($sel_carton_documentos > 0){?>
-						 			<option value="<?php echo $resCar->id_carton_documentos;?>"  <?php if ($resCar->id_carton_documentos == $sel_carton_documentos) {echo "selected"; }  ?>     > <?php echo $resCar->numero_carton_documentos; ?> </option>
-					 			<?php  } else { ?>
-					 			
-					 				<option value="<?php echo $resCar->id_carton_documentos;?>" > <?php echo $resCar->numero_carton_documentos; ?> </option>
-					 		
-					 			<?php }  ?>
-	 		
-					 	 	<?php } ?>	
-			        
-						 <?php } ?>
-						 
-					</select>
-					<?php unset($resultCar);
-						  unset($resCar); ?>
-		   		</td>
+		   		
 		
 		
 		   		<td>
@@ -768,8 +708,8 @@
 	    		
 	    		<th>Fecha Documento Desde</th>
 	    		<th>Fecha Documento Hasta</th>
-	    		<th></th>
-	    		<th></th>
+	    		<th>Tipo Documento</th>
+	    		<th>Número Carpeta</th>
 	    		
 	    		<th></th>
 	    		
@@ -806,7 +746,72 @@
 		   		</td>
 		   		
 		   		
+		   		
+		         
+				 
+				 <td>
+		   		<?php 
+		   		if($resultEdit !="" && !empty($resultTip))
+		   		{
+		   			$id_tipo_documentos=$resultEdit[0]->id_tipo_documentos;
+		   			
+		   			foreach ($resultTip as $resTip)
+		   			{
+		   				if($id_tipo_documentos==$resTip->id_tipo_documentos)
+		   				{
+		   					$nombre_tipo_doc=$resTip->nombre_tipo_documentos;
+		   					break;
+		   				}
+		   			}
+		   			
+		   			
+		   		}
+		   		?>
+					 <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
+					       	<input type="text" class="form-control" id="txt_tipo_documentos" name="txt_tipo_documentos_edit" value="<?php   echo  $nombre_tipo_doc ?>">
+                 			<input type="hidden"  id="tipo_documentos" name="tipo_documentos" value="<?php  echo  $resEdit->id_tipo_documentos; ?>">
+						   
+						  <?php } } else {?>	
+						  					 
+						  <input type="text" class="form-control" id="txt_tipo_documentos" name="txt_tipo_documentos" value=""  placeholder="Ingrese Tipo Doc">
+                 		  <input type="hidden"  id="tipo_documentos" name="tipo_documentos" value="0">
+						 <?php } ?>
+							 
+				    <?php unset($resultTip);
+						  unset($resTip)
+					?>
+		   		</td>
+		
 		   		<td>
+		   			<select name="carton_documentos" id="carton_documentos"  class="form-control">
+							<option value="0"  > --TODOS--</option>
+					      <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
+							 <?php foreach($resultCar as $resCar) {?>
+								<option value="<?php echo $resCar->id_carton_documentos; ?>" <?php if ($resCar->id_carton_documentos == $resEdit->id_carton_documentos )  echo  ' selected="selected" '  ;  ?> ><?php echo $resCar->numero_carton_documentos; ?> </option>
+						     <?php } ?>
+					    
+					      <?php } } else {?>
+						 
+							 <?php foreach($resultCar as $resCar) {?>
+						 		<?php if ($sel_carton_documentos > 0){?>
+						 			<option value="<?php echo $resCar->id_carton_documentos;?>"  <?php if ($resCar->id_carton_documentos == $sel_carton_documentos) {echo "selected"; }  ?>     > <?php echo $resCar->numero_carton_documentos; ?> </option>
+					 			<?php  } else { ?>
+					 			
+					 				<option value="<?php echo $resCar->id_carton_documentos;?>" > <?php echo $resCar->numero_carton_documentos; ?> </option>
+					 		
+					 			<?php }  ?>
+	 		
+					 	 	<?php } ?>	
+			        
+						 <?php } ?>
+						 
+					</select>
+					<?php unset($resultCar);
+						  unset($resCar); ?>
+		   		</td>
+		
+		
+		 <td>
 				   <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
 						
 						<input type="hidden" name="fecha_subida_desde" id="fecha_subida_desde"  class="form-control"   value="<?php echo date('d/m/Y', strtotime($resEdit->creado));   ?>"     /> 	
@@ -831,8 +836,6 @@
 							 <?php }?>        
 				   			
 		   		</td>
-		
-		
 		   		<td>
 		   		  <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
 						

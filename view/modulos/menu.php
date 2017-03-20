@@ -89,7 +89,7 @@ $controladores=$_SESSION['controladores'];
 			</li>
 			<li role="separator" class="divider"></li>
 			
-			<li><a href="index.php?controller=CartonDocumentos&action=ReporteTotal"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Listado de Carpetas Registrados</span> </a>
+			<li><a href="index.php?controller=CartonDocumentos&action=ReporteTotal" target="blank"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Listado de Carpetas Registrados</span> </a>
 			</li>
 			
           </ul>
@@ -112,7 +112,7 @@ $controladores=$_SESSION['controladores'];
 		    
 		    <div class="col-xs-12 col-md-2">
 		    <div class="form-group">
-                                <input type="text" class="form-control" id="criterio_busqueda" name="contenido_busqueda" value=""  placeholder="texto a buscar">
+                                <input type="text" class="form-control" id="criterio_busqueda" name="contenido_busqueda" value=""  placeholder="Texto a Buscar">
             </div>
             </div>
             <div class="col-xs-12 col-md-2">
@@ -120,19 +120,19 @@ $controladores=$_SESSION['controladores'];
                                  
                                   <select name="criterio_busqueda" id="criterio_busqueda"  class="form-control" >
                                   <option value="0"  > --TODOS--</option>
-									<option value="1"  >Identificacion Cliente</option>
+									<option value="1"  >Identificación Cliente</option>
 									<option value="2"  >Nombre Cliente</option>
 									<option value="3"  >Número Carpeta</option>
-									<option value="4"  >Número Credito</option>
+									<option value="4"  >Número Crédito</option>
 									
         							
 									<option value="10"  >Referencia</option>
 									<option value="11"  >Tipo Comprobante</option>
-									<option value="12"  >Numero Comprobante</option>
+									<option value="12"  >Número Comprobante</option>
 									<option value="13"  >Detalle Comprobante</option>
 									<option value="14"  >Regionales</option>
 									<option value="15"  >Sucursales</option>
-									<option value="16"  >Agencias</option>
+									<option value="16"  >Agéncias</option>
         							
                                   </select> 
                                   
