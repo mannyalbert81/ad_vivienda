@@ -6,7 +6,7 @@
         <meta charset="utf-8"/>
         <title>Actualizar Documentos - aDocument 2015</title>
    
-    <link rel="stylesheet" href="view/css/bootstrap.css">
+          <link rel="stylesheet" href="view/css/bootstrap.css">
           <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.7.2.custom.css" />
           <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
           <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>  

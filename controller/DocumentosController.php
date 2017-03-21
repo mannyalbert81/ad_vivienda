@@ -1464,70 +1464,63 @@ class DocumentosController extends ControladorBase{
 						if ($cantidadResult>0)
 						{
 	
-							//<th style="color:#456789;font-size:80%;"></th>
-							$html.='<div class="pull-left"   style=" vertical-align:midde;">';
+							$html.='<div class="pull-left col-lg-2 col-md-2 col-xs-2"   style="vertical-align:midde">';
 							$html.='<span class="form-control"><strong>Registros: </strong>'.$cantidadResult.'</span>';
 							$html.='<input type="hidden" value="'.$cantidadResult.'" id="total_query" name="total_query"/>' ;
-							$html.='</div><br>';
-							$html.='<section style="height:500px; overflow-y:scroll; overflow-x:scroll;">';
-							$html.='<table class="table table-hover"  >';
-							$html.='<thead >';
-							$html.='<tr class="info" style=" position: 	absolute;" >';
-							$html.='<th style="text-align: center; font-weight: normal; margin: 0; max-width: 3.5vw; min-width: 3.5vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;     "><b>Id</b></th>';
-							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "><b>Fecha</b></th>';
-								
-							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "><b>Subcategoría</b></th>';
-							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "><b>Tipo Documentos</b></th>';
-							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "><b>Cliente</b></th>';
-							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "><b>Carpeta </b></th>';
-							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 5vw; min-width: 5vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "><b>Crédito</b></th>';
-							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "><b>Comprobante</b></th>';
-							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 5vw; min-width: 5vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;   "><b>Páginas</b></th>';
-							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "><b>Referencia</b></th>';
-							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "><b>Tipo Comprobante</b></th>';
-							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "><b>Regionales</b></th>';
-							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "><b>Sucursales</b></th>';
-							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "><b>Agencias</b></th>';
-							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 4vw; min-width: 4vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "></th>';
-							$html.='<th style=" text-align: center; font-weight: normal; margin: 0; max-width: 1vw; min-width: 1vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;  "></th>';
-								
+							$html.='</div></br>';
+							$html.='<section class="col-lg-12 col-md-10 col-xs-10">';
+							$html.='<table class="table table-hover" >';
+							$html.='<thead style="background: #DBF5F1; text-align:center;">';
+							$html.='<tr class=" col-lg-12 col-md-10 col-xs-10">';
+							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="text-align: left;  font-size: 10px;"><b>Id</b></th>';
+							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="text-align: left; font-size: 10px;"><b>Fecha</b></th>';
+							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="text-align: center; font-size: 10px;"><b>Subcategoría</b></th>';
+							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="text-align: center; font-size: 10px;"><b>Tipo Documentos</b></th>';
+							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="text-align: center; font-size: 10px;"><b>Cliente</b></th>';
+							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="text-align: center; font-size: 10px;"><b>Carpeta </b></th>';
+							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="text-align: center; font-size: 10px;"><b>Crédito</b></th>';
+							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="text-align: center; font-size: 10px;"><b>Comprobante</b></th>';
+							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="text-align: left; font-size: 10px;"><b>Páginas</b></th>';
+							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="text-align: left; font-size: 10px;"><b>Referencia</b></th>';
+							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="text-align: center; font-size: 10px;"><b>Tipo Comprobante</b></th>';
+							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="text-align: center;font-size: 10px;"><b>Regionales</b></th>';
+							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="text-align: center; font-size: 10px;"><b>Sucursales</b></th>';
+							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="text-align: center; font-size: 10px;"><b>Agencias</b></th>';
+							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="text-align: center; font-size: 10px;">Visualizar</th>';
 							$html.='</tr>';
+								
 							$html.='</thead>';
-							$html.='<tbody>';
-							$html.='<tr> <td  style=" font-weight: normal; margin: 0; max-width: 3.5vw; min-width: 3.5vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important;    "  ><a  class="btn btn-warning" target="blank">Ver</a></td></tr>';
+								
+							$html.='<tbody style="display: block; height: calc(50vh - 1px); min-height: calc(200px + 1 px); overflow-Y: scroll";>';
+							// $html.='<tr> <td  style=" font-weight: normal; margin: 0; max-width: 1vw; min-width: 1vw; word-wrap: break-word; font-size: 10px; height: 1vh !important;    "  ><a  class="btn btn-warning" target="blank">Ver</a></td></tr>';
 							foreach ($resultSet as $res)
 							{
-								//<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important; "> <?php echo ;</td>
+								$html.='<tr >';
+								$html.='<td class="col-lg-1 col-md-1 col-xs-1" style="font-size: 9px;">'.$res->id_documentos_legal.'</td>';
+								$html.='<td class="col-lg-1 col-md-1 col-xs-1" style="font-size: 9px;">'.$res->fecha_documentos_legal.'</td>';
+								$html.='<td class="col-lg-1 col-md-1 col-xs-1" style="font-size: 9px;">'.$res->nombre_subcategorias.'</td>';
+								$html.='<td class="col-lg-1 col-md-1 col-xs-1" style="font-size: 9px;">'.$res->nombre_tipo_documentos.'</td>';
+								$html.='<td class="col-lg-1 col-md-1 col-xs-1" style="font-size: 9px;">'.$res->nombre_cliente_proveedor.'</td>';
+								$html.='<td class="col-lg-1 col-md-1 col-xs-1" style="font-size: 9px;">'.$res->numero_carton_documentos.'</td>';
+								$html.='<td class="col-lg-1 col-md-1 col-xs-1" style="font-size: 9px;">'.$res->numero_credito_documentos_legal.'</td>';
+								$html.='<td class="col-lg-1 col-md-1 col-xs-1" style="font-size: 9px;">'.$res->numero_comprobantes.'</td>';
+								$html.='<td class="col-lg-1 col-md-1 col-xs-1" style="font-size: 9px;">'.$res->paginas_documentos_legal.'</td>';
+								$html.='<td class="col-lg-1 col-md-1 col-xs-1" style="font-size: 9px;">'.$res->nombre_referencia.'</td>';
+								$html.='<td class="col-lg-1 col-md-1 col-xs-1" style="font-size: 9px;">'.$res->nombre_tipo_comprobantes.'</td>';
+								$html.='<td class="col-lg-1 col-md-1 col-xs-1" style="font-size: 9px;">'.$res->nombre_regionales.'</td>';
+								$html.='<td class="col-lg-1 col-md-1 col-xs-1" style="font-size: 9px;">'.$res->nombre_sucursales.'</td>';
+								$html.='<td class="col-lg-1 col-md-1 col-xs-1" style="font-size: 9px;">'.$res->nombre_agencias.'</td>';
+								$html.='<td class="col-lg-1 col-md-1 col-xs-1" style="font-size: 9px;">';
 									
-							
-							
-								$html.='<tr>';
-								$html.='<td style="color:#000000;font-weight: normal; margin: 0; max-width: 3.5vw; min-width: 3.5vw; word-wrap: break-word; font-size: 9px; height: 3.5vh !important;  ">'.$res->id_documentos_legal.'</td>';
-								$html.='<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 9px; height: 3.5vh !important;   ">'.$res->fecha_documentos_legal.'</td>';
-							
-								$html.='<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 9px; height: 3.5vh !important;   "  >'.$res->nombre_subcategorias.'</td>';
-								$html.='<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 9px; height: 3.5vh !important;   ">'.$res->nombre_tipo_documentos.'</td>';
-								$html.='<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 9px; height: 3.5vh !important;   ">'.$res->nombre_cliente_proveedor.'</td>';
-								$html.='<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 9px; height: 3.5vh !important;   ">'.$res->numero_carton_documentos.'</td>';
-								$html.='<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 9px; height: 3.5vh !important;   ">'.$res->numero_credito_documentos_legal.'</td>';
-								$html.='<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 9px; height: 3.5vh !important;   ">'.$res->numero_comprobantes.'</td>';
-								$html.='<td style="color:#000000;font-weight: normal; margin: 0; max-width: 5vw; min-width: 5vw; word-wrap: break-word; font-size: 9px; height: 3.5vh !important;   ">'.$res->paginas_documentos_legal.'</td>';
-								$html.='<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 9px; height: 3.5vh !important;   ">'.$res->nombre_referencia.'</td>';
-								$html.='<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 9px; height: 3.5vh !important;   ">'.$res->nombre_tipo_comprobantes.'</td>';
-								$html.='<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 9px; height: 3.5vh !important;   ">'.$res->nombre_regionales.'</td>';
-								$html.='<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 9px; height: 3.5vh !important;   ">'.$res->nombre_sucursales.'</td>';
-								$html.='<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 9px; height: 3.5vh !important;   ">'.$res->nombre_agencias.'</td>';
-								$html.='<td style="color:#000000;font-weight: normal; margin: 0; max-width: 4vw; min-width: 4vw; word-wrap: break-word; font-size: 9px; height: 3.5vh !important;   ">';
-							
-     							if ($_SESSION["tipo_usuario"]=="usuario_local") {
+								if ($_SESSION["tipo_usuario"]=="usuario_local") {
 									$html.='<a href="'.IP_INT . $res->id_documentos_legal.'" class="btn btn-warning" target="blank" style="font-size:90%;">Ver</a>';
 								} else {
 									$html.=' <a href="'.IP_EXT . $res->id_documentos_legal.'" class="btn btn-warning" target="blank" style="font-size:90%;">Ver</a>';
 								}
 								$html.='</td>';
-							    $html.='</tr>'; 
+								$html.='</tr>';
 							}
-							
+								
 							$html.='</tbody>';
 							$html.='</table>';
 							$html.='</section>';
@@ -1535,8 +1528,6 @@ class DocumentosController extends ControladorBase{
 							$html.=''. $this->paginate("index.php", $page, $total_pages, $adjacents).'';
 							$html.='</div>';
 							$html.='</section>';
-							
-								
 							
 							}else{
 							
