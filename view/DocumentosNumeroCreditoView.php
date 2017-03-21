@@ -130,25 +130,7 @@
 
 	</script>
 		
-
 	
-	
-		
-
-	
-	
-	
-	
-
-	
-	
-	
-
-		
-		
-		
-		
-		
      <script>
 			function myFunction() {
 			    var x = document.getElementById("categorias").value;
@@ -557,7 +539,7 @@
 	  <h4 style="color:#ec971f;"></h4>
 		<div >					
 		  <div id="DocumentosNumeroCred" style="text-align: center;	top: 55px;	width: 100%;display:none;"></div><!-- Carga gif animado -->
-		  <div class="DocumentosNumeroCred" ></div><!-- Datos ajax Final -->
+		  <div class="DocumentosNumeroCred"></div><!-- Datos ajax Final -->
 		 </div>
 		  <br>
 				  

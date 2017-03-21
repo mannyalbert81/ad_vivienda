@@ -1,8 +1,19 @@
+<?php include("view/modulos/head.php"); ?>
+
 <!DOCTYPE HTML>
 <html lang="es">
       <head>
         <meta charset="utf-8"/>
         <title>Actualizar Documentos - aDocument 2015</title>
+   
+    <link rel="stylesheet" href="view/css/bootstrap.css">
+          <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.7.2.custom.css" />
+          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>  
+          <script src="view/css/jquery.js"></script>
+		  <script src="view/css/bootstrapValidator.min.js"></script>
+		  <script src="view/css/ValidarActualizarDocumentos.js"></script>
+   
    
         <style>
             input{
@@ -18,7 +29,7 @@
     </head>
     <body style="background-color: #F6FADE">
     
-       <?php include("view/modulos/head.php"); ?>
+       
        
        <?php include("view/modulos/menu.php"); ?>
   
@@ -40,22 +51,26 @@
   
   	  <div class="row" style="background-color: #FAFAFA;">
        
-      <form action="<?php echo $helper->url("Documentos","ActualizarDocumentos"); ?>" method="post" class="col-lg-5">
+      <form id="form-actualizar-documentos" action="<?php echo $helper->url("Documentos","ActualizarDocumentos"); ?>" method="post" class="col-lg-5">
             <h4 style="color:#ec971f;">Actualizar Documentos</h4>
             <hr/>
+            
             <table class="table">
     	    	<tr>
-            		<th style="width: 50%">Id del Documento </th>
+            		<th style="width: 50%"><label for="id_documentos_legal" class="control-label">Id del Documento </label></th>
             		<th style="width: 50%"> </th>
             		
             	</tr>
         		<tr>
 				
-		           <td>	<input type="text" name="id_documentos_legal" value="<?php echo $sel_id_documentos_legal;?> " class="form-control"/> </td>
+		           <td>	<input type="text" id="id_documentos_legal" name="id_documentos_legal" value="<?php echo $sel_id_documentos_legal;?> " class="form-control"/> </td>
+		         
+		           
 		           <?php if (!empty($resultSet))  { ?>
-		           		<td> <input type="submit"name="btnBorrar" value="Borrar" class="btn btn-danger"/> </td>
+		          
+		           		<td> <button type="submit"name="btnBorrar" class="btn btn-danger">Borrar</button></td>
 		           <?php    } else {?>
-		           		<td> <input type="submit"name="btnComprobar" value="Comprobar" class="btn btn-success"/> </td>
+		           		<td> <button type="submit"name="btnComprobar" class="btn btn-success">Comprobar</button></td>
 		           
 		           <?php }?> 
 		           	
