@@ -349,7 +349,7 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 	
 						$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
 	
-						$per_page = 20; //la cantidad de registros que desea mostrar
+						$per_page = 50; //la cantidad de registros que desea mostrar
 						$adjacents  = 9; //brecha entre páginas después de varios adyacentes
 						$offset = ($page - 1) * $per_page;
 	
@@ -366,14 +366,14 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 						if ($cantidadResult>0)
 						{
 							
-							$html.='<div class="pull-left"   style="vertical-align:midde">';
+							$html.='<div class="pull-left col-lg-2 col-md-2 col-xs-2"   style="vertical-align:midde">';
 							$html.='<span class="form-control"><strong>Registros: </strong>'.$cantidadResult.'</span>';
 							$html.='<input type="hidden" value="'.$cantidadResult.'" id="total_query" name="total_query"/>' ;
 							$html.='</div></br>';
 							$html.='<section class="col-lg-12 col-md-10 col-xs-10">';
 							$html.='<table class="table table-hover" >';
-							$html.='<thead >';
-							$html.='<tr class="info col-lg-12 col-md-12 col-xs-12">';
+							$html.='<thead style="background: #DBF5F1; text-align:center;">';
+							$html.='<tr class=" col-lg-12 col-md-10 col-xs-10">';
 							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="text-align: left;  font-size: 10px;"><b>Id</b></th>';
 							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="text-align: left; font-size: 10px;"><b>Fecha</b></th>';
 							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="text-align: center; font-size: 10px;"><b>Subcategoría</b></th>';
