@@ -58,7 +58,8 @@
 		})
 	}
 
-	
+
+
 
 	</script>
                
@@ -121,13 +122,13 @@
 							<th class="col-lg-1 col-md-1 col-xs-1" style="text-align: center;  font-size: 10px;"><b>Carpeta</b></th>
 							<th class="col-lg-1 col-md-1 col-xs-1" style="text-align: center;  font-size: 10px;"><b>Crédito</b></th>
 							<th class="col-lg-1 col-md-1 col-xs-1" style="text-align: center;  font-size: 10px;"><b>Comprobante</b></th>
-							<th class="col-lg-1 col-md-1 col-xs-1" style="text-align: center;  font-size: 10px;"><b>Páginas</b></th>
-							<th class="col-lg-1 col-md-1 col-xs-1" style="text-align: center;  font-size: 10px;"><b>Referencia</b></th>
+							<th class="col-lg-1 col-md-1 col-xs-1" style="text-align: left;  font-size: 10px;"><b>Páginas</b></th>
+							<th class="col-lg-1 col-md-1 col-xs-1" style="text-align: left;  font-size: 10px;"><b>Referencia</b></th>
 							<th class="col-lg-1 col-md-1 col-xs-1" style="text-align: center;  font-size: 10px;"><b>Tipo Comprobante</b></th>
 							<th class="col-lg-1 col-md-1 col-xs-1" style="text-align: center;  font-size: 10px;"><b>Regionales</b></th>
 							<th class="col-lg-1 col-md-1 col-xs-1" style="text-align: center;  font-size: 10px;"><b>Sucursales</b></th>
 							<th class="col-lg-1 col-md-1 col-xs-1" style="text-align: center;  font-size: 10px;"><b>Agencias</b></th>
-							<th class="col-lg-1 col-md-1 col-xs-1" style="text-align: center;  font-size: 10px;"><b>Visualizar</b></th>
+							<th class="col-lg-1 col-md-1 col-xs-1" style="text-align: center;  font-size: 10px;">Visualizar</th>
 							
 						</tr>
 						
@@ -152,7 +153,7 @@
 								<td class="col-lg-1 col-md-1 col-xs-1" style="font-size: 9px;"> <?php echo $res->nombre_regionales; ?></td>
 								<td class="col-lg-1 col-md-1 col-xs-1" style="font-size: 9px;"> <?php echo $res->nombre_sucursales; ?></td>
 								<td class="col-lg-1 col-md-1 col-xs-1" style="font-size: 9px;"> <?php echo $res->nombre_agencias; ?></td>
-								<td class="col-lg-1 col-md-1 col-xs-1" style="font-size: 9px;"></td>
+								
 								<td><div class="right">						
 							<?php  if ($_SESSION["tipo_usuario"]=="usuario_local") {  ?>
 			            		 <a href=" <?php echo IP_INT . $res->id_documentos_legal; ?>  " class="btn btn-warning" target="blank" style="font-size:65%;">Ver</a>
@@ -160,9 +161,7 @@
 			            		 <a href="<?php echo IP_EXT . $res->id_documentos_legal; ?>  " class="btn btn-warning" target="blank" style="font-size:65%;">Ver</a> 
 			            	<?php }?>
 								</div></td>
-							<td><div class="right">
-						
-							</div></td>
+							
 						
 		<?php } ?>
 						
