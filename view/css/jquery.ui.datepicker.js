@@ -1821,3 +1821,7 @@ $.datepicker.version = "1.8.17";
 window['DP_jQuery_' + dpuuid] = $;
 
 })(jQuery);
+.ui-datepicker, .ui-state-default, .ui-state-hover, .ui-state-active
+{
+    font-size:11px;
+}
