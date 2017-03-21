@@ -372,14 +372,8 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 							$html.='</div></br>';
 							$html.='<section>';
 							$html.='<table class="table table-hover" >';
-							$html.='<thead style="text-align: center; z-index: 2"; class="info">';
-							$html.='<tr class="info col-lg-12 col-md-12 col-xs-12" >';
-							
-							
-							//$html.='<section  class="col-lg-12 col-md-12 col-xs-12" >';
-							//$html.='<table class="table table-hover" style="table-layout:fixed";>';
-							//$html.='<thead style="background: #FF7361; text-align: center; z-index: 2";>';
-							//$html.='<tr  class=" info col-lg-12 col-md-12 col-xs-12" >';
+							$html.='<thead >';
+							$html.='<tr class="info col-lg-12 col-md-12 col-xs-12">';
 							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="font-size: 10px;"><b>Id</b></th>';
 							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="font-size: 10px;"><b>Fecha</b></th>';
 							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="font-size: 10px;"><b>Subcategoría</b></th>';
@@ -394,21 +388,15 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="font-size: 10px;"><b>Regionales</b></th>';
 							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="font-size: 10px;"><b>Sucursales</b></th>';
 							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="font-size: 10px;"><b>Agencias</b></th>';
-							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="font-size: 10px;"></th>';
-							
-							
-								
+							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="font-size: 10px;">Visualizar</th>';
 							$html.='</tr>';
+							
 							$html.='</thead>';
 							
 						    $html.='<tbody style="display: block; height: calc(50vh - 1px); min-height: calc(200px + 1 px); overflow-Y: scroll";>';
 						   // $html.='<tr> <td  style=" font-weight: normal; margin: 0; max-width: 1vw; min-width: 1vw; word-wrap: break-word; font-size: 10px; height: 1vh !important;    "  ><a  class="btn btn-warning" target="blank">Ver</a></td></tr>';
 							foreach ($resultSet as $res)
 							{
-								//<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important; "> <?php echo ;</td>
-									
-							
-							
 								$html.='<tr >';
 								$html.='<td class="col-lg-1 col-md-1 col-xs-1" style="font-size: 9px;">'.$res->id_documentos_legal.'</td>';
 								$html.='<td class="col-lg-1 col-md-1 col-xs-1" style="font-size: 9px;">'.$res->fecha_documentos_legal.'</td>';
