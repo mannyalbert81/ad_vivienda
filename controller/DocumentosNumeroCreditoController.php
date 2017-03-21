@@ -370,10 +370,16 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 							$html.='<span class="form-control"><strong>Registros: </strong>'.$cantidadResult.'</span>';
 							$html.='<input type="hidden" value="'.$cantidadResult.'" id="total_query" name="total_query"/>' ;
 							$html.='</div></br>';
-							$html.='<section  class="col-lg-12 col-md-12 col-xs-12" style="height:300px; overflow-x:hidden; overflow-y:scroll;">';
-							$html.='<table class="table table-hover">';
-							$html.='<thead>';
-							$html.='<tr  class=" info col-lg-12 col-md-12 col-xs-12"  style=" position: absolute;">';
+							$html.='<section>';
+							$html.='<table class="table table-hover" >';
+							$html.='<thead style="text-align: center; z-index: 2"; class="info">';
+							$html.='<tr class="info col-lg-12 col-md-12 col-xs-12" >';
+							
+							
+							//$html.='<section  class="col-lg-12 col-md-12 col-xs-12" >';
+							//$html.='<table class="table table-hover" style="table-layout:fixed";>';
+							//$html.='<thead style="background: #FF7361; text-align: center; z-index: 2";>';
+							//$html.='<tr  class=" info col-lg-12 col-md-12 col-xs-12" >';
 							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="font-size: 10px;"><b>Id</b></th>';
 							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="font-size: 10px;"><b>Fecha</b></th>';
 							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="font-size: 10px;"><b>Subcategoría</b></th>';
@@ -394,8 +400,9 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 								
 							$html.='</tr>';
 							$html.='</thead>';
-							$html.='<tbody>';
-						    $html.='<tr> <td  style=" font-weight: normal; margin: 0; max-width: 1vw; min-width: 1vw; word-wrap: break-word; font-size: 10px; height: 1vh !important;    "  ><a  class="btn btn-warning" target="blank">Ver</a></td></tr>';
+							
+						    $html.='<tbody style="display: block; height: calc(50vh - 1px); min-height: calc(200px + 1 px); overflow-Y: scroll";>';
+						   // $html.='<tr> <td  style=" font-weight: normal; margin: 0; max-width: 1vw; min-width: 1vw; word-wrap: break-word; font-size: 10px; height: 1vh !important;    "  ><a  class="btn btn-warning" target="blank">Ver</a></td></tr>';
 							foreach ($resultSet as $res)
 							{
 								//<td style="color:#000000;font-weight: normal; margin: 0; max-width: 6vw; min-width: 6vw; word-wrap: break-word; font-size: 10px; height: 3.5vh !important; "> <?php echo ;</td>
