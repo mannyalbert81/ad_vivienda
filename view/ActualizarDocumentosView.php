@@ -227,9 +227,10 @@
 			<br>
     
            <input type="submit"name="btnGuardar" value="Guardar" class="btn btn-success"/>
-			<hr>
-			<hr>
 			<hr>	
+      
+      
+      
           </form>
        
 	   

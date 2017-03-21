@@ -94,10 +94,8 @@ $(document).ready(function(){
 		
 		
 			<div class="dropdown">
-					  <button class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-lock" > Iniciar Sesión </span>
-					  
-					  </button>
-					  
+					  <button class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-lock" > <a href="index.php?controller=Usuarios&action=Loguear">Iniciar Sesion</a></span>
+					</button>
 				</div>
 		<?php }
 				
