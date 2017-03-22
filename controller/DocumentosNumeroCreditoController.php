@@ -1,15 +1,9 @@
 <?php
-
 class DocumentosNumeroCreditoController extends ControladorBase{
-
 	public function __construct() {
 		parent::__construct();
 	}
-
-
-
 	public function index(){
-
 		session_start();
 		
 		$documentos_legal = new DocumentosLegalModel();
@@ -220,7 +214,6 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 					 
 							));
 			
-
 		}
 		else
 		{
@@ -309,9 +302,9 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 						$where_2 = " AND subcategorias.id_subcategorias = '$_id_subcategorias' ";
 							
 					}
-					if ($_numero_credito > 0)
+					if ($_numero_credito != 0)
 					{
-					
+					    
 						$where_4 = " AND documentos_legal.numero_credito_documentos_legal = '$_numero_credito' ";
 					}
 					if ($_fecha_documento_desde != "" && $_fecha_documento_hasta != "")
@@ -555,11 +548,9 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 	
 		echo  json_encode($_numero_credito);
 	}
-
 		
 	
 	
 	
 }
-
 ?>
