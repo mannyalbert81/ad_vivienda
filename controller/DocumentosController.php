@@ -1337,7 +1337,7 @@ class DocumentosController extends ControladorBase{
 						
 						$where_4 = " AND cliente_proveedor.id_cliente_proveedor = '$_id_cliente_proveedor' ";
 					}	
-					if ($_id_tipo_documentos > 0)
+					if ($_id_tipo_documentos > 0    )
 					{
 					
 						$where_5 = " AND tipo_documentos.id_tipo_documentos = '$_id_tipo_documentos' ";
@@ -1644,39 +1644,39 @@ class DocumentosController extends ControladorBase{
 		$out.= "</ul>";
 		return $out;
 	}
-	
+
 	public function AutocompleteNombreCliente(){
 	
 		session_start();
-		
+	
 		$nombre_cliente = strtoupper($_GET['term']);
-		
-		
+	
+	
 		//cliente_proveedor
 		$cliente_proveedor=new ClienteProveedorModel();
-		$columnas_cp = " cliente_proveedor.id_cliente_proveedor,  cliente_proveedor.ruc_cliente_proveedor,  
+		$columnas_cp = " cliente_proveedor.id_cliente_proveedor,  cliente_proveedor.ruc_cliente_proveedor,
 		 cliente_proveedor.nombre_cliente_proveedor";
-	    $tablas_cp   = "   public.cliente_proveedor, public.documentos_legal";
-		$where_cp  = " cliente_proveedor.id_cliente_proveedor = documentos_legal.id_cliente_proveedor AND 
-		cliente_proveedor.nombre_cliente_proveedor LIKE '$nombre_cliente%' 
+		$tablas_cp   = "   public.cliente_proveedor, public.documentos_legal";
+		$where_cp  = " cliente_proveedor.id_cliente_proveedor = documentos_legal.id_cliente_proveedor AND
+		cliente_proveedor.nombre_cliente_proveedor LIKE '$nombre_cliente%'
 		GROUP BY  cliente_proveedor.ruc_cliente_proveedor, cliente_proveedor.nombre_cliente_proveedor ,
 		cliente_proveedor.id_cliente_proveedor";
 		$id_cp = " cliente_proveedor.nombre_cliente_proveedor";
-		
+	
 		$resultCli=$cliente_proveedor->getCondiciones($columnas_cp, $tablas_cp, $where_cp, $id_cp);
 	
-		
+	
 		if(!empty($resultCli)){
 	
-			foreach ($resultCli as $res){	
+			foreach ($resultCli as $res){
 				$_nombre_cliente[] = array('id' => $res->id_cliente_proveedor.','.$res->ruc_cliente_proveedor, 'value' => $res->nombre_cliente_proveedor);
 			}
 			header('Content-type: application/json');
 			echo json_encode($_nombre_cliente);
-		}else 
+		}else
 		{
-	    header('Content-type: application/json');
-		echo json_encode(array("0"=>'No Data'));
+			header('Content-type: application/json');
+			echo json_encode(array(array('id' =>'0,--TODOS--', 'value' =>'--TODOS--')));
 		}
 	}
 	
@@ -1711,10 +1711,9 @@ class DocumentosController extends ControladorBase{
 			echo json_encode($_ruc_cliente);
 		}else
 		{
-			echo json_encode(array(array('id' =>'0,NO DATA', 'value' =>'NO DATA')));
+			echo json_encode(array(array('id' =>'0,--TODOS--', 'value' =>'--TODOS--')));
 		}
 	}
-	
 	
 	public function AutocompleteTipoDoc(){
 	

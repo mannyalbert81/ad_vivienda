@@ -302,10 +302,16 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 						$where_2 = " AND subcategorias.id_subcategorias = '$_id_subcategorias' ";
 							
 					}
-					if ($_numero_credito != 0)
+					if ($_numero_credito != '--TODOS--' && $_numero_credito != '0'  )
 					{
 					    
 						$where_4 = " AND documentos_legal.numero_credito_documentos_legal = '$_numero_credito' ";
+					}
+					else 
+					{
+						$_numero_credito = 'NOXZY';
+						$where_4 = " AND documentos_legal.numero_credito_documentos_legal = '$_numero_credito' ";
+						
 					}
 					if ($_fecha_documento_desde != "" && $_fecha_documento_hasta != "")
 					{
@@ -543,7 +549,7 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 		}else
 		{
 			//echo json_encode(array(array('id' =>'0,NO DATA', 'value' =>'NO DATA')));
-			$_numero_credito = array(array('id' =>'', 'value' =>'--TODOS--'));
+			$_numero_credito = array(array('id' =>'--TODOS--', 'value' =>'--TODOS--'));
 		}
 	
 		echo  json_encode($_numero_credito);
