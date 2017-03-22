@@ -453,7 +453,7 @@ class DocumentosClienteProveedorController extends ControladorBase{
 					{
 						
 						$where_7 = " AND documentos_legal.id_regionales = '$_id_regionales' ";
-					}if (strlen($_numero_comprobantes) > 0)
+					}if (strlen($_numero_comprobantes) > 0 && $_numero_comprobantes != "--TODOS--")
 					{
 						
 						$where_10 = " AND comprobantes.numero_comprobantes = '$_numero_comprobantes' ";
@@ -695,7 +695,7 @@ class DocumentosClienteProveedorController extends ControladorBase{
 		}else
 		{
 			header('Content-type: application/json');
-			echo json_encode(array("0"=>'No Data'));
+			echo json_encode(array(array('id' =>'0,--TODOS--', 'value' =>'--TODOS--')));
 		}
 	}
 	
@@ -730,7 +730,7 @@ class DocumentosClienteProveedorController extends ControladorBase{
 			echo json_encode($_ruc_cliente);
 		}else
 		{
-			echo json_encode(array(array('id' =>'0,NO DATA', 'value' =>'NO DATA')));
+			echo json_encode(array(array('id' =>'0,--TODOS--', 'value' =>'--TODOS--')));
 		}
 	}
 	
@@ -756,13 +756,19 @@ class DocumentosClienteProveedorController extends ControladorBase{
 	
 		$resultSet=$comprobantes->getCondiciones($columnas, $tablas, $where, $id);
 	
-	
-		if(!empty($resultSet)){
+		$_numero_comprobantes[] = "--TODOS--";
+		if(!empty($resultSet))
+		{
 	
 			foreach ($resultSet as $res){
 	
 				$_numero_comprobantes[] = $res->numero_comprobantes;
 			}
+			header('Content-type: application/json');
+			echo json_encode($_numero_comprobantes);
+		}
+		else	{
+			header('Content-type: application/json');
 			echo json_encode($_numero_comprobantes);
 		}
 	
