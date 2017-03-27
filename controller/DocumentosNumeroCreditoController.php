@@ -62,12 +62,7 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 					}
 						
 				}
-		
-				
-					
-				
-				
-				
+			
 				if (isset ($_POST["categorias"]) && isset ($_POST["subcategorias"])  && isset($_POST["numero_credito"])  && isset($_POST["fecha_documento_desde"]) && isset($_POST["fecha_documento_hasta"])  && isset($_POST["fecha_subida_desde"])  && isset($_POST["fecha_subida_hasta"])   )
 				
 				{
@@ -224,8 +219,6 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 		}
 				
 				
-				
-				
 		}
 		else 
 		{
@@ -278,11 +271,10 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 					$where_13 = "";
 					
 						
-						
 					$_id_categorias = $_POST["categorias"];
 					$_id_subcategorias = $_POST["subcategorias"];
 					$_numero_credito  = $_POST["numero_credito"];
-					$_year     = 	$_POST["year"];
+					$_year            = $_POST["year"];
 						
 					$_fecha_documento_desde = $_POST["fecha_documento_desde"];
 					$_fecha_documento_hasta = $_POST["fecha_documento_hasta"];
@@ -302,20 +294,19 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 						$where_2 = " AND subcategorias.id_subcategorias = '$_id_subcategorias' ";
 							
 					}
-					if ($_numero_credito != '--TODOS--' && $_numero_credito != '0'  )
+					if ($_numero_credito != '--TODOS--' && $_numero_credito != '0')
 					{
 					    
 						$where_4 = " AND documentos_legal.numero_credito_documentos_legal = '$_numero_credito' ";
 					}
 					else 
 					{
-						$_numero_credito = 'NOXZY';
-						$where_4 = " AND documentos_legal.numero_credito_documentos_legal = '$_numero_credito' ";
-						
+						//$_numero_credito = 'NOXZY';
+						//$where_4 = " AND documentos_legal.numero_credito_documentos_legal = '$_numero_credito' ";
 					}
 					if ($_fecha_documento_desde != "" && $_fecha_documento_hasta != "")
 					{
-						$where_8 = " AND DATE(documentos_legal.fecha_documentos_legal) BETWEEN '$_fecha_documento_desde' AND '$_fecha_documento_hasta'  ";
+						$where_8 = " AND DATE(documentos_legal.fecha_documentos_legal) BETWEEN '$_fecha_documento_desde' AND '$_fecha_documento_hasta'";
 					}
 					
 					if ($_fecha_subida_desde != "" && $_fecha_subida_hasta != "")
@@ -324,7 +315,7 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 					}
 					if ($_year >0)
 					{
-							
+						
 						$where_10 = "  AND TO_CHAR(documentos_legal.fecha_documentos_legal,'YYYY') = '$_year' ";
 					}	
 						
@@ -356,9 +347,7 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 	
 	
 						$resultSet=$documentos->getCondicionesPag($columnas, $tablas, $where_to, $id, $limit);
-	
 						$count_query   = $cantidadResult;
-	
 						$total_pages = ceil($cantidadResult/$per_page);
 	
 						
@@ -389,7 +378,6 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="text-align: center; font-size: 10px;"><b>Agencias</b></th>';
 							$html.='<th  class="col-lg-1 col-md-1 col-xs-1" style="text-align: center; font-size: 10px;">Visualizar</th>';
 							$html.='</tr>';
-							
 							$html.='</thead>';
 							
 						    $html.='<tbody style="display: block; height: calc(50vh - 1px); min-height: calc(200px + 1 px); overflow-Y: scroll";>';
