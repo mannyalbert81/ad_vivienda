@@ -488,8 +488,8 @@
             	
             <tr>
 
-	    		<th class="col-sm-2">Nombre Categoria</th>
-	    		<th class="col-sm-2">Nombre SubCategoria</th>
+	    		<th class="col-sm-2">Nombre Categoría</th>
+	    		<th class="col-sm-2">Nombre SubCategoría</th>
 	    		<th class="col-sm-2">Año</th>
 	    		<th class="col-sm-2">Identificación Cliente</th>
 	    		<th >Nombre Cliente</th>
