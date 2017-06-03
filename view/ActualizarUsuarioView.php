@@ -28,34 +28,8 @@
             
         </style>
         
-        
-       	<script>
-
-		$(document).ready(function(){
-
-		    $("#guardar").submit(function() {
-
-
-		    	if (   $('#clave_usuario').val()) ==  $('#clave_usuario_r').val()) )
-		    	{
-					
-	    	    }
-				else
-				{
-					alert('Clave no coinciden');
-					
-				}
-
-
-			  });
-
-		}); 
-
-	</script>
-        
-        
     </head>
-    <body style="background-color: #F6FADE">
+    <body oncontextmenu="return false" onkeydown="return false"   style="background-color: #F6FADE">
     
        <?php include("view/modulos/head.php"); ?>
        
