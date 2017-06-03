@@ -6,26 +6,40 @@
         <meta charset="utf-8"/>
         <title>Actualizar Documentos - aDocument 2015</title>
    
-          <link rel="stylesheet" href="view/css/bootstrap.css">
-          <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.7.2.custom.css" />
-          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>  
-          <script src="view/css/jquery.js"></script>
-		  <script src="view/css/bootstrapValidator.min.js"></script>
-		  <script src="view/css/ValidarActualizarDocumentos.js"></script>
    
-   
-        <style>
-            input{
-                margin-top:5px;
-                margin-bottom:5px;
-            }
-            .right{
-                float:right;
-            }
-                
-            
-        </style>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		   
+          <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		  <link rel="stylesheet" href="/resources/demos/style.css">
+		
+		<link rel="stylesheet" href="http://jqueryvalidation.org/files/demo/site-demos.css">
+        <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+        <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+ 
+ 		
+		<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
+         
+         
+         <script type="text/javascript">
+function vaciar(control)
+{
+  control.value='';
+}
+function verificarEntrada(control)
+{
+  if (control.value <= 0)
+
+	  alert('Debe ingresar datos');
+	  
+    
+}
+</script>
+          
+          
+         
+         
     </head>
     <body style="background-color: #F6FADE">
     
@@ -51,19 +65,20 @@
   
   	  <div class="row" style="background-color: #FAFAFA;">
        
-      <form id="form-actualizar-documentos" action="<?php echo $helper->url("Documentos","ActualizarDocumentos"); ?>" method="post" class="col-lg-5">
+      <form onsubmit="return formulario(this)"  action="<?php echo $helper->url("Documentos","ActualizarDocumentos"); ?>" method="post" class="col-lg-5">
             <h4 style="color:#ec971f;">Actualizar Documentos</h4>
             <hr/>
             
             <table class="table">
     	    	<tr>
-            		<th style="width: 50%"><label for="id_documentos_legal" class="control-label">Id del Documento </label></th>
+            		<th style="width: 50%">Id del Documento </th>
             		<th style="width: 50%"> </th>
             		
             	</tr>
         		<tr>
 				
-		           <td>	<input type="text" id="id_documentos_legal" name="id_documentos_legal" value="<?php echo $sel_id_documentos_legal;?> " class="form-control"/> </td>
+		           <td>	<input type="text" id="id_documentos_legal" onFocus="vaciar(this)" onBlur="verificarEntrada(this)"  value="0" name="id_documentos_legal" class="form-control"/> 
+		           </td>
 		         
 		           
 		           <?php if (!empty($resultSet))  { ?>
@@ -225,8 +240,14 @@
 			<br>
 			<br>
 			<br>
-    
-           <input type="submit"name="btnGuardar" value="Guardar" class="btn btn-success"/>
+            <div class="row">
+		    <div class="col-xs-12 col-md-12 col-lg-12" style="text-align: center;">
+		    <div class="form-group">
+                                  <input type="submit" name="btnGuardar" value="Guardar"  class="btn btn-success"/>
+            </div>
+		    </div>
+		    </div>
+                                     
 			<hr>	
       
       
@@ -274,7 +295,9 @@
         </section>
 	      
 	      <?php } } ?>
-            
+           </br>
+           </br>
+           </br> 
             
       </div>
        </div>

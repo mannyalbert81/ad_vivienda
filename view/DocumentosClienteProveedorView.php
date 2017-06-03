@@ -488,8 +488,8 @@
             	
             <tr>
 
-	    		<th class="col-sm-2">Nombre Categoria</th>
-	    		<th class="col-sm-2">Nombre SubCategoria</th>
+	    		<th class="col-sm-2">Nombre Categoría</th>
+	    		<th class="col-sm-2">Nombre SubCategoría</th>
 	    		<th class="col-sm-2">Año</th>
 	    		<th class="col-sm-2">Identificación Cliente</th>
 	    		<th >Nombre Cliente</th>
@@ -601,9 +601,10 @@
             <tr>
 	    		
 	    		 <th># Comprobante</th>
-	    		<th >Agencias</th>
-	    		<th >Sucursales</th>
+	    		
 	    		<th >Regionales</th>
+	    		<th >Sucursales</th>
+	    		<th >Agencias</th>
 	    		<th >Fecha Documento Desde</th>
 	    		<th >Fecha Documento Hasta</th>
 	    		<th ></th>
@@ -620,15 +621,15 @@
             </td>
             
             	<td>
-	            <select name="id_agencias" id="id_agencias"  class="form-control"   >
+	            <select name="id_regionales" id="id_regionales"  class="form-control"   >
 	                <option value="0"  > --TODOS--</option>
-			    	 <?php foreach($resultAgen as $res) {?>
-					 		<?php if ($sel_agencias > 0){?>
-					 			<option value="<?php echo $res->id_agencias; ?>"  <?php if ($res->id_agencias == $sel_agencias) {echo "selected"; }  ?>     > <?php echo $res->nombre_agencias; ?> </option>
+			    	 <?php foreach($resultReg as $res) {?>
+					 		<?php if ($sel_regionales > 0){?>
+					 			<option value="<?php echo $res->id_regionales; ?>"  <?php if ($res->id_regionales == $sel_regionales) {echo "selected"; }  ?>     > <?php echo $res->nombre_regionales; ?> </option>
 					 		
 					 		<?php  } else { ?>
 					 			
-					 			<option value="<?php echo $res->id_agencias; ?>"  > <?php echo $res->nombre_agencias; ?> </option>
+					 			<option value="<?php echo $res->id_regionales; ?>"  > <?php echo $res->nombre_regionales; ?> </option>
 					 		
 					 		<?php }  ?>
 	 		
@@ -654,24 +655,24 @@
 				</select>
 				</td>
 				
-				
-				
 				<td>
-	            <select name="id_regionales" id="id_regionales"  class="form-control"   >
+	            <select name="id_agencias" id="id_agencias"  class="form-control"   >
 	                <option value="0"  > --TODOS--</option>
-			    	 <?php foreach($resultReg as $res) {?>
-					 		<?php if ($sel_regionales > 0){?>
-					 			<option value="<?php echo $res->id_regionales; ?>"  <?php if ($res->id_regionales == $sel_regionales) {echo "selected"; }  ?>     > <?php echo $res->nombre_regionales; ?> </option>
+			    	 <?php foreach($resultAgen as $res) {?>
+					 		<?php if ($sel_agencias > 0){?>
+					 			<option value="<?php echo $res->id_agencias; ?>"  <?php if ($res->id_agencias == $sel_agencias) {echo "selected"; }  ?>     > <?php echo $res->nombre_agencias; ?> </option>
 					 		
 					 		<?php  } else { ?>
 					 			
-					 			<option value="<?php echo $res->id_regionales; ?>"  > <?php echo $res->nombre_regionales; ?> </option>
+					 			<option value="<?php echo $res->id_agencias; ?>"  > <?php echo $res->nombre_agencias; ?> </option>
 					 		
 					 		<?php }  ?>
 	 		
 				 	 <?php } ?>
 				</select>
 				</td>
+				
+				
 
 
 
