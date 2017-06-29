@@ -115,7 +115,7 @@
        
         
     </head>
-      <body style="background-color: #F6FADE">
+      <body  oncontextmenu="return false" onkeydown="return false"  style="background-color: #F6FADE">
     
        <?php include("view/modulos/head.php"); ?>
        

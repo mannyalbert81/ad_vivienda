@@ -1248,6 +1248,12 @@ class DocumentosController extends ControladorBase{
 	}
 	
 	
+	
+
+	public function ActualizarCartones(){
+	
+		}
+	
 	public function buscar()
 	{
 		require_once 'config/global.php';
