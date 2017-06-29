@@ -47,7 +47,7 @@
        
    
     
-        <form id="form-login" action="<?php echo $helper->url("usuarios","Loguear"); ?>" method="post"  class="col-lg-4" style=" padding-top:100px;">
+        <form id="form-login" action="<?php echo $helper->url("usuarios","Loguear"); ?>" method="post"  class="col-lg-6" style=" padding-top:100px;">
         
         
 		 <div id="login-overlay" class="modal-dialog" style="padding-left: 50px" >
