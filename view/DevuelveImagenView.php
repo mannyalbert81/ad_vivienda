@@ -12,7 +12,8 @@ if (isset ($_GET["id_documentos_legal"]))
 
 $image = "";
 //$conn  = pg_connect("user=postgres port=5432 password=.Romina.2012 dbname=coactiva host=192.168.100.3");
-$conn  = pg_connect("user=postgres port=5433 password=.Romina.2012 dbname=ad_bev host=186.4.241.148");
+//$conn  = pg_connect("user=postgres port=5433 password=.Romina.2012 dbname=ad_bev host=186.4.241.148");
+$conn  = pg_connect("user=postgres port=5432 password=.Romina.2012 dbname=ad_vivienda host=186.4.203.42");
 if(!$conn)
 {
 	echo  "No se pudo conectar";
@@ -29,10 +30,22 @@ else
 	
 		if ($res)
 		{
+			
+			try {
+				//para cambiar estado los revisados
+				$rs_actualizacion = pg_query($conn, "UPDATE documentos_legal SET revisado_documentos_legal = TRUE WHERE id_documentos_legal = '$id_documentos_legal' ");
+			}catch (Exception $e)
+			{
+				
+			}
+			
+			
+			
 			$raw = pg_fetch_result($res, $campo );
 			
 			header('Content-type: application/pdf');				
 			echo pg_unescape_bytea($raw);
+			
 			
 			/*$archivo=$raw;
 			$img_path="/tmp";

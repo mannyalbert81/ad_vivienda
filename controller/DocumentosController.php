@@ -1236,6 +1236,21 @@ class DocumentosController extends ControladorBase{
 	
 	
 		}
+		
+		//actualizar corregido
+		
+		if(isset($_POST['btnGuardar']))
+		{
+			$_id_documentos_legal = rtrim($_POST["id_documentos_legal"]);
+			
+			$colval = "corregido_documentos_legal = TRUE ";
+			$tabla  = "documentos_legal";
+			$where  = "id_documentos_legal = '$_id_documentos_legal'  ";
+		
+			$rs_corregido = $documentos_legal->UpdateBy($colval ,$tabla , $where);
+						
+		}
+		
 	
 	}
 	}
