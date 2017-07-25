@@ -452,7 +452,7 @@
         
                
     </head>
-    <body oncontextmenu="return false" onkeydown="return false"   style="background-color: #F6FADE">
+    <body >
  
  
        <?php include("view/modulos/head.php"); ?>

@@ -112,7 +112,7 @@ $controladores=$_SESSION['controladores'];
 		    
 		    <div class="col-xs-12 col-md-2">
 		    <div class="form-group">
-                                <input type="text" class="form-control" id="criterio_busqueda" name="contenido_busqueda" value=""  placeholder="Texto a Buscar">
+                                <input type="text" class="form-control" id="contenido_busqueda" name="contenido_busqueda" value=""  placeholder="Texto a Buscar">
             </div>
             </div>
             <div class="col-xs-12 col-md-2">
