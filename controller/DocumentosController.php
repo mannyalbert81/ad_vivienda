@@ -1321,9 +1321,9 @@ class DocumentosController extends ControladorBase{
 					$_id_categorias = $_POST["categorias"];
 					$_id_subcategorias = $_POST["subcategorias"];
 					$_id_cliente_proveedor = $_POST["txt_ruc_cliente_proveedor"];
-					$_nombre_cliente_proveedor = $_POST["txt_nombre_cliente_proveedor"];
+					$_nombre_cliente_proveedor = strtoupper($_POST["txt_nombre_cliente_proveedor"]);
 					
-					$_id_tipo_documentos = $_POST["txt_tipo_documentos"];
+					$_id_tipo_documentos = strtoupper($_POST["txt_tipo_documentos"]);
 					$_id_carton_documentos = $_POST["carton_documentos"];
 					$_numero_poliza  = $_POST["numero_poliza"];
 					$_id_soat  = $_POST["cierre_ventas_soat"];

@@ -1,8 +1,19 @@
+   <?php include("view/modulos/head.php"); ?>
+
 <!DOCTYPE HTML>
 <html lang="es">
      <head>
         <meta charset="utf-8"/>
         <title>Cartones de Documentos - aDocument 2015</title>
+   
+     <link rel="stylesheet" href="view/css/bootstrap.css">
+          <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.7.2.custom.css" />
+          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>  
+          <script src="view/css/jquery.js"></script>
+		  <script src="view/css/bootstrapValidator.min.js"></script>
+		  <script src="view/css/ValidarCartonDocumentos.js"></script>
+   
    
        <style>
             input{
@@ -18,7 +29,7 @@
     </head>
       <body  style="background-color: #F6FADE">
     
-       <?php include("view/modulos/head.php"); ?>
+    
        
        <?php include("view/modulos/menu.php"); ?>
        
@@ -41,7 +52,7 @@
     <div class="container">
       <div class="row" style="background-color: #FAFAFA;">
       
-      <form action="<?php echo $helper->url("Documentos","BuscaxCarton"); ?>" method="post" class="col-lg-3">
+      <form id="form-BuscaxCarton" action="<?php echo $helper->url("Documentos","BuscaxCarton"); ?>" method="post" class="col-lg-3">
            
             
             
@@ -84,28 +95,42 @@
 		            		 <?php  $paginas = $paginas + $res->paginas_documentos_legal;  ?>
 		                     <?php  $registros = $registros + 1 ; ?>
 		        <?php } ?>
+		        
+		        
+		        <?php if ($registros > 0)  {?>
 				   <table class="table">
 				        <tr>
-				    		<th>Resúmen del Cartón: <?php echo $numero_carton_documentos  ?>    </th>
+				    		<th>Resúmen de la Carpeta: <?php echo $numero_carton_documentos  ?>    </th>
 				  		</tr>
 			    		<tr>
 			    			<td> <p class="text-justify">  <strong> Se encontraton <?php echo $registros?> documentos, los cuales contienen un total de <?php echo $paginas ?> páginas.  </strong> Recuerde revisar estos documentos antes de imprimir el reporte final </p> </td>
 			    		</tr>
 	
+			     	</table>
+			     	
+	     <div class="row">
+  	 	 <div class="col-xs-12 col-md-12 col-lg-12" style="text-align: center; margin-top:2px">
+  	 	 <div class="form-group">
+  	 	 <a href="<?php echo $helper->url("Documentos","ReportexCarton"); ?>&numero_carton_documentos=<?php echo $numero_carton_documentos; ?>" class="btn btn-success" target="blank">Imprimir Reporte</a>
+  	 	  
+  	 	 </div>
+  	 	 </div>
+  	 	 </div>
+			     	
+			     	 <?php } else {?>
+			     	 
+			     	  <table class="table">
+				        <tr>
+				    		<th >No existe la Carpeta: <?php echo $sel_numero_carton_documentos;  ?>    </th>
+				  		</tr>
+			    		
+	
       	
 			     	</table>
+			     	 
+			     	 <?php } ?>
+			     	
   	
-  	
-  	 		<div class="row">
-		    <div class="col-xs-12 col-md-12 col-lg-12" style="text-align: center; margin-top:2px">
-		    <div class="form-group">
-                                   <a href="<?php echo $helper->url("Documentos","ReportexCarton"); ?>&numero_carton_documentos=<?php echo $numero_carton_documentos; ?>" class="btn btn-success" target="blank">Imprimir Reporte</a>
-	  		
-            </div>
-		    </div>
-		    </div>
-  	
-  	        
 			
 			
 			<?php    }   else {?>

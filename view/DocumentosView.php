@@ -2,6 +2,12 @@
 <html lang="es">
      <head>
      
+     <script>
+
+		if (history.forward(1)){location.replace(history.forward(1))}
+
+	</script> 
+
 <?php //require_once 'config/global.php';?> 
 <?php //echo json_encode($resultCli);?>
      

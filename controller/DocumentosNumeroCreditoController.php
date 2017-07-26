@@ -6,6 +6,14 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 	public function index(){
 		session_start();
 		
+		$_SESSION['categorias'] = "";
+		$_SESSION['subcategorias'] = "";
+		$_SESSION['numero_credito'] = "";
+		$_SESSION['fecha_documento_desde'] = "";
+		$_SESSION['fecha_documento_hasta'] = "";
+		$_SESSION['year'] = "";
+			
+		
 		$documentos_legal = new DocumentosLegalModel();
 		
 		if (isset(  $_SESSION['usuario_usuario']) )
@@ -63,10 +71,15 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 						
 				}
 			
-				if (isset ($_POST["categorias"]) && isset ($_POST["subcategorias"])  && isset($_POST["numero_credito"])  && isset($_POST["fecha_documento_desde"]) && isset($_POST["fecha_documento_hasta"])  && isset($_POST["fecha_subida_desde"])  && isset($_POST["fecha_subida_hasta"])   )
+				if (isset ($_POST["categorias"]) && isset ($_POST["subcategorias"])  && isset($_POST["numero_credito"])  && isset($_POST["fecha_documento_desde"]) && isset($_POST["fecha_documento_hasta"])       )
 				
 				{
-					
+					$_SESSION['categorias'] = $_POST["categorias"];
+					$_SESSION['subcategorias'] = $_POST["subcategorias"];
+					$_SESSION['numero_credito'] = $_POST["numero_credito"];
+					$_SESSION['fecha_documento_desde'] = $_POST["fecha_documento_desde"];
+					$_SESSION['fecha_documento_hasta'] = $_POST["fecha_documento_hasta"];
+					$_SESSION['year'] = $_POST["year"];
 					///creo el array con los valores seleccionados
 		
 					

@@ -289,6 +289,12 @@
 		   $sel_year = 0;
 		   $sel_numero_poliza=0;
 		   
+		   $sel_numero_credito = "";
+		   
+		   $sel_fecha_documento_desde = "";
+		   $sel_fecha_documento_hasta = "";
+		   
+		   
 		   $sel_numero_credito = 0;
 		   
 		   if($_SERVER['REQUEST_METHOD']=='POST' )
@@ -298,6 +304,16 @@
 		      $sel_year = $_POST['year'];
 		      //$sel_numero_credito = $_POST['numero_credito'];
 		     
+		   }
+		   else 
+		   {
+			   	$sel_categorias = $_SESSION['categorias'];
+			   	$sel_subcategorias =  $_SESSION['subcategorias'];
+			   	$sel_numero_credito =  $_SESSION['numero_credito'];
+			   	$sel_fecha_documento_hasta = $_SESSION['fecha_documento_hasta'];
+			   	$sel_fecha_documento_desde =  $_SESSION['fecha_documento_desde'];
+			   	$sel_year = $_SESSION['year'];
+			   	
 		   }
 		   
 		?>

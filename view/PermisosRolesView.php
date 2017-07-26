@@ -1,9 +1,17 @@
+     <?php include("view/modulos/head.php"); ?>
+
 <!DOCTYPE HTML>
 <html lang="es">
       <head>
         <meta charset="utf-8"/>
         <title>Permisos Rol - aDocument 2015</title>
-   
+   <link rel="stylesheet" href="view/css/bootstrap.css">
+          <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.7.2.custom.css" />
+          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>  
+          <script src="view/css/jquery.js"></script>
+		  <script src="view/css/bootstrapValidator.min.js"></script>
+		  <script src="view/css/ValidarPermisosRoles.js"></script>
   
 		
       <script>
@@ -122,7 +130,7 @@
     </head>
     <body style="background-color: #F6FADE">
     
-       <?php include("view/modulos/head.php"); ?>
+  
        
        <?php include("view/modulos/menu.php"); ?>
   
@@ -146,7 +154,7 @@
        <div class="container">
       <div class="row" style="background-color: #FAFAFA;">
       
-      <form action="<?php echo $helper->url("PermisosRoles","InsertaPermisosRoles"); ?>" method="post" class="col-lg-5">
+      <form id="form-Permisos-Roles" action="<?php echo $helper->url("PermisosRoles","InsertaPermisosRoles"); ?>" method="post" class="col-lg-5">
            
            
 		  
@@ -158,22 +166,57 @@
 	         <h4><i class='glyphicon glyphicon-edit'></i> Actualizar Permisos Roles</h4>
 	         </div>
 	         <div class="panel-body">	
+	         
+	         
+	        <div class="row">
+		    <div class="col-xs-12 col-md-12">
+		    <div class="form-group">
+                                  <label for="nombre_permisos_rol" class="control-label">Nombre Permisos Rol:</label>
+                                  <input type="text" class="form-control" id="nombre_permisos_rol" name="nombre_permisos_rol" value="<?php echo $resEdit->nombre_permisos_rol; ?>"  placeholder="Nombre Permiso Rol">
+                                  <span class="help-block"></span>
+            </div>
+		    </div>
+		     </div>
+	         
 	            	
-	            	Nombre Permisos Rol: <input type="text" id="nombre_permisos_rol" name="nombre_permisos_rol" value="<?php echo $resEdit->nombre_permisos_rol; ?>" class="form-control"/>
+	       <div class="row">  
+		   <div class="col-xs-12 col-md-12">
+		   <div class="form-group">
+                                  <label for="id_rol" class="control-label">Rol: </label>
+                                  <select name="id_rol" id="id_rol"  class="form-control" >
+                                  <option value="" selected="selected">--Seleccione--</option>
+									<?php foreach($resultRol as $res) {?>
+										<option value="<?php echo $res->id_rol; ?>" <?php if ($res->id_rol == $resEdit->id_rol )  echo  ' selected="selected" '  ;  ?>><?php echo $res->nombre_rol; ?> </option>
+							    
+							        <?php } ?>
+								   </select> 
+                                  <span class="help-block"></span>
+            </div>
+            </div>
+		    </div> 
+		    
+		    
+		   <div class="row">  
+		   <div class="col-xs-12 col-md-12">
+		   <div class="form-group">
+                                  <label for="id_controladores" class="control-label">Nombre Controladores: </label>
+                                  <select name="id_controladores" id="id_controladores"  class="form-control" >
+                                  <option value="" selected="selected">--Seleccione--</option>
+									<?php foreach($resultCon as $res) {?>
+										<option value="<?php echo $res->id_controladores; ?>" <?php if ($res->id_controladores == $resEdit->id_controladores )  echo  ' selected="selected" '  ;  ?>><?php echo $res->nombre_controladores; ?> </option>
+							    
+							        <?php } ?>
+								   </select> 
+                                  <span class="help-block"></span>
+            </div>
+            </div>
+		    </div>   	
 	            	
-	            	Nombre Rol: <select name="id_rol" id="id_rol"  class="form-control">
-									<?php foreach($resultRol as $resRol) {?>
-				 						<option value="<?php echo $resRol->id_rol; ?>" <?php if ($resRol->id_rol == $resEdit->id_rol )  echo  ' selected="selected" '  ;  ?> ><?php echo $resRol->nombre_rol; ?> </option>
-						            <?php } ?>
-								    	
-									</select>
+	            	
+	            	
+	            	
 		   		   
-	            	 Nombre Controlador: <select name="id_controladores" id="id_controladores"  class="form-control">
-									<?php foreach($resultCon as $resCon) {?>
-				 						<option value="<?php echo $resCon->id_controladores; ?>" <?php if ($resCon->id_controladores == $resEdit->id_controladores )  echo  ' selected="selected" '  ;  ?> ><?php echo $resCon->nombre_controladores; ?> </option>
-						            <?php } ?>
-								    	
-									</select>
+	            	
 		   		   
 		   		   <table class="table">
 		   		   	<tr>
@@ -227,21 +270,50 @@
 	         </div>
 	         <div class="panel-body">
 		     		
-		     		Nombre Permisos Rol: <input type="text" id="nombre_permisos_rol" name="nombre_permisos_rol" value="" class="form-control"/>
-	            	
-	            	Nombre Rol: <select name="id_rol" id="id_rol"  class="form-control">
-									<?php foreach($resultRol as $resRol) {?>
-				 						<option value="<?php echo $resRol->id_rol; ?>" ><?php echo $resRol->nombre_rol; ?> </option>
-						            <?php } ?>
-								    	
-									</select>
-		   		   
-	            	 Nombre Controlador: <select name="id_controladores" id="id_controladores"  class="form-control">
-									<?php foreach($resultCon as $resCon) {?>
-				 						<option value="<?php echo $resCon->id_controladores; ?>"  ><?php echo $resCon->nombre_controladores; ?> </option>
-						            <?php } ?>
-								    	
-									</select>
+		     <div class="row">
+		    <div class="col-xs-12 col-md-12">
+		    <div class="form-group">
+                                  <label for="nombre_permisos_rol" class="control-label">Nombre Permisos Rol:</label>
+                                  <input type="text" class="form-control" id="nombre_permisos_rol" name="nombre_permisos_rol" value=""  placeholder="Nombre Permiso Rol">
+                                  <span class="help-block"></span>
+            </div>
+		    </div>
+		     </div>
+		     
+		    <div class="row">  
+		   <div class="col-xs-12 col-md-12">
+		   <div class="form-group">
+                                  <label for="id_rol" class="control-label">Rol: </label>
+                                  <select name="id_rol" id="id_rol"  class="form-control" >
+                                  <option value="" selected="selected">--Seleccione--</option>
+									<?php foreach($resultRol as $res) {?>
+										<option value="<?php echo $res->id_rol; ?>" ><?php echo $res->nombre_rol; ?> </option>
+							    
+							        <?php } ?>
+								   </select> 
+                                  <span class="help-block"></span>
+            </div>
+            </div>
+		    </div> 
+		    
+		    
+		   <div class="row">  
+		   <div class="col-xs-12 col-md-12">
+		   <div class="form-group">
+                                  <label for="id_controladores" class="control-label">Nombre Controladores: </label>
+                                  <select name="id_controladores" id="id_controladores"  class="form-control" >
+                                  <option value="" selected="selected">--Seleccione--</option>
+									<?php foreach($resultCon as $res) {?>
+										<option value="<?php echo $res->id_controladores; ?>" ><?php echo $res->nombre_controladores; ?> </option>
+							    
+							        <?php } ?>
+								   </select> 
+                                  <span class="help-block"></span>
+            </div>
+            </div>
+		    </div> 
+		    
+		    
 		   		   
 		    	   <table class="table">
 		   		   	<tr>
