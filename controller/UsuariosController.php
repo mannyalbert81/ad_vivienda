@@ -18,7 +18,7 @@ public function index(){
 			$estado = new EstadoModel();
 			$resultEst = $estado->getAll("nombre_estado");
 			
-			$resultMenu=array(0=>'--Seleccione--',1=>'Nombre', 2=>'Usuario', 3=>'Correo', 4=>'Rol');
+			$resultMenu=array(0=>'--TODOS--',1=>'Nombre', 2=>'Usuario', 3=>'Correo', 4=>'Rol');
 			
 	
 			$usuarios = new UsuariosModel();
@@ -31,7 +31,7 @@ public function index(){
 			{
 			
 			
-					$columnas = " usuarios.id_usuario,  usuarios.nombre_usuario, usuarios.usuario_usuario ,  usuarios.telefono_usuario, usuarios.celular_usuario, usuarios.correo_usuario, rol.nombre_rol, estado.nombre_estado, rol.id_rol, estado.id_estado ";
+					$columnas = "usuarios.clave_usuario, usuarios.id_usuario,  usuarios.nombre_usuario, usuarios.usuario_usuario ,  usuarios.telefono_usuario, usuarios.celular_usuario, usuarios.correo_usuario, rol.nombre_rol, estado.nombre_estado, rol.id_rol, estado.id_estado ";
 					$tablas   = "public.rol,  public.usuarios, public.estado";
 					$where    = "rol.id_rol = usuarios.id_rol AND estado.id_estado = usuarios.id_estado";
 					$id       = "usuarios.nombre_usuario"; 
@@ -54,7 +54,7 @@ public function index(){
 					
 					
 					
-					$columnas = " usuarios.id_usuario,  usuarios.nombre_usuario, usuarios.usuario_usuario ,  usuarios.telefono_usuario, usuarios.celular_usuario, usuarios.correo_usuario, rol.nombre_rol, estado.nombre_estado, rol.id_rol, estado.id_estado ";
+					$columnas = " usuarios.clave_usuario, usuarios.id_usuario,  usuarios.nombre_usuario, usuarios.usuario_usuario ,  usuarios.telefono_usuario, usuarios.celular_usuario, usuarios.correo_usuario, rol.nombre_rol, estado.nombre_estado, rol.id_rol, estado.id_estado ";
 					$tablas   = "public.rol,  public.usuarios, public.estado";
 					$where    = "rol.id_rol = usuarios.id_rol AND estado.id_estado = usuarios.id_estado";
 					$id       = "usuarios.nombre_usuario"; 
@@ -78,19 +78,19 @@ public function index(){
 							
 						switch ($criterio) {
 							case 0:
-								$where_0 = "OR  usuarios.nombre_usuario LIKE '$contenido'   OR usuarios.usuario_usuario LIKE '$contenido'  OR  usuarios.correo_usuario LIKE '$contenido'  OR rol.nombre_rol LIKE '$contenido'";
+								$where_0 = " ";
 								break;
 							case 1:
 								//Ruc Cliente/Proveedor
-								$where_1 = " AND  usuarios.nombre_usuario LIKE '$contenido'  ";
+								$where_1 = " AND  usuarios.nombre_usuario LIKE '$contenido'";
 								break;
 							case 2:
 								//Nombre Cliente/Proveedor
-								$where_2 = " AND usuarios.usuario_usuario LIKE '$contenido'  ";
+								$where_2 = " AND usuarios.usuario_usuario LIKE '$contenido'";
 								break;
 							case 3:
 								//Número Carton
-								$where_3 = " AND usuarios.correo_usuario LIKE '$contenido' ";
+								$where_3 = " AND usuarios.correo_usuario LIKE '$contenido'";
 								break;
 							case 4:
 								//Número Poliza

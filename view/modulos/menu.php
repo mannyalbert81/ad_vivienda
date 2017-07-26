@@ -145,7 +145,7 @@ $controladores=$_SESSION['controladores'];
             </div>
 		    </div>
 		    <div class="col-xs-12 col-md-1" style="margin-left: 10px">
-		    <button type="submit"  name="btn_buscar" class="btn btn-default"><span class="glyphicon glyphicon-search" ></span></button>
+		    <button type="submit"  name="btn_buscar" class="btn btn-primary"><span class="glyphicon glyphicon-search" ></span></button>
             </div>
 			</div> 
   			

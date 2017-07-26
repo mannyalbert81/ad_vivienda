@@ -46,9 +46,15 @@
       <form id="form-usuarios" action="<?php echo $helper->url("Usuarios","InsertaUsuarios"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-5">
   
             
-             <h4 style="color:#ec971f;">Insertar Usuarios</h4>
+             
             	
             <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
+            
+             <div class="panel panel-info">
+	         <div class="panel-heading">
+	         <h4><i class='glyphicon glyphicon-edit'></i> Editar Usuarios</h4>
+	         </div>
+	         <div class="panel-body">
             
             <div class="row">
 		    <div class="col-xs-6 col-md-6">
@@ -72,7 +78,7 @@
 		    <div class="col-xs-6 col-md-6">
 		    <div class="form-group">
                                   <label for="clave_usuario" class="control-label">Password</label>
-                                  <input type="password" class="form-control" id="clave_usuario" name="clave_usuario" value=""  placeholder="Password">
+                                  <input type="password" class="form-control" id="clave_usuario" name="clave_usuario" value="<?php echo $resEdit->clave_usuario; ?>"  placeholder="Password">
                                   <span class="help-block"></span>
             </div>
 		    </div>
@@ -80,7 +86,7 @@
 		    <div class="col-xs-6 col-md-6">
 		    <div class="form-group">
                                   <label for="clave_usuario_r" class="control-label">Repita Password</label>
-                                  <input type="password" class="form-control" id="clave_usuario_r" name="clave_usuario_r" value=""  placeholder="Repita Password">
+                                  <input type="password" class="form-control" id="clave_usuario_r" name="clave_usuario_r" value="<?php echo $resEdit->clave_usuario; ?>"  placeholder="Repita Password">
                                   <span class="help-block"></span>
             </div>
             </div>
@@ -143,11 +149,28 @@
             </div>
 			</div>
            
+           
+           
+            <div class="row">
+		    <div class="col-xs-12 col-md-12 col-lg-12" style="text-align: center; margin-top:40px">
+		    <div class="form-group">
+                                  <button type="submit" id="Guardar" name="Guardar" class="btn btn-success">Actualizar</button>
+            </div>
+		    </div>
+		    </div>
+           
+             </div>
+	         </div>
 		     <?php } } else {?>
 		    
-		   
-		   
-		     <div class="row">
+		   <div class="panel panel-info">
+	         <div class="panel-heading">
+	         <h4><i class='glyphicon glyphicon-edit'></i> Insertar Usuarios</h4>
+	         </div>
+	         <div class="panel-body">
+	         
+	         
+	          <div class="row">
 		    <div class="col-xs-6 col-md-6">
 		    <div class="form-group">
                                   <label for="nombre_usuario" class="control-label">Nombres Usuario</label>
@@ -240,28 +263,46 @@
             </div>
             </div>
 			</div>
-		   
-		   
-		       	
-		     <?php } ?>
-		      
-		    <div class="row">
+	         
+	        <div class="row">
 		    <div class="col-xs-12 col-md-12 col-lg-12" style="text-align: center; margin-top:40px">
 		    <div class="form-group">
                                   <button type="submit" id="Guardar" name="Guardar" class="btn btn-success">Guardar</button>
             </div>
 		    </div>
 		    </div>
+	         
+	         
+	         </div>
+	         </div>
+	       
+		   
+		   
+		   
+		   
+		       	
+		     <?php } ?>
+		      
+		   
 		      
 		        
           
           </form>
        
        
-        <div class="col-lg-7 no_imprimir">
-             <h4 style="color:#ec971f;">Lista de  Usuarios</h4>
+        	<div class="col-lg-7">
+        	
+        	 <div class="panel panel-info">
+	         <div class="panel-heading">
+	         <h4><i class='glyphicon glyphicon-edit'></i> Lista de  Usuarios</h4>
+	         </div>
+	         <div class="panel-body">
+        	
+           
 			 
-			  <form action="<?php echo $helper->url("Usuarios","index"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
+		<form action="<?php echo $helper->url("Usuarios","index"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
+           
+           
            
            <div class="col-lg-4">
            <input type="text"  name="contenido" id="contenido" value="" class="form-control"/>
@@ -281,38 +322,45 @@
            
           
            <div class="col-lg-2">
-           <input type="submit" id="Buscar" name="Buscar" value="Buscar" class="btn btn-default"/>
+           <button type="submit" id="Buscar" name="Buscar" value="Buscar" class="btn btn-primary"/><span class="glyphicon glyphicon-search" ></span></button>
            </div>
            
          
           </form>
+          
+          
+           </div>
+      		</div>
             	
         </div>
+        
+      
+         <div class="panel-body">
         <section class="col-lg-7 usuario no_imprimir" style="height:510px;overflow-y:scroll;">
         <table class="table table-hover">
-	         <tr>
-	    		<th>Id</th>
-	    		<th>Nombre</th>
-	    		<th>Usuario</th>
-	    		<th>Teléfono</th>
-	    		<th>Celular</th>
-	    		<th>Correo</th>
-	    		<th>Rol</th>
-	    		<th>Estado</th>
-	    		<th></th>
-	    		<th></th>
+	         <tr class="info">
+	    		<th style="text-align: left;  font-size: 13px;">Id</th>
+	    		<th style="text-align: left;  font-size: 13px;">Nombre</th>
+	    		<th style="text-align: left;  font-size: 13px;">Usuario</th>
+	    		<th style="text-align: left;  font-size: 13px;">Teléfono</th>
+	    		<th style="text-align: left;  font-size: 13px;">Celular</th>
+	    		<th style="text-align: left;  font-size: 13px;">Correo</th>
+	    		<th style="text-align: left;  font-size: 13px;">Rol</th>
+	    		<th style="text-align: left;  font-size: 13px;">Estado</th>
+	    		<th style="text-align: left;  font-size: 13px;"></th>
+	    		<th style="text-align: left;  font-size: 13px;"></th>
 	  		</tr>
             
 	            <?php if (!empty($resultSet)) {  foreach($resultSet as $res) {?>
 	        		<tr>
-	                   <td style="color:#000000;font-size:80%;"> <?php echo $res->id_usuario; ?>  </td>
-		               <td style="color:#000000;font-size:80%;"> <?php echo $res->nombre_usuario; ?>     </td> 
-		               <td style="color:#000000;font-size:80%;"> <?php echo $res->usuario_usuario; ?>  </td>
-		               <td style="color:#000000;font-size:80%;"> <?php echo $res->telefono_usuario; ?>  </td>
-		               <td style="color:#000000;font-size:80%;"> <?php echo $res->celular_usuario; ?>  </td>
-		               <td style="color:#000000;font-size:80%;"> <?php echo $res->correo_usuario; ?>  </td>
-		               <td style="color:#000000;font-size:80%;"> <?php echo $res->nombre_rol; ?>  </td>
-		               <td style="color:#000000;font-size:80%;"> <?php echo $res->nombre_estado; ?>  </td>
+	                   <td style="font-size: 11px;"> <?php echo $res->id_usuario; ?>  </td>
+		               <td style="font-size: 11px;"> <?php echo $res->nombre_usuario; ?>     </td> 
+		               <td style="font-size: 11px;"> <?php echo $res->usuario_usuario; ?>  </td>
+		               <td style="font-size: 11px;"> <?php echo $res->telefono_usuario; ?>  </td>
+		               <td style="font-size: 11px;"> <?php echo $res->celular_usuario; ?>  </td>
+		               <td style="font-size: 11px;"> <?php echo $res->correo_usuario; ?>  </td>
+		               <td style="font-size: 11px;"> <?php echo $res->nombre_rol; ?>  </td>
+		               <td style="font-size: 11px;"> <?php echo $res->nombre_estado; ?>  </td>
 		           	   <td>
 			           		<div class="right">
 			                    <a href="<?php echo $helper->url("Usuarios","index"); ?>&id_usuario=<?php echo $res->id_usuario; ?>" class="btn btn-warning" style="font-size:65%;"><i class='glyphicon glyphicon-edit'></i></a>
@@ -336,7 +384,8 @@
             
        	</table>     
       </section>
-      
+         </div>   	
+       
       <br>
       <br>
       
