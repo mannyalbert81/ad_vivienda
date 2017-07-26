@@ -110,7 +110,7 @@
 		  		<span class="form-control"><strong>Registros: </strong><?php echo $cantidadResult; ?></span>
 				<input type="hidden" value="<?php echo $cantidadResult; ?>" id="total_query" name="total_query"/>
 			</div><br>
-			<section style="height:515px;  overflow-y:auto;">
+			<section style="height:700px;  overflow-y:auto;">
 				<table class="table table-hover">
 					<thead>
 						<tr  class="info">

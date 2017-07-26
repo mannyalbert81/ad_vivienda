@@ -134,7 +134,7 @@ $controladores=$_SESSION['controladores'];
         							
 									<option value="10"  >Referencia</option>
 									<option value="11"  >Tipo Comprobante</option>
-									<option value="12"  ># Comprobante</option>
+									<option value="12"  >Comprobante</option>
 									<option value="13"  >Detalle Comprobante</option>
 									<option value="14"  >Regionales</option>
 									<option value="15"  >Sucursales</option>
@@ -145,7 +145,7 @@ $controladores=$_SESSION['controladores'];
             </div>
 		    </div>
 		    <div class="col-xs-12 col-md-1" style="margin-left: 10px">
-		    <button type="submit"  name="btn_buscar" class="btn btn-default"><span class="glyphicon glyphicon-search" ></span></button>
+		    <button type="submit"  name="btn_buscar" class="btn btn-primary"><span class="glyphicon glyphicon-search" ></span></button>
             </div>
 			</div> 
   			
