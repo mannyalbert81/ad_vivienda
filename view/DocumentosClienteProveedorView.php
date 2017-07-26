@@ -195,46 +195,13 @@
 
 		    $("#fecha_documento_hasta").change(function() {
 
-
-		    	var startDate = new Date($('#fecha_documento_desde').val());
-		    	var endDate = new Date($('#fecha_documento_hasta').val());
-
-		    	if (startDate > endDate){
-
-		    		$("#fecha_documento_hasta").val("");
-		    		alert('Fecha documento DESDE mayor a  fecha FINAL');
-		    		die();
-		    	}
-
-		    	var fecha_actual = new Date();
-		    	if (endDate > fecha_actual){
-
-		    		$("#fecha_documento_hasta").val("");
-		    		alert('Fecha documento mayor a fecha actual');
-		    		die();
-		    	}
-
-		    	
-			  });
+		    	return validarFecha();
+		    });
 
 		}); 
 
 	</script>
-		
-
 	
-	
-
-	
-	
-
-	
-	
-
-		
-		
-		
-		
 		
      <script>
 			function myFunction() {
@@ -249,8 +216,19 @@
 	$(document).ready(function(){
 		
 		$("#btnBuscar").click(function(){
+          var datafecha= $("#fecha_documento_hasta").data();
 			
-			load_DocumentosClienteProv(1);
+	    	if(datafecha.val==0)
+	    	{
+		    				
+	    	load_DocumentosClienteProv(1);
+			
+	    	}else
+	    	{
+	    		datafecha.val=0;
+	    	}
+	    	
+			
 			});
 	});
 
@@ -405,6 +383,39 @@
     		});
 */
      </script>
+     
+     <script type="text/javascript">
+	function validarFecha()
+	{
+		    var startDate = new Date($('#fecha_documento_desde').val());
+	    	var endDate = new Date($('#fecha_documento_hasta').val());
+			var datafecha= $("#fecha_documento_hasta").data();
+
+			if (startDate > endDate){
+
+	    		$("#fecha_documento_hasta").val("");
+	    		datafecha.val=1;
+	    		alert('Fecha documento DESDE mayor a  fecha FINAL');	    		
+	    	}else
+	    	{
+	    		datafecha.val=0;
+	    	}
+
+	    	var fecha_actual = new Date();
+	    	
+	    	if (endDate > fecha_actual){
+
+	    		$("#fecha_documento_hasta").val("");
+	    		datafecha.val=1;
+	    		alert('Fecha documento mayor a fecha actual');
+	    		
+	    	}else
+	    	{
+	    		datafecha.val=0;
+	    	}
+	    	
+	    }
+	</script>
        
        <style>
             input{
@@ -698,7 +709,7 @@
 		   			
 		   		</td>
 		   		<td>
-		   			<input type="date" name="fecha_documento_hasta"  id="fecha_documento_hasta"  class="form-control"  />
+		   			<input type="date" data-val="0" name="fecha_documento_hasta"  id="fecha_documento_hasta"  class="form-control"  />
 		   		</td>
 		   		
 		   		

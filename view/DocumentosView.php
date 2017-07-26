@@ -475,10 +475,31 @@
 		    		die();
 		    	}
 			  });
+			  
+		   
 		}); 
 
 	</script>
        
+    <script type="text/javascript">
+    $(document).ready(function(){
+
+	    $("#fecha_subida_hasta").keypress(function() {
+
+		    alert('hola');
+
+		 if($(this).val().lenght<=10)
+		 {
+	    if ($(this).val().length == 2 || $(this).val().length == 5){
+	         $(this).val($(this).val() + "/");
+	      }
+		 }else{
+			 return false;
+		 }
+	    });
+	}); 
+
+    </script>   
        
        <style>
             input{
@@ -711,13 +732,13 @@
             	
             	  <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
 						
-				 <input type="date" name="fecha_documento_desde" id="fecha_documento_desde"  class="form-control"  value="<?php echo  date('d/m/Y', strtotime($resEdit->fecha_documentos_legal));  ?>"     /> 	
+				 <input type="date"  name="fecha_documento_desde" id="fecha_documento_desde"  class="form-control"  value="<?php echo  date('d/m/Y', strtotime($resEdit->fecha_documentos_legal));  ?>"     /> 	
 						    
 				  <?php } } else {?>
 				   	 <?php if ($sel_fecha_subida_desde == "" ) { ?>	
-				   		<input type="date" name="fecha_documento_desde" id="fecha_documento_desde"  class="form-control"   />
+				   		<input type="date"  name="fecha_documento_desde" id="fecha_documento_desde"  class="form-control"   />
 					 <?php } else {?>	
-					 	<input type="date" value="<?php echo $sel_fecha_documento_desde ?>"  name="fecha_documento_desde" id="fecha_documento_desde"   class="form-control"   />
+					 	<input type="date"  value="<?php echo $sel_fecha_documento_desde ?>"  name="fecha_documento_desde" id="fecha_documento_desde"   class="form-control"   />
 					 <?php }?>        
 				  <?php } ?>
 		
