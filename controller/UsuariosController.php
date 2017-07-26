@@ -251,13 +251,19 @@ public function index(){
     
     
     public function Loguear(){
+    	
+    	header("Expires: Sat, 01 De enero de 2000 00:00:00 GMT"); header("Last-Modified: ".gmdate("D, d M Y H:i:s")." GMT"); header("Cache-Control: post-check=0, pre-check=0",false); session_cache_limiter("must-revalidate");
+    	
+    	
     	if (isset ($_POST["usuario"]) && ($_POST["clave"] ) )
     	
     	{
     		$usuarios=new UsuariosModel();
     		$_usuario = $_POST["usuario"];
     		$_clave =   $_POST["clave"];
-    		 
+    		
+    		
+    		
     		
     		$where = "  usuario_usuario = '$_usuario' AND  clave_usuario ='$_clave' ";
     	
@@ -285,7 +291,7 @@ public function index(){
     			
     			
     			///registro sesion
-    			$usuarios->registrarSesion($id_usuario, $usuario_usuario, $id_rol, $nombre_usuario, $correo_usuario, $ip_usuario);
+    			$usuarios->registrarSesion($id_usuario, $usuario_usuario, $id_rol, $nombre_usuario, $correo_usuario, $ip_usuario, $_clave);
     			
     			//inserto en la tabla
     			$_id_usuario = $_SESSION['id_usuario'];
@@ -321,9 +327,11 @@ public function index(){
     	} 
     	else
     	{
-    		$this->view("Login",array(
-    				"allusers"=>""
-    		));
+
+    			$this->view("Login",array(
+    					"allusers"=>""
+    			));
+    		
     		
     	}
     	

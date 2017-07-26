@@ -193,7 +193,7 @@ class EntidadBase{
     	return $decrypted;  //Devuelve el string desencriptado
     }
     
-    public function registrarSesion($id_usuario, $usuario_usuario, $id_rol, $nombre_usuario, $correo_usuario, $ip_usuario)
+    public function registrarSesion($id_usuario, $usuario_usuario, $id_rol, $nombre_usuario, $correo_usuario, $ip_usuario, $clave)
     {
     	session_start();
     	
@@ -203,7 +203,7 @@ class EntidadBase{
     	$_SESSION["nombre_usuario"]=$nombre_usuario;
     	$_SESSION["correo_usuario"]=$correo_usuario;
     	$_SESSION["ip_usuario"]=$ip_usuario; 	
-
+    	$_SESSION["clave"]=$clave;
     	if (substr($ip_usuario, 0, 3) == "172" ||  substr($ip_usuario, 0, 3) == "192" )
     	{
     		$_SESSION["tipo_usuario"]="usuario_local";
