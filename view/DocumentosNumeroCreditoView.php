@@ -104,14 +104,7 @@
 	</script>
 		
 	
-     <script>
-			function myFunction() {
-			    var x = document.getElementById("categorias").value;
-                    var subcategorias = document.getElementById("subcategorias");
-                    $subcategorias.Empty();
-				    document.getElementById("demo").innerHTML = "You selected: " + x;
-			}
-	</script>
+    
 		
 	<script type="text/javascript">
 	$(document).ready(function(){
@@ -128,7 +121,7 @@
 		//iniciar variables
 		 var doc_categorias=$("#categorias").val();
 		 var doc_subcategorias=$("#subcategorias").val();
-		 var doc_numero_cred=$("#numero_credito").val();
+		 var doc_numero_cred=$("#txt_numero_credito").val();
 		 var doc_fecha_doc_desde=$("#fecha_documento_desde").val();
 		 var doc_fecha_doc_hasta=$("#fecha_documento_hasta").val();
 		 var doc_fecha_subida_desde=$("#fecha_subida_desde").val();
@@ -138,7 +131,7 @@
 		  var con_datos={
 				  categorias:doc_categorias,
 				  subcategorias:doc_subcategorias,
-				  numero_credito:doc_numero_cred,
+				  txt_numero_credito:doc_numero_cred,
 				  fecha_documento_desde:doc_fecha_doc_desde,
 				  fecha_documento_hasta:doc_fecha_doc_hasta,
 				  fecha_subida_desde:doc_fecha_subida_desde,
@@ -165,37 +158,7 @@
 	
 	</script>
     
-     <script>
-	$(document).ready(function(){
- 	
-	$("#txt_numero_credito").autocomplete({
-		source: "<?php echo $helper->url("DocumentosNumeroCredito","AutocompleteNumeroCredito"); ?>",
-		minLength: 1,
-		select: function( event, data ) 
-			{
-			 var identificador = data.item.id;
-			 var valor = data.item.value;
-			 
-			 $("#txt_numero_credito").val(valor);
-			 $("#numero_credito").val(identificador);
-			 
-			}
-	 });
-		
-	$("#txt_numero_credito").focusout(function(){
-		if($("#txt_numero_credito").val()==''||$("#txt_numero_credito").val()==null)
-		{
-			 $("#txt_numero_credito").val('');
-			 $("#numero_credito").val(0);
-			 
-		}
-						
-	});
-						
-	});
-		
-					
-    </script>
+   
     
     <script>
 		$(document).ready(function(){
@@ -278,7 +241,7 @@
         
                
     </head>
-    <body oncontextmenu="return false" onkeydown="return false"  style="background-color: #F6FADE">
+    <body >
  
  
        <?php include("view/modulos/head.php"); ?>
@@ -301,7 +264,7 @@
 		      $sel_categorias = $_POST['categorias'];
 		      $sel_subcategorias = $_POST['subcategorias'];
 		      $sel_year = $_POST['year'];
-		      $sel_numero_credito = $_POST['numero_credito'];
+		      //$sel_numero_credito = $_POST['numero_credito'];
 		     
 		   }
 		   
@@ -422,7 +385,7 @@
                  		<input type="hidden"  id="numero_credito" name="numero_credito" value="<?php echo  $res->numero_credito_documentos_legal; ?>">	
 					     <?php } } else {?>
 					     
-					     <input type="text" class="form-control" id="txt_numero_credito" name="txt_numero_credito" value=""  placeholder="Ingrese Numero Credito">
+					     <input type="text" class="form-control" id="txt_numero_credito" name="txt_numero_credito" value=""  placeholder="Ingrese Numero Credito"/>
                  		 <input type="hidden"  id="numero_credito" name="numero_credito" value="0">									
 						 <?php } ?>	  
 					

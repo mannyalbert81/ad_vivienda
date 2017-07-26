@@ -22,26 +22,13 @@
 		<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
          
          
-         <script type="text/javascript">
-function vaciar(control)
-{
-  control.value='';
-}
-function verificarEntrada(control)
-{
-  if (control.value <= 0)
-
-	  alert('Debe ingresar datos');
-	  
-    
-}
-</script>
+        
           
           
          
          
     </head>
-    <body oncontextmenu="return false" onkeydown="return false"  style="background-color: #F6FADE">
+    <body   style="background-color: #F6FADE">
     
        
        
@@ -77,7 +64,7 @@ function verificarEntrada(control)
             	</tr>
         		<tr>
 				
-		           <td>	<input type="text" id="id_documentos_legal" onFocus="vaciar(this)" onBlur="verificarEntrada(this)"  value="0" name="id_documentos_legal" class="form-control"/> 
+		           <td>	<input type="text" id="id_documentos_legal"  name="id_documentos_legal"  value="<?php echo $sel_id_documentos_legal?> " class="form-control"/> 
 		           </td>
 		         
 		           

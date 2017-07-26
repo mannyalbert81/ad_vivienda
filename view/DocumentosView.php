@@ -162,9 +162,9 @@
 		//iniciar variables
 		 var doc_categorias=$("#categorias").val();
 		 var doc_subcategorias=$("#subcategorias").val();
-		 var doc_ruc_cli=$("#ruc_cliente_proveedor").val();
-		 var doc_nombre_cli=$("#nombre_cliente_proveedor").val();
-		 var doc_tipo_doc=$("#tipo_documentos").val();
+		 var doc_ruc_cli=$("#txt_ruc_cliente_proveedor").val();
+		 var doc_nombre_cli=$("#txt_nombre_cliente_proveedor").val();
+		 var doc_tipo_doc=$("#txt_tipo_documentos").val();
 		 var doc_cartones_doc=$("#carton_documentos").val();
 		 var doc_fecha_doc_desde=$("#fecha_documento_desde").val();
 		 var doc_fecha_doc_hasta=$("#fecha_documento_hasta").val();
@@ -180,9 +180,9 @@
 		  var con_datos={
 				  categorias:doc_categorias,
 				  subcategorias:doc_subcategorias,
-				  ruc_cliente_proveedor:doc_ruc_cli,
-				  tipo_documentos:doc_tipo_doc,
-				  nombre_cliente_proveedor:doc_nombre_cli,
+				  txt_ruc_cliente_proveedor:doc_ruc_cli,
+				  txt_tipo_documentos:doc_tipo_doc,
+				  txt_nombre_cliente_proveedor:doc_nombre_cli,
 				  carton_documentos:doc_cartones_doc,
 				  numero_poliza:doc_numero_poliza,
 				  fecha_documento_desde:doc_fecha_doc_desde,
@@ -216,6 +216,7 @@
 
 	function load_nombre_cliente()
 	{
+		/*
 		
 	    var _resultCli='';<?php  //echo json_encode($resultCli); ?>
 	    var _sel_nombre_cliente_proveedor = $("#nombre_cliente_proveedor");
@@ -233,13 +234,14 @@
 	    }else{
 	    	console.log('no hay datos');
 		    }
-	    
+	    */
 	}
 
 	</script>
 	
 	
      <script>
+     /*
 	$(document).ready(function(){
  	
 	$("#txt_nombre_cliente_proveedor").autocomplete({
@@ -273,11 +275,12 @@
 	});
 						
 	});
-		
+		*/
 					
     </script>
     
     <script>
+    /*
 	$(document).ready(function(){
  	
 	$("#txt_ruc_cliente_proveedor").autocomplete({
@@ -311,11 +314,12 @@
 						
 	});
 	});
-		
+		*/
 					
     </script>
     
     <script>
+    /*
 	$(document).ready(function(){
  	
 	$("#txt_tipo_documentos").autocomplete({
@@ -339,21 +343,22 @@
 						
 	});
 	});
-		
-					
+		*/
+				
     </script>
-       
-       
+      
+	  
+	  
+	 
        <script>
 
 		$(document).ready(function(){
 
 		    $("#fecha_documento_hasta").change(function() {
 
-
 		    	var startDate = new Date($('#fecha_documento_desde').val());
 		    	var endDate = new Date($('#fecha_documento_hasta').val());
-
+				
 		    	if (startDate > endDate){
 
 		    		$("#fecha_documento_hasta").val("");
@@ -362,7 +367,7 @@
 		    	}
 
 		    	var fecha_actual = new Date();
-		    	if (endDate>fecha_actual){
+		    	if (endDate > fecha_actual){
 
 		    		$("#fecha_documento_hasta").val("");
 		    		alert('Fecha documento mayor a fecha actual');
@@ -452,7 +457,7 @@
         
                
     </head>
-    <body oncontextmenu="return false" onkeydown="return false"   style="background-color: #F6FADE">
+    <body >
  
  
        <?php include("view/modulos/head.php"); ?>

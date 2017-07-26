@@ -479,7 +479,7 @@ class DocumentosController extends ControladorBase{
 										
 						
 					$criterio = $_POST["criterio_busqueda"];
-					$contenido = $_POST["contenido_busqueda"];
+					$contenido = strtoupper($_POST["contenido_busqueda"]);
 					
 					if ($contenido !="")
 					{
@@ -551,7 +551,7 @@ class DocumentosController extends ControladorBase{
 									break;
 								case 13:
 									//Tipo Documento
-									$where_13 = " AND detalle_comprobantes.nombre_detalle_comprobantes LIKE '$contenido' ";
+									$where_13 = " AND detalle_documentos.nombre_detalle_documentos LIKE '$contenido' ";
 									break;
 								case 14:
 									//Tipo Documento
@@ -606,7 +606,7 @@ class DocumentosController extends ControladorBase{
 								$html.='<span class="form-control"><strong>Registros: </strong>'.$cantidadResult.'</span>';
 								$html.='<input type="hidden" value="'.$cantidadResult.'" id="total_query" name="total_query"/>' ;
 								$html.='</div><br>';
-								$html.='<section style="height:515px;  overflow-y:auto;">';
+								$html.='<section style="height:700px;  overflow-y:auto;">';
 								$html.='<table class="table table-hover">';
 								$html.='<thead>';
 								$html.='<tr class="info">';
@@ -1320,8 +1320,10 @@ class DocumentosController extends ControladorBase{
 					
 					$_id_categorias = $_POST["categorias"];
 					$_id_subcategorias = $_POST["subcategorias"];
-					$_id_cliente_proveedor = $_POST["ruc_cliente_proveedor"];
-					$_id_tipo_documentos = $_POST["tipo_documentos"];
+					$_id_cliente_proveedor = $_POST["txt_ruc_cliente_proveedor"];
+					$_nombre_cliente_proveedor = $_POST["txt_nombre_cliente_proveedor"];
+					
+					$_id_tipo_documentos = $_POST["txt_tipo_documentos"];
 					$_id_carton_documentos = $_POST["carton_documentos"];
 					$_numero_poliza  = $_POST["numero_poliza"];
 					$_id_soat  = $_POST["cierre_ventas_soat"];
@@ -1347,15 +1349,21 @@ class DocumentosController extends ControladorBase{
 						$where_2 = " AND subcategorias.id_subcategorias = '$_id_subcategorias' ";
 					
 					}
-					if ($_id_cliente_proveedor > 0)
+					if ($_id_cliente_proveedor != "")
 					{
 						
-						$where_4 = " AND cliente_proveedor.id_cliente_proveedor = '$_id_cliente_proveedor' ";
+						$where_4 = " AND cliente_proveedor.ruc_cliente_proveedor like '$_id_cliente_proveedor' ";
 					}	
-					if ($_id_tipo_documentos > 0    )
+					
+					if ($_nombre_cliente_proveedor != "")
 					{
 					
-						$where_5 = " AND tipo_documentos.id_tipo_documentos = '$_id_tipo_documentos' ";
+						$where_3 = " AND cliente_proveedor.nombre_cliente_proveedor like '$_nombre_cliente_proveedor' ";
+					}
+					if ($_id_tipo_documentos != ""    )
+					{
+					
+						$where_5 = " AND tipo_documentos.nombre_tipo_documentos like '$_id_tipo_documentos' ";
 					}
 					if ($_id_carton_documentos > 0)
 					{
@@ -1448,7 +1456,7 @@ class DocumentosController extends ControladorBase{
 							$html.='<span class="form-control"><strong>Registros: </strong>'.$cantidadResult.'</span>';
 							$html.='<input type="hidden" value="'.$cantidadResult.'" id="total_query" name="total_query"/>' ;
 							$html.='</div><br>';
-							$html.='<section style="height:515px;  overflow-y:auto;">';
+							$html.='<section style="height:700px;  overflow-y:auto;">';
 							$html.='<table class="table table-hover">';
 							$html.='<thead>';
 							$html.='<tr class="info">';
