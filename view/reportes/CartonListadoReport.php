@@ -7,7 +7,7 @@ $pdf = new PDF();
 if ($resultRep !="" ) {
 
 	$pdf->Carton = "";
-	$pdf->Titulo  = "Listado de Carpeta Registradas";
+	$pdf->Titulo  = "Listado de Carpetas Registradas";
 	
 	$pdf->AddPage('P');
 
