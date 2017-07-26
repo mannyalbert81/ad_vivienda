@@ -148,7 +148,7 @@ class RolesController extends ControladorBase{
 	{
 
 		session_start();
-		
+		$permisos_rol=new PermisosRolesModel();
 		$nombre_controladores = "Roles";
 		$id_rol= $_SESSION['id_rol'];
 		$resultPer = $permisos_rol->getPermisosEditar("   controladores.nombre_controladores = '$nombre_controladores' AND permisos_rol.id_rol = '$id_rol' " );
