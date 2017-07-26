@@ -148,11 +148,19 @@
 		
 		$("#btnBuscar").click(function(){
 
+			var datafecha= $("#fecha_documento_hasta").data();
 			
-			if(validarFecha())
-			{				
+	    	if(datafecha.val==0)
+	    	{
+		    				
 			load_Documentos(1);
-			}
+			
+	    	}else
+	    	{
+	    		datafecha.val=0;
+	    	}
+	    	
+	    	
 			
 			});
 
@@ -375,14 +383,18 @@
 	<script type="text/javascript">
 	function validarFecha()
 	{
-		 var startDate = new Date($('#fecha_documento_desde').val());
+		    var startDate = new Date($('#fecha_documento_desde').val());
 	    	var endDate = new Date($('#fecha_documento_hasta').val());
-			
-	    	if (startDate > endDate){
+			var datafecha= $("#fecha_documento_hasta").data();
+
+			if (startDate > endDate){
 
 	    		$("#fecha_documento_hasta").val("");
-	    		alert('Fecha documento DESDE mayor a  fecha FINAL');
-	    		return false;
+	    		datafecha.val=1;
+	    		alert('Fecha documento DESDE mayor a  fecha FINAL');	    		
+	    	}else
+	    	{
+	    		datafecha.val=0;
 	    	}
 
 	    	var fecha_actual = new Date();
@@ -390,10 +402,15 @@
 	    	if (endDate > fecha_actual){
 
 	    		$("#fecha_documento_hasta").val("");
+	    		datafecha.val=1;
 	    		alert('Fecha documento mayor a fecha actual');
-	    		return false;
+	    		
+	    	}else
+	    	{
+	    		datafecha.val=0;
 	    	}
-	}
+	    	
+	    }
 	</script>
 		
 
@@ -403,8 +420,7 @@
 		$(document).ready(function(){
 
 		    $("#fecha_poliza_hasta").change(function() {
-
-
+			    
 		    	var startDate = new Date($('#fecha_poliza_desde').val());
 		    	var endDate = new Date($('#fecha_poliza_hasta').val());
 
@@ -704,9 +720,9 @@
 		   		</td>
 		   		<td>
 		   			<?php if ($sel_fecha_subida_desde == "" ) { ?>	
-				   		<input type="date" name="fecha_documento_hasta"  id="fecha_documento_hasta"  class="form-control"  />
+				   		<input type="date" data-val="0" name="fecha_documento_hasta"  id="fecha_documento_hasta"  class="form-control"  />
 					 <?php } else {?>	
-					 	<input type="date" value="<?php echo $sel_fecha_documento_hasta ?>"  name="fecha_documento_hasta" id="fecha_documento_hasta"   class="form-control"   />
+					 	<input type="date" data-val="0" value="<?php echo $sel_fecha_documento_hasta ?>"  name="fecha_documento_hasta" id="fecha_documento_hasta"   class="form-control"   />
 					 <?php }?>        
 		   			
 		   			
