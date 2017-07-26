@@ -1,9 +1,17 @@
+  <?php include("view/modulos/head.php"); ?>
+
 <!DOCTYPE HTML>
 <html lang="es">
      <head>
         <meta charset="utf-8"/>
         <title>Roles - aDocument 2015</title>
-   
+    <link rel="stylesheet" href="view/css/bootstrap.css">
+          <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.7.2.custom.css" />
+          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>  
+          <script src="view/css/jquery.js"></script>
+		  <script src="view/css/bootstrapValidator.min.js"></script>
+		  <script src="view/css/ValidarRoles.js"></script>
       
         <style>
             input{
@@ -19,14 +27,14 @@
     </head>
       <body style="background-color: #F6FADE">
     
-       <?php include("view/modulos/head.php"); ?>
+     
        
        <?php include("view/modulos/menu.php"); ?>
   
     <div class="container">
       <div class="row" style="background-color: #FAFAFA;">
       
-      <form action="<?php echo $helper->url("Roles","InsertaRoles"); ?>" method="post" class="col-lg-5">
+      <form id="form-Roles" action="<?php echo $helper->url("Roles","InsertaRoles"); ?>" method="post" class="col-lg-5">
             
             	
 		   		
@@ -51,10 +59,10 @@
 	        
 	               
 		            
-		    <div class="row">
+		     <div class="row">
 		    <div class="col-xs-12 col-md-12 col-lg-12" style="text-align: center; margin-top:40px">
 		    <div class="form-group">
-                                   <input type="submit" value="Actualizar" class="btn btn-success"/>
+                                 <button type="submit" id="Guardar" name="Guardar" class="btn btn-success">Guardar</button>
             </div>
 		    </div>
 		    </div>
@@ -84,10 +92,13 @@
 		    <div class="row">
 		    <div class="col-xs-12 col-md-12 col-lg-12" style="text-align: center; margin-top:40px">
 		    <div class="form-group">
-                                   <input type="submit" value="Guardar" class="btn btn-success"/>
+                                 <button type="submit" id="Guardar" name="Guardar" class="btn btn-success">Guardar</button>
             </div>
 		    </div>
 		    </div>
+		       
+		       
+		    
 		       
 		       </div>
 		      </div>       
