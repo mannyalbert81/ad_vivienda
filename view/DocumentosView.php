@@ -347,17 +347,18 @@
 				
     </script>
       
-       
+	  
+	  
+	 
        <script>
 
 		$(document).ready(function(){
 
 		    $("#fecha_documento_hasta").change(function() {
 
-
 		    	var startDate = new Date($('#fecha_documento_desde').val());
 		    	var endDate = new Date($('#fecha_documento_hasta').val());
-
+				
 		    	if (startDate > endDate){
 
 		    		$("#fecha_documento_hasta").val("");
@@ -366,7 +367,7 @@
 		    	}
 
 		    	var fecha_actual = new Date();
-		    	if (endDate>fecha_actual){
+		    	if (endDate > fecha_actual){
 
 		    		$("#fecha_documento_hasta").val("");
 		    		alert('Fecha documento mayor a fecha actual');

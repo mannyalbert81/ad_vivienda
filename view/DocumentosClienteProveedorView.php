@@ -207,7 +207,7 @@
 		    	}
 
 		    	var fecha_actual = new Date();
-		    	if (endDate>fecha_actual){
+		    	if (endDate > fecha_actual){
 
 		    		$("#fecha_documento_hasta").val("");
 		    		alert('Fecha documento mayor a fecha actual');
@@ -605,7 +605,7 @@
       
             <tr>
 	    		
-	    		 <th># Comprobante</th>
+	    		 <th>Comprobante</th>
 	    		
 	    		<th >Regionales</th>
 	    		<th >Sucursales</th>
@@ -622,7 +622,7 @@
             
      
 				            <td>
-			    <input type="text"  class="form-control" id="numero_comprobantes" name="numero_comprobantes" placeholder="# Comprobante" >
+			    <input type="text"  class="form-control" id="numero_comprobantes" name="numero_comprobantes" placeholder="Comprobante" >
             </td>
             
             	<td>
@@ -714,9 +714,6 @@
 		        	
 		        	
 				</td>
-
-
-
 
      	</tr>
       

@@ -134,7 +134,7 @@ $controladores=$_SESSION['controladores'];
         							
 									<option value="10"  >Referencia</option>
 									<option value="11"  >Tipo Comprobante</option>
-									<option value="12"  ># Comprobante</option>
+									<option value="12"  >Comprobante</option>
 									<option value="13"  >Detalle Comprobante</option>
 									<option value="14"  >Regionales</option>
 									<option value="15"  >Sucursales</option>

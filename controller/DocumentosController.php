@@ -479,7 +479,7 @@ class DocumentosController extends ControladorBase{
 										
 						
 					$criterio = $_POST["criterio_busqueda"];
-					$contenido = $_POST["contenido_busqueda"];
+					$contenido = strtoupper($_POST["contenido_busqueda"]);
 					
 					if ($contenido !="")
 					{
@@ -606,7 +606,7 @@ class DocumentosController extends ControladorBase{
 								$html.='<span class="form-control"><strong>Registros: </strong>'.$cantidadResult.'</span>';
 								$html.='<input type="hidden" value="'.$cantidadResult.'" id="total_query" name="total_query"/>' ;
 								$html.='</div><br>';
-								$html.='<section style="height:515px;  overflow-y:auto;">';
+								$html.='<section style="height:700px;  overflow-y:auto;">';
 								$html.='<table class="table table-hover">';
 								$html.='<thead>';
 								$html.='<tr class="info">';
@@ -1441,7 +1441,7 @@ class DocumentosController extends ControladorBase{
 							$html.='<span class="form-control"><strong>Registros: </strong>'.$cantidadResult.'</span>';
 							$html.='<input type="hidden" value="'.$cantidadResult.'" id="total_query" name="total_query"/>' ;
 							$html.='</div><br>';
-							$html.='<section style="height:515px;  overflow-y:auto;">';
+							$html.='<section style="height:700px;  overflow-y:auto;">';
 							$html.='<table class="table table-hover">';
 							$html.='<thead>';
 							$html.='<tr class="info">';
