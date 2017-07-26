@@ -551,7 +551,7 @@ class DocumentosController extends ControladorBase{
 									break;
 								case 13:
 									//Tipo Documento
-									$where_13 = " AND detalle_comprobantes.nombre_detalle_comprobantes LIKE '$contenido' ";
+									$where_13 = " AND detalle_documentos.nombre_detalle_documentos LIKE '$contenido' ";
 									break;
 								case 14:
 									//Tipo Documento

@@ -7,16 +7,10 @@ $pdf = new PDF();
 if ($resultRep !="" ) {
 
 	$pdf->Carton = "";
-	$pdf->Titulo  = "Listado de Cartones Registrados";
+	$pdf->Titulo  = "Listado de Carpeta Registradas";
 	
 	$pdf->AddPage('P');
-	
-	
-	 
-	
 
-	
-	//$pdf->AddCol('fecha_documentos_legal',19,utf8_decode('Fecha'),'L');
 	$pdf->AddCol('id_carton_documentos',20,utf8_decode('Id'),'L');
 	$pdf->AddCol('numero_carton_documentos',40,utf8_decode('Numero'),'L');
 	$pdf->AddCol('registros',40,utf8_decode('Archivos'),'L');
