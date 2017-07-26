@@ -147,8 +147,13 @@
 
 		
 		$("#btnBuscar").click(function(){
+
 			
+			if(validarFecha())
+			{				
 			load_Documentos(1);
+			}
+			
 			});
 
 		load_nombre_cliente();
@@ -356,28 +361,39 @@
 
 		    $("#fecha_documento_hasta").change(function() {
 
-		    	var startDate = new Date($('#fecha_documento_desde').val());
-		    	var endDate = new Date($('#fecha_documento_hasta').val());
-				
-		    	if (startDate > endDate){
-
-		    		$("#fecha_documento_hasta").val("");
-		    		alert('Fecha documento DESDE mayor a  fecha FINAL');
-		    		die();
-		    	}
-
-		    	var fecha_actual = new Date();
-		    	if (endDate > fecha_actual){
-
-		    		$("#fecha_documento_hasta").val("");
-		    		alert('Fecha documento mayor a fecha actual');
-		    		die();
-		    	}
+		    	
+		    	return validarFecha();
 		    	
 			  });
 
+			  
+
 		}); 
 
+	</script>
+	
+	<script type="text/javascript">
+	function validarFecha()
+	{
+		 var startDate = new Date($('#fecha_documento_desde').val());
+	    	var endDate = new Date($('#fecha_documento_hasta').val());
+			
+	    	if (startDate > endDate){
+
+	    		$("#fecha_documento_hasta").val("");
+	    		alert('Fecha documento DESDE mayor a  fecha FINAL');
+	    		return false;
+	    	}
+
+	    	var fecha_actual = new Date();
+	    	
+	    	if (endDate > fecha_actual){
+
+	    		$("#fecha_documento_hasta").val("");
+	    		alert('Fecha documento mayor a fecha actual');
+	    		return false;
+	    	}
+	}
 	</script>
 		
 
