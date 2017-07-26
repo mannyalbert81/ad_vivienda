@@ -248,7 +248,7 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 	
 			if (!empty($resultPer))
 			{
-				if (isset ($_POST["categorias"]) && isset ($_POST["subcategorias"])  && isset($_POST["numero_credito"])  && isset($_POST["fecha_documento_desde"]) && isset($_POST["fecha_documento_hasta"])  && isset($_POST["fecha_subida_desde"])  && isset($_POST["fecha_subida_hasta"])   )
+				if (isset ($_POST["categorias"]) && isset ($_POST["subcategorias"])  && isset($_POST["txt_numero_credito"])  && isset($_POST["fecha_documento_desde"]) && isset($_POST["fecha_documento_hasta"])  && isset($_POST["fecha_subida_desde"])  && isset($_POST["fecha_subida_hasta"])   )
 				{						
 	
 					$arraySel = "";
@@ -273,7 +273,10 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 						
 					$_id_categorias = $_POST["categorias"];
 					$_id_subcategorias = $_POST["subcategorias"];
-					$_numero_credito  = $_POST["numero_credito"];
+					$_numero_credito  = $_POST["txt_numero_credito"];
+					
+					
+					
 					$_year            = $_POST["year"];
 						
 					$_fecha_documento_desde = $_POST["fecha_documento_desde"];
@@ -294,10 +297,10 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 						$where_2 = " AND subcategorias.id_subcategorias = '$_id_subcategorias' ";
 							
 					}
-					if ($_numero_credito != '--TODOS--' && $_numero_credito != '0')
+					if ($_numero_credito != "")
 					{
 					    
-						$where_4 = " AND documentos_legal.numero_credito_documentos_legal = '$_numero_credito' ";
+						$where_4 = " AND documentos_legal.numero_credito_documentos_legal LIKE '$_numero_credito' ";
 					}
 					else 
 					{

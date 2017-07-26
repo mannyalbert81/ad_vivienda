@@ -339,6 +339,10 @@ class DocumentosClienteProveedorController extends ControladorBase{
 		
 	public function buscar()
 	{
+		
+		
+		
+		
 		require_once 'config/global.php';
 	
 		session_start();
@@ -353,7 +357,7 @@ class DocumentosClienteProveedorController extends ControladorBase{
 	
 			if (!empty($resultPer))
 			{
-				if (isset ($_POST["categorias"]) && isset ($_POST["subcategorias"]) && isset($_POST["ruc_cliente_proveedor"]) && isset($_POST["nombre_cliente_proveedor"])  && isset($_POST["fecha_documento_desde"]) && isset($_POST["fecha_documento_hasta"])  && isset($_POST["fecha_subida_desde"])  && isset($_POST["fecha_subida_hasta"])   )
+				if (isset ($_POST["categorias"]) && isset ($_POST["subcategorias"]) && isset($_POST["txt_ruc_cliente_proveedor"]) && isset($_POST["txt_nombre_cliente_proveedor"])  && isset($_POST["fecha_documento_desde"]) && isset($_POST["fecha_documento_hasta"])  && isset($_POST["fecha_subida_desde"])  && isset($_POST["fecha_subida_hasta"])   )
 				
 				{
 								
@@ -383,7 +387,8 @@ class DocumentosClienteProveedorController extends ControladorBase{
 					
 					$_id_categorias = $_POST["categorias"];
 					$_id_subcategorias = $_POST["subcategorias"];
-					$_id_cliente_proveedor = $_POST["ruc_cliente_proveedor"];
+					$_id_cliente_proveedor = $_POST["txt_ruc_cliente_proveedor"];
+					$_nombre_cliente_proveedor = $_POST["txt_nombre_cliente_proveedor"];
 					$_year     = 	$_POST["year"];
 					$_id_agencias = $_POST["id_agencias"];
 					$_id_sucursales= $_POST["id_sucursales"];
@@ -409,12 +414,17 @@ class DocumentosClienteProveedorController extends ControladorBase{
 						$where_2 = " AND subcategorias.id_subcategorias = '$_id_subcategorias' ";
 					
 					}
-					if ($_id_cliente_proveedor > 0)
+					if ($_id_cliente_proveedor != "" )
 					{
 						
-						$where_4 = " AND cliente_proveedor.id_cliente_proveedor = '$_id_cliente_proveedor' ";
+						$where_4 = " AND cliente_proveedor.ruc_cliente_proveedor like  '$_id_cliente_proveedor' ";
 					}
 					
+					if ($_nombre_cliente_proveedor != "" )
+					{
+					
+						$where_3 = " AND cliente_proveedor.nombre_cliente_proveedor like  '$_nombre_cliente_proveedor' ";
+					}
 					
 					///lo nuevo maycol
 					if ($_id_agencias > 0)
@@ -430,10 +440,12 @@ class DocumentosClienteProveedorController extends ControladorBase{
 					{
 						
 						$where_7 = " AND documentos_legal.id_regionales = '$_id_regionales' ";
-					}if (strlen($_numero_comprobantes) > 0 && $_numero_comprobantes != "--TODOS--")
+					}
+					
+					if ($_numero_comprobantes != "")
 					{
 						
-						$where_10 = " AND comprobantes.numero_comprobantes = '$_numero_comprobantes' ";
+						$where_10 = " AND comprobantes.numero_comprobantes like '$_numero_comprobantes' ";
 					}
 					
 					///termina maycol
@@ -455,8 +467,13 @@ class DocumentosClienteProveedorController extends ControladorBase{
 					
 					$where_to  = $where . $where_1 . $where_2 . $where_3 . $where_4 . $where_5 . $where_6 . $where_7  . $where_8 . $where_9 . $where_10. $where_11. $where_12. $where_13;
 					
-	
+					
+					
 					$resultSet=$documentos->getCantidad("*", $tablas, $where_to);
+					
+					
+					
+					
 					$html="";
 					$cantidadResult=0;
 					$cantidadResult=(int)$resultSet[0]->total;

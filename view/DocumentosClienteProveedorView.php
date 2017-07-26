@@ -135,7 +135,7 @@
 		
 
 	<script>
-
+/*
 		$(document).ready(function(){
 
 		    $("#ruc_cliente_proveedor").change(function() {
@@ -155,12 +155,12 @@
 			    });
 
 		}); 
-
+*/
 	</script>
 		
 		
     <script>
-
+/*
 		$(document).ready(function(){
 
 		    $("#nombre_cliente_proveedor").change(function() {
@@ -182,7 +182,7 @@
 			    });
 
 		}); 
-
+*/
 	</script>		
 	
 	
@@ -261,8 +261,8 @@
 		//iniciar variables
 		 var doc_categorias=$("#categorias").val();
 		 var doc_subcategorias=$("#subcategorias").val();
-		 var doc_ruc_cli=$("#ruc_cliente_proveedor").val();
-		 var doc_nombre_cli=$("#nombre_cliente_proveedor").val();
+		 var doc_ruc_cli=$("#txt_ruc_cliente_proveedor").val();
+		 var doc_nombre_cli=$("#txt_nombre_cliente_proveedor").val();
 		 var doc_id_agencias=$("#id_agencias").val();
 		 var doc_id_sucursales=$("#id_sucursales").val();
 		 var doc_id_regionales=$("#id_regionales").val();
@@ -280,8 +280,8 @@
 		  var con_datos={
 				  categorias:doc_categorias,
 				  subcategorias:doc_subcategorias,
-				  ruc_cliente_proveedor:doc_ruc_cli,
-				  nombre_cliente_proveedor:doc_nombre_cli,
+				  txt_ruc_cliente_proveedor:doc_ruc_cli,
+				  txt_nombre_cliente_proveedor:doc_nombre_cli,
 				  id_agencias:doc_id_agencias,
 				  id_sucursales:doc_id_sucursales,
 				  id_regionales:doc_id_regionales,
@@ -306,6 +306,8 @@
 			$("#DocumentosClienteProv").html('<img src="view/images/ajax-loader.gif"> Cargando...');
 			},
 			success:function(data){
+
+				
 				$(".DocumentosClienteProv").html(data).fadeIn('slow');
 				$("#DocumentosClienteProv").html("");
 			}
@@ -315,6 +317,7 @@
 	</script>
 	
 	 <script>
+	 /*
 	$(document).ready(function(){
  	
 	$("#txt_nombre_cliente_proveedor").autocomplete({
@@ -348,11 +351,12 @@
 	});
 						
 	});
-		
+		*/
 					
     </script>
     
     <script>
+    /*
 	$(document).ready(function(){
  	
 	$("#txt_ruc_cliente_proveedor").autocomplete({
@@ -387,10 +391,11 @@
 	});
 	});
 		
-					
+		*/			
     </script>
        
         <script>
+        /*
 	       	$(document).ready(function(){ 	
 				$( "#numero_comprobantes" ).autocomplete({
       				source: "<?php echo $helper->url("DocumentosClienteProveedor","AutocompleteNumeroComprobantes"); ?>",
@@ -398,7 +403,7 @@
     			});
 	
     		});
-
+*/
      </script>
        
        <style>
@@ -446,7 +451,7 @@
 		      $sel_categorias = $_POST['categorias'];
 		      $sel_subcategorias = $_POST['subcategorias'];
 		      $sel_year = $_POST['year'];
-		      $sel_cliente_proveedor = $_POST['nombre_cliente_proveedor'];
+		      //$sel_cliente_proveedor = $_POST['nombre_cliente_proveedor'];
 		      $sel_agencias = $_POST['id_agencias'];
 		      $sel_sucursales = $_POST['id_sucursales'];
 		      $sel_regionales = $_POST['id_regionales'];
