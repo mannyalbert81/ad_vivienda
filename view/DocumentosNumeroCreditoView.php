@@ -180,7 +180,7 @@
 
 		    $fecha=$('#fecha_documento_hasta');
 		    if ($fecha[0].type!="date"){
-		    $fecha.datepicker();
+		    	$fecha.datepicker();
 		    }
 
 		    $fecha=$('#fecha_documento_desde');
