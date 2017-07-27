@@ -180,6 +180,7 @@
 
 		    $fecha=$('#fecha_documento_hasta');
 		    if ($fecha[0].type!="date"){
+		    	$fecha.attr('readonly','readonly');
 		    	$fecha.datepicker({
 		    		changeMonth: true,
 		    		changeYear: true,
@@ -189,6 +190,7 @@
 
 		    $fecha=$('#fecha_documento_desde');
 		    if ($fecha[0].type!="date"){
+		    	$fecha.attr('readonly','readonly');
 		    $fecha.datepicker({
 	    		changeMonth: true,
 	    		changeYear: true,

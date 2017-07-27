@@ -387,7 +387,25 @@
 		    	
 			  });
 
-			  
+		    $fecha=$('#fecha_documento_hasta');
+		    if ($fecha[0].type!="date"){
+		    	$fecha.attr('readonly','readonly');
+		    	$fecha.datepicker({
+		    		changeMonth: true,
+		    		changeYear: true,
+		    		yearRange: "1990:2017"
+		    		});
+		    }
+
+		    $fecha=$('#fecha_documento_desde');
+		    if ($fecha[0].type!="date"){
+		    $fecha.attr('readonly','readonly');
+		    $fecha.datepicker({
+	    		changeMonth: true,
+	    		changeYear: true,
+	    		yearRange: "1990:2017"
+	    		});
+		    }
 
 		}); 
 
