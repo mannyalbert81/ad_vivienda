@@ -1403,8 +1403,7 @@ class DocumentosController extends ControladorBase{
 						$where_11 = "  AND TO_CHAR(documentos_legal.fecha_documentos_legal,'YYYY') = '$_year' ";
 					}
 					if ($_id_soat > 0)
-					{
-							
+					{		
 						$where_12 = "  AND soat.id_soat = '$_id_soat' ";
 					}
 					$resul = $_year;
