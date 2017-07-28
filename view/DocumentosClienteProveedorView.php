@@ -204,6 +204,7 @@
 		    $fecha.datepicker({
 	    		changeMonth: true,
 	    		changeYear: true,
+	    		dateFormat: "yy-mm-dd",
 	    		yearRange: "1990:2017"
 	    		});
 		    }
@@ -214,6 +215,7 @@
 		    $fecha.datepicker({
 	    		changeMonth: true,
 	    		changeYear: true,
+	    		dateFormat: "yy-mm-dd",
 	    		yearRange: "1990:2017"
 	    		});
 		    }
