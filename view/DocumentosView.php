@@ -236,6 +236,7 @@
 			success:function(data){
 				$(".Documentos").html(data).fadeIn('slow');
 				$("#Documentos").html("");
+				resetfecha();
 			}
 		})
 	}
@@ -443,6 +444,12 @@
 	    		datafecha.val=0;
 	    	}
 	    	
+	    }
+
+	 function resetfecha()
+	    {
+	    	$('#fecha_documento_desde').val("");
+	    	$('#fecha_documento_hasta').val("");
 	    }
 	</script>
 		

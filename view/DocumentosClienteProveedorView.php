@@ -310,6 +310,8 @@
 				
 				$(".DocumentosClienteProv").html(data).fadeIn('slow');
 				$("#DocumentosClienteProv").html("");
+
+				resetfecha();
 			}
 		})
 	}
@@ -436,6 +438,12 @@
 	    		datafecha.val=0;
 	    	}
 	    	
+	    }
+
+	 function resetfecha()
+	    {
+	    	$('#fecha_documento_desde').val("");
+	    	$('#fecha_documento_hasta').val("");
 	    }
 	</script>
        
