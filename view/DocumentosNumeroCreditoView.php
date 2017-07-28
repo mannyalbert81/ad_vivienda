@@ -164,6 +164,7 @@
 			success:function(data){
 				$(".DocumentosNumeroCred").html(data).fadeIn('slow');
 				$("#DocumentosNumeroCred").html("");
+				resetfecha();
 			}
 		})
 	}
@@ -276,6 +277,13 @@
 	    	}
 	    	
 	    }
+
+    function resetfecha()
+    {
+    	$('#fecha_documento_desde').val("");
+    	$('#fecha_documento_hasta').val("");
+    }
+    
 	</script>
 	
        <style>
