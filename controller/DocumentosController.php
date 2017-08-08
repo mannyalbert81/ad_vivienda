@@ -1262,8 +1262,231 @@ class DocumentosController extends ControladorBase{
 	
 	}
 	
+
+	
+	public function InsertarDocumentos(){
+	
+		session_start();
+	
+		$contenido_xml = "";
+		$documentos_legal=new DocumentosLegalModel();
+		
+		$comprobantes=new ComprobantesModel();
+		$cliente_proveedor = new ClienteProveedorModel();
+		$carton_documentos = new CartonDocumentosModel();
+		$lecturas = new LecturasModel();
+		// Categorias
+		
+		$categorias=new CategoriasModel();
+		$resultCat=$categorias->getAll("nombre_categorias");
+		
+		
+		$subcategorias=new SubCategoriasModel();
+		$resultSub=$subcategorias->getAll("nombre_subcategorias");
+		
+		
+		
+		
+		if ($_FILES['archivo_pdf']['tmp_name']!=""  && $_FILES['archivo_xml']['tmp_name']!="" )
+		{
+			 
+			//para la foto
+			$directorio = $_SERVER['DOCUMENT_ROOT'].'/repositorio/';
+			$nombre_pdf = $_FILES['archivo_pdf']['name'];
+			$tipo_pdf = $_FILES['archivo_pdf']['type'];
+			$tamano_pdf = $_FILES['archivo_pdf']['size'];
+			 
+			
+		    $nombre_xml = $_FILES['archivo_xml']['name'];
+			$tipo_xml = $_FILES['archivo_xml']['type'];
+			$tamano_xml = $_FILES['archivo_xml']['size'];
+			
+			move_uploaded_file($_FILES['archivo_pdf']['tmp_name'],$directorio.$nombre_pdf);
+			move_uploaded_file($_FILES['archivo_xml']['tmp_name'],$directorio.$nombre_xml);
+			$data_pdf = file_get_contents($directorio.$nombre_pdf);
+			$data_xml = file_get_contents($directorio.$nombre_xml);
+			
+			
+			
+			
+			///primero vemos si existe
+			
+			$_nombre_cliente = "";
+			$_identificacion_cliente = "";
+			$_nombre_referencial = "";
+			$_numero_credito = "";
+			$_tipo_comprobante = "";
+			$_numero_comprobante = "";
+			$_detalle_comprobante = "";
+			$_fecha = "";
+			$_regionales = "";
+			$_sucursales = "";
+			$_agencias = "";
+			$_numero_carton = "";
+			$_numero_garantia = "";		
+			
+			
+			
+			//echo $data_xml;
+			
+			//$xml = simplexml_load_file();
+			
+			$xmlDoc = new DOMDocument();
+			$xmlDoc->load( $directorio.$nombre_xml );
+			
+			$searchNode = $xmlDoc->getElementsByTagName( "field" );
+			foreach( $searchNode as $searchNode )
+			{
+				$Nombre = $searchNode->getAttribute('name');
+				$Valor = $searchNode->getAttribute('value');
+	
+				echo  $Nombre . ": " . $Valor .  " |";
+				
+				if ($Nombre = 'NOMBRE DEL CLIENTE')
+				{
+					$_nombre_cliente = $Valor;	
+				
+				}
+				if ($Nombre = 'IDENTIFICACION DEL CLIENTE')
+				{
+					$_identificacion_cliente = $Valor;
+				
+				}
+				
+				if ($Nombre = 'NOMBRE REFERENCIAL')
+				{
+					$_nombre_referencial = $Valor;
+				
+				}
+				
+				if ($Nombre = 'NUMERO DE CREDITO')
+				{
+					$_numero_credito= $Valor;
+				
+				}
+				
+				if ($Nombre = 'NUMERO DE CREDITO')
+				{
+					$_numero_credito= $Valor;
+				
+				}
+				
+				if ($Nombre = 'TIPO DE COMPROBANTE')
+				{
+					$_tipo_comprobante= $Valor;
+				
+				}
+				
+				if ($Nombre = 'NUMERO DE COMPROBANTE')
+				{
+					$_numero_comprobante= $Valor;
+				
+				}
+				
+				if ($Nombre = 'DETALLE')
+				{
+					$_detalle_comprobante= $Valor;
+				
+				}
+				
+				if ($Nombre = 'DETALLE')
+				{
+					$_detalle_comprobante= $Valor;
+				
+				}
+				
+				if ($Nombre = 'FECHA')
+				{
+					$_fecha= $Valor;
+				
+				}
+				
+				if ($Nombre = 'REGIONALES')
+				{
+					$_regionales= $Valor;
+				
+				}
+				
+				if ($Nombre = 'SUCURSALES')
+				{
+					$_sucursales= $Valor;
+				
+				}
+				
+				if ($Nombre = 'AGENCIAS')
+				{
+					$_agencias= $Valor;
+				
+				}
+				
+				if ($Nombre = 'NUMERO DE CARPETA')
+				{
+					$_numero_carton  = $Valor;
+				
+				}
+				
+				if ($Nombre = 'NUMERO DE CARPETA')
+				{
+					$_numero_carton  = $Valor;
+				
+				}
+				
+				if ($Nombre = 'NUMERO DE CARPETA')
+				{
+					$_numero_garantia  = $Valor;
+				
+				}
+			
+			}
+		
+			
+			$contenido_xml = array('_nombre_cliente'=>$_nombre_cliente, '_identificacion_cliente'=>$_identificacion_cliente, 
+					'_nombre_referencial'=>$_nombre_referencial, '_numero_credito'=>$_numero_credito,
+					'_tipo_comprobante' =>$_tipo_comprobante, '_numero_comprobante' => $_numero_comprobante,
+					'_detalle_comprobante' => $_detalle_comprobante, '_fecha' => $_fecha,
+					'_regionales' => $_regionales, '_sucursales' => $_sucursales, '_agencias' => $_agencias,
+					'_numero_carton' => $_numero_carton, '_numero_garantia' => $_numero_garantia  
+					
+			);
+			/*
+			// temporal al directorio definitivo
+			move_uploaded_file($_FILES['archivo_foto_productos']['tmp_name'],$directorio.$nombre);
+			$data = file_get_contents($directorio.$nombre);
+			$archivo_foto_productos= pg_escape_bytea($data);
+			$_descripcion_foto_productos = $_POST["descripcion_foto_productos"];
+			 
+			 
+			$funcion = "ins_fc_foto_productos";
+			$parametros = " '$archivo_foto_productos' ,'$_descripcion_foto_productos' , '$_id_usuarios'";
+			$fc_foto_productos->setFuncion($funcion);
+			$fc_foto_productos->setParametros($parametros);
+			$resultado=$fc_foto_productos->Insert();
+			*/ 
+		}else
+		{
+		
+			///no hace nada
+		}
+		
+		
+		$this->view("InsertarDocumentos",array(
+				"contenidoXML"=>$contenido_xml, "resultCat"=>$resultCat, "resultSub"=>$resultSub
+		));
 	
 	
+	
+	}
+	
+	
+	
+	public function InsertaCliente($_nombre_cliente, $_identificacion_cliente)
+	{
+		$funcion = "ins_cliente_proveedor";
+		$parametros = " '$_identificacion_cliente' ,'$_nombre_cliente' ";
+		$usuarios->setFuncion($funcion);
+		$usuarios->setParametros($parametros);
+		$resultado=$usuarios->Insert();
+	}
 
 	public function ActualizarCartones(){
 	
