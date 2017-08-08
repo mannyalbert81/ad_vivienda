@@ -1610,6 +1610,23 @@ class DocumentosController extends ControladorBase{
 					}
 					
 					
+					if($_fecha_documento_desde != "" && $_fecha_documento_hasta == ""){
+						
+						$_fecha_documento_hasta='2018/01/01';
+						$where_8 = " AND DATE(documentos_legal.fecha_documentos_legal) BETWEEN '$_fecha_documento_desde' AND '$_fecha_documento_hasta'  ";
+						
+					}
+					
+					
+					if($_fecha_documento_desde == "" && $_fecha_documento_hasta != ""){
+					
+						$_fecha_documento_desde='1800/01/01';
+						$where_8 = " AND DATE(documentos_legal.fecha_documentos_legal) BETWEEN '$_fecha_documento_desde' AND '$_fecha_documento_hasta'  ";
+					
+					}
+					
+					
+					
 		
 					if ($_fecha_subida_desde != "" && $_fecha_subida_hasta != "")
 					{
@@ -1626,8 +1643,7 @@ class DocumentosController extends ControladorBase{
 						$where_11 = "  AND TO_CHAR(documentos_legal.fecha_documentos_legal,'YYYY') = '$_year' ";
 					}
 					if ($_id_soat > 0)
-					{
-							
+					{		
 						$where_12 = "  AND soat.id_soat = '$_id_soat' ";
 					}
 					$resul = $_year;

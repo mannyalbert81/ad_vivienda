@@ -148,6 +148,11 @@
 			}
 	</script>
 	
+	
+	 
+	
+	
+	
  <script type="text/javascript">
 	$(document).ready(function(){
 
@@ -160,14 +165,16 @@
 	    	{
 		    				
 			load_Documentos(1);
+
+
 			
 	    	}else
 	    	{
 	    		datafecha.val=0;
 	    	}
 	    	
-	    	
-			
+
+	
 			});
 
 		load_nombre_cliente();
@@ -229,6 +236,7 @@
 			success:function(data){
 				$(".Documentos").html(data).fadeIn('slow');
 				$("#Documentos").html("");
+				resetfecha();
 			}
 		})
 	}
@@ -380,7 +388,27 @@
 		    	
 			  });
 
-			  
+		    $fecha=$('#fecha_documento_hasta');
+		    if ($fecha[0].type!="date"){
+		    	$fecha.attr('readonly','readonly');
+		    	$fecha.datepicker({
+		    		changeMonth: true,
+		    		changeYear: true,
+		    		dateFormat: "yy-mm-dd",
+		    		yearRange: "1990:2017"
+		    		});
+		    }
+
+		    $fecha=$('#fecha_documento_desde');
+		    if ($fecha[0].type!="date"){
+		    $fecha.attr('readonly','readonly');
+		    $fecha.datepicker({
+	    		changeMonth: true,
+	    		changeYear: true,
+	    		dateFormat: "yy-mm-dd",
+	    		yearRange: "1990:2017"
+	    		});
+		    }
 
 		}); 
 
@@ -417,9 +445,47 @@
 	    	}
 	    	
 	    }
+
+	 function resetfecha()
+	    {
+	    	$('#fecha_documento_desde').val("");
+	    	$('#fecha_documento_hasta').val("");
+	    }
 	</script>
 		
 
+   <script type="text/javascript">
+      
+/*
+      function validar(obj) {
+
+  		var startDate = new Date($('#fecha_documento_desde').val());
+	    var endDate = new Date($('#fecha_documento_hasta').val());
+	   
+	    
+		if(startDate == /^\d{2}\/\d{2}\/\d{4}$/){
+				
+			
+		}else {
+			 $("#fecha_documento_desde").val("");
+		        
+		        alert("Formato Fecha no Valido Ingrese (DD/MM/YYYY)");
+
+	     }
+		
+		if(endDate == /^\d{2}\/\d{2}\/\d{4}$/){
+			
+		}else {
+			 $("#fecha_documento_desde").val("");
+		        
+		        alert("Formato Fecha no Valido Ingrese (DD/MM/YYYY)");
+
+	     }
+      
+      }
+
+      */
+      </script>
 	
 	<script>
 
@@ -480,6 +546,15 @@
 		}); 
 
 	</script>
+       
+      
+      
+      
+  
+
+
+    
+       
        
     <script type="text/javascript">
     $(document).ready(function(){
@@ -747,7 +822,7 @@
 		   		</td>
 		   		<td>
 		   			<?php if ($sel_fecha_subida_desde == "" ) { ?>	
-				   		<input type="date" data-val="0" name="fecha_documento_hasta"  id="fecha_documento_hasta"  class="form-control"  />
+				   		<input type="date" data-val="0" name="fecha_documento_hasta"  id="fecha_documento_hasta"  class="form-control" />
 					 <?php } else {?>	
 					 	<input type="date" data-val="0" value="<?php echo $sel_fecha_documento_hasta ?>"  name="fecha_documento_hasta" id="fecha_documento_hasta"   class="form-control"   />
 					 <?php }?>        

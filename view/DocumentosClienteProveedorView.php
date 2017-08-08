@@ -198,6 +198,28 @@
 		    	return validarFecha();
 		    });
 
+		    $fecha=$('#fecha_documento_hasta');
+		    if ($fecha[0].type!="date"){
+		    	$fecha.attr('readonly','readonly');
+		    $fecha.datepicker({
+	    		changeMonth: true,
+	    		changeYear: true,
+	    		dateFormat: "yy-mm-dd",
+	    		yearRange: "1990:2017"
+	    		});
+		    }
+
+		    $fecha=$('#fecha_documento_desde');
+		    if ($fecha[0].type!="date"){
+		    	$fecha.attr('readonly','readonly');
+		    $fecha.datepicker({
+	    		changeMonth: true,
+	    		changeYear: true,
+	    		dateFormat: "yy-mm-dd",
+	    		yearRange: "1990:2017"
+	    		});
+		    }
+
 		}); 
 
 	</script>
@@ -288,6 +310,8 @@
 				
 				$(".DocumentosClienteProv").html(data).fadeIn('slow');
 				$("#DocumentosClienteProv").html("");
+
+				resetfecha();
 			}
 		})
 	}
@@ -414,6 +438,12 @@
 	    		datafecha.val=0;
 	    	}
 	    	
+	    }
+
+	 function resetfecha()
+	    {
+	    	$('#fecha_documento_desde').val("");
+	    	$('#fecha_documento_hasta').val("");
 	    }
 	</script>
        

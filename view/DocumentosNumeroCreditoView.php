@@ -164,6 +164,7 @@
 			success:function(data){
 				$(".DocumentosNumeroCred").html(data).fadeIn('slow');
 				$("#DocumentosNumeroCred").html("");
+				resetfecha();
 			}
 		})
 	}
@@ -177,6 +178,28 @@
 		    $("#fecha_documento_hasta").change(function() {
 		    	return validarFecha();
 			  });
+
+		    $fecha=$('#fecha_documento_hasta');
+		    if ($fecha[0].type!="date"){
+		    	$fecha.attr('readonly','readonly');
+		    	$fecha.datepicker({
+		    		changeMonth: true,
+		    		changeYear: true,
+		    		dateFormat: "yy-mm-dd",
+		    		yearRange: "1990:2017"
+		    		});
+		    }
+
+		    $fecha=$('#fecha_documento_desde');
+		    if ($fecha[0].type!="date"){
+		    	$fecha.attr('readonly','readonly');
+		    $fecha.datepicker({
+	    		changeMonth: true,
+	    		changeYear: true,
+	    		dateFormat: "yy-mm-dd",
+	    		yearRange: "1990:2017"
+	    		});
+		    }
 		}); 
 	</script>
 		
@@ -256,6 +279,13 @@
 	    	}
 	    	
 	    }
+
+    function resetfecha()
+    {
+    	$('#fecha_documento_desde').val("");
+    	$('#fecha_documento_hasta').val("");
+    }
+    
 	</script>
 	
        <style>
