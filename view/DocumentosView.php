@@ -868,7 +868,10 @@
 		   		</td>
 		
 		   		<td>
-		   			<select name="carton_documentos" id="carton_documentos"  class="form-control">
+		   		
+		   		 <input type="text" class="form-control" id="carton_documentos" name="carton_documentos" value=""  placeholder="Ingrese Número Carpeta">
+                 		 
+		   			<!-- <select name="carton_documentos" id="carton_documentos"  class="form-control">
 							<option value="0"  > --TODOS--</option>
 					      <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
 							 <?php foreach($resultCar as $resCar) {?>
@@ -893,6 +896,8 @@
 					</select>
 					<?php unset($resultCar);
 						  unset($resCar); ?>
+						  
+						   -->
 		   		</td>
 		
 		

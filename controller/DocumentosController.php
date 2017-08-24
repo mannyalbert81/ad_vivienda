@@ -1588,10 +1588,10 @@ class DocumentosController extends ControladorBase{
 					
 						$where_5 = " AND tipo_documentos.nombre_tipo_documentos like '$_id_tipo_documentos' ";
 					}
-					if ($_id_carton_documentos > 0)
+					if ($_id_carton_documentos != "" )
 					{
 							
-						$where_6 = " AND carton_documentos.id_carton_documentos = '$_id_carton_documentos' ";
+						$where_6 = " AND carton_documentos.numero_carton_documentos like '$_id_carton_documentos' ";
 					}
 					
 					if ($_numero_poliza > 0)
