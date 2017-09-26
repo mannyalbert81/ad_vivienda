@@ -1,9 +1,17 @@
+  <?php include("view/modulos/head.php"); ?>
+
 <!DOCTYPE HTML>
 <html lang="es">
      <head>
         <meta charset="utf-8"/>
         <title>Roles - aDocument 2015</title>
-   
+    <link rel="stylesheet" href="view/css/bootstrap.css">
+          <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.7.2.custom.css" />
+          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>  
+          <script src="view/css/jquery.js"></script>
+		  <script src="view/css/bootstrapValidator.min.js"></script>
+		  <script src="view/css/ValidarRoles.js"></script>
       
         <style>
             input{
@@ -19,60 +27,117 @@
     </head>
       <body style="background-color: #F6FADE">
     
-       <?php include("view/modulos/head.php"); ?>
+     
        
        <?php include("view/modulos/menu.php"); ?>
   
     <div class="container">
       <div class="row" style="background-color: #FAFAFA;">
       
-      <form action="<?php echo $helper->url("Roles","InsertaRoles"); ?>" method="post" class="col-lg-5">
-            <h4 style="color:#ec971f;">Insertar Roles</h4>
-            <hr/>
+      <form id="form-Roles" action="<?php echo $helper->url("Roles","InsertaRoles"); ?>" method="post" class="col-lg-5">
+            
             	
 		   		
             
              <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
 	        
-	            	Nombre Rol: <input type="text" name="nombre_rol" value="<?php echo $resEdit->nombre_rol; ?>" class="form-control"/>
+	         <div class="panel panel-info">
+	         <div class="panel-heading">
+	         <h4><i class='glyphicon glyphicon-edit'></i> Editar Roles</h4>
+	         </div>
+	         <div class="panel-body">
+	        
+	        <div class="row">
+		    <div class="col-xs-12 col-md-12">
+		    <div class="form-group">
+                                  <label for="nombre_rol" class="control-label">Nombre Rol:</label>
+                                  <input type="text" class="form-control" id="nombre_rol" name="nombre_rol" value="<?php echo $resEdit->nombre_rol; ?>"  placeholder="Nombre Rol">
+                                  <span class="help-block"></span>
+            </div>
+		    </div>
+		     </div>
+	        
+	               
+		            
+		     <div class="row">
+		    <div class="col-xs-12 col-md-12 col-lg-12" style="text-align: center; margin-top:40px">
+		    <div class="form-group">
+                                 <button type="submit" id="Guardar" name="Guardar" class="btn btn-success">Guardar</button>
+            </div>
+		    </div>
+		    </div>
 		            
 		            
+		      </div>
+		      </div>      
             
 		     <?php } } else {?>
+		     
+		       <div class="panel panel-info">
+	         <div class="panel-heading">
+	         <h4><i class='glyphicon glyphicon-edit'></i> Insertar Roles</h4>
+	         </div>
+	         <div class="panel-body">
 		    
-		            Nombre Rol: <input type="text" name="nombre_rol" value="" class="form-control"/>
-		            
+		     <div class="row">
+		    <div class="col-xs-12 col-md-12">
+		    <div class="form-group">
+                                  <label for="nombre_rol" class="control-label">Nombre Rol:</label>
+                                  <input type="text" class="form-control" id="nombre_rol" name="nombre_rol" value=""  placeholder="Nombre Rol">
+                                  <span class="help-block"></span>
+            </div>
+		    </div>
+		     </div>
+		       
+		    <div class="row">
+		    <div class="col-xs-12 col-md-12 col-lg-12" style="text-align: center; margin-top:40px">
+		    <div class="form-group">
+                                 <button type="submit" id="Guardar" name="Guardar" class="btn btn-success">Guardar</button>
+            </div>
+		    </div>
+		    </div>
+		       
+		       
+		    
+		       
+		       </div>
+		      </div>       
 		     <?php } ?>
 		        
-           <input type="submit" value="Guardar" class="btn btn-success"/>
+          
           </form>
        
        
         <div class="col-lg-7">
-            <h4 style="color:#ec971f;">Roles de Usuario</h4>
-            
-        </div>
-        <section class="col-lg-7 usuario" style="height:400px;overflow-y:scroll;">
+         <div class="panel panel-info">
+	         <div class="panel-heading">
+	         <h4><i class='glyphicon glyphicon-edit'></i> Roles de Usuario</h4>
+	         </div>
+	         </div>
+		 </div>
+           <div class="panel-body">
+        <section class="col-lg-7" style="height:400px;overflow-y:scroll;">
         <table class="table table-hover">
-	         <tr>
-	    		<th>Id</th>
-	    		<th>Nombre Rol</th>
-	    		<th></th>
-	    		<th></th>
+	         <tr class="info">
+	    		<th style="text-align: left;  font-size: 13px;">Id</th>
+	    		<th style="text-align: left;  font-size: 13px;">Nombre Rol</th>
+	    		<th style="text-align: left;  font-size: 13px;"></th>
+	    		<th style="text-align: left;  font-size: 13px;"></th>
+	    	
 	  		</tr>
             
 	            <?php foreach($resultSet as $res) {?>
 	        		<tr>
-	                   <td style="color:#000000;font-size:80%;"> <?php echo $res->id_rol; ?>  </td>
-		               <td style="color:#000000;font-size:80%;"> <?php echo $res->nombre_rol; ?>     </td> 
+	                   <td style="font-size: 11px;"> <?php echo $res->id_rol; ?>  </td>
+		               <td style="font-size: 11px;"> <?php echo $res->nombre_rol; ?>     </td> 
 		               
-		               <td>
+		               <td style="font-size: 11px;">
 			           		<div class="right">
 			                    <a href="<?php echo $helper->url("Roles","index"); ?>&id_rol=<?php echo $res->id_rol; ?>" class="btn btn-warning" style="font-size:65%;"><i class='glyphicon glyphicon-edit'></i></a>
 			                </div>
 			            
 			             </td>
-			             <td>   
+			             <td style="font-size: 11px;">   
 			                	<div class="right">
 			                    <a href="<?php echo $helper->url("Roles","borrarId"); ?>&id_rol=<?php echo $res->id_rol; ?>" class="btn btn-danger" style="font-size:65%;"><i class="glyphicon glyphicon-trash"></i></a>
 			                </div>
@@ -81,15 +146,11 @@
 		    		</tr>
 		        <?php } ?>
             
-            <?php 
             
-            //echo "<script type='text/javascript'> alert('Hola')  ;</script>";
-            
-            ?>
             
        	</table>     
       </section>
-       
+        </div>
   </div></div>
        
         <footer class="col-lg-12">

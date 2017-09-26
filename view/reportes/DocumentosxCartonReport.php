@@ -7,7 +7,7 @@ $pdf = new PDF();
 if ($resultRep !="" ) {
 
 	$pdf->Carton = "No.  $Carton";
-	$pdf->Titulo  = "Reporte de Documentos por Cartón";
+	$pdf->Titulo  = "Reporte de Documentos por Carpeta";
 	
 	$pdf->AddPage('L');
 	
@@ -15,11 +15,6 @@ if ($resultRep !="" ) {
 	 
 	
 	
-	/*
-	$pdf->Cell(0,30, "No.  $Carton",0,0,'C');
-	$pdf->SetFont('Arial','B',14);
-	$pdf->Cell(0,20,utf8_decode("Reporte de Documentos por Cartón"),0,0,'R');
-	*/
 	
 	
 

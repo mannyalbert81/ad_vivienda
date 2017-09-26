@@ -104,21 +104,26 @@
 	</script>
 		
 	
-     <script>
-			function myFunction() {
-			    var x = document.getElementById("categorias").value;
-                    var subcategorias = document.getElementById("subcategorias");
-                    $subcategorias.Empty();
-				    document.getElementById("demo").innerHTML = "You selected: " + x;
-			}
-	</script>
+    
 		
 	<script type="text/javascript">
 	$(document).ready(function(){
 		
 		$("#btnBuscar").click(function(){
+
+		var datafecha= $("#fecha_documento_hasta").data();
 			
-			load_DocumentosNumeroCred(1);
+	    	if(datafecha.val==0)
+	    	{
+		    				
+	    		load_DocumentosNumeroCred(1);
+			
+	    	}else
+	    	{
+	    		datafecha.val=0;
+	    	}
+			
+			
 			});
 	});
 	
@@ -128,7 +133,7 @@
 		//iniciar variables
 		 var doc_categorias=$("#categorias").val();
 		 var doc_subcategorias=$("#subcategorias").val();
-		 var doc_numero_cred=$("#numero_credito").val();
+		 var doc_numero_cred=$("#txt_numero_credito").val();
 		 var doc_fecha_doc_desde=$("#fecha_documento_desde").val();
 		 var doc_fecha_doc_hasta=$("#fecha_documento_hasta").val();
 		 var doc_fecha_subida_desde=$("#fecha_subida_desde").val();
@@ -138,7 +143,7 @@
 		  var con_datos={
 				  categorias:doc_categorias,
 				  subcategorias:doc_subcategorias,
-				  numero_credito:doc_numero_cred,
+				  txt_numero_credito:doc_numero_cred,
 				  fecha_documento_desde:doc_fecha_doc_desde,
 				  fecha_documento_hasta:doc_fecha_doc_hasta,
 				  fecha_subida_desde:doc_fecha_subida_desde,
@@ -159,63 +164,42 @@
 			success:function(data){
 				$(".DocumentosNumeroCred").html(data).fadeIn('slow');
 				$("#DocumentosNumeroCred").html("");
+				resetfecha();
 			}
 		})
 	}
 	
 	</script>
     
-     <script>
-	$(document).ready(function(){
- 	
-	$("#txt_numero_credito").autocomplete({
-		source: "<?php echo $helper->url("DocumentosNumeroCredito","AutocompleteNumeroCredito"); ?>",
-		minLength: 1,
-		select: function( event, data ) 
-			{
-			 var identificador = data.item.id;
-			 var valor = data.item.value;
-			 
-			 $("#txt_numero_credito").val(valor);
-			 $("#numero_credito").val(identificador);
-			 
-			}
-	 });
-		
-	$("#txt_numero_credito").focusout(function(){
-		if($("#txt_numero_credito").val()==''||$("#txt_numero_credito").val()==null)
-		{
-			 $("#txt_numero_credito").val('');
-			 $("#numero_credito").val(0);
-			 
-		}
-						
-	});
-						
-	});
-		
-					
-    </script>
+   
     
     <script>
 		$(document).ready(function(){
 		    $("#fecha_documento_hasta").change(function() {
-		    	var startDate = new Date($('#fecha_documento_desde').val());
-		    	var endDate = new Date($('#fecha_documento_hasta').val());
-		    	if (startDate > endDate){
-		    		$("#fecha_documento_hasta").val("");
-		    		alert('Fecha documento DESDE mayor a  fecha FINAL');
-		    		die();
-		    		
-		    	}
-		    	var fecha_actual = new Date();
-		    	if (endDate>fecha_actual){
-		    		$("#fecha_documento_hasta").val("");
-		    		alert('Fecha documento mayor a fecha actual');
-		    		die();
-		    	}
-		    	
+		    	return validarFecha();
 			  });
+
+		    $fecha=$('#fecha_documento_hasta');
+		    if ($fecha[0].type!="date"){
+		    	$fecha.attr('readonly','readonly');
+		    	$fecha.datepicker({
+		    		changeMonth: true,
+		    		changeYear: true,
+		    		dateFormat: "yy-mm-dd",
+		    		yearRange: "1990:2017"
+		    		});
+		    }
+
+		    $fecha=$('#fecha_documento_desde');
+		    if ($fecha[0].type!="date"){
+		    	$fecha.attr('readonly','readonly');
+		    $fecha.datepicker({
+	    		changeMonth: true,
+	    		changeYear: true,
+	    		dateFormat: "yy-mm-dd",
+	    		yearRange: "1990:2017"
+	    		});
+		    }
 		}); 
 	</script>
 		
@@ -263,6 +247,47 @@
 			  });
 		}); 
 	</script>
+	
+	<script type="text/javascript">
+	function validarFecha()
+	{
+		    var startDate = new Date($('#fecha_documento_desde').val());
+	    	var endDate = new Date($('#fecha_documento_hasta').val());
+			var datafecha= $("#fecha_documento_hasta").data();
+
+			if (startDate > endDate){
+
+	    		$("#fecha_documento_hasta").val("");
+	    		datafecha.val=1;
+	    		alert('Fecha documento DESDE mayor a  fecha FINAL');	    		
+	    	}else
+	    	{
+	    		datafecha.val=0;
+	    	}
+
+	    	var fecha_actual = new Date();
+	    	
+	    	if (endDate > fecha_actual){
+
+	    		$("#fecha_documento_hasta").val("");
+	    		datafecha.val=1;
+	    		alert('Fecha documento mayor a fecha actual');
+	    		
+	    	}else
+	    	{
+	    		datafecha.val=0;
+	    	}
+	    	
+	    }
+
+    function resetfecha()
+    {
+    	$('#fecha_documento_desde').val("");
+    	$('#fecha_documento_hasta').val("");
+    }
+    
+	</script>
+	
        <style>
             input{
                 margin-top:5px;
@@ -278,7 +303,7 @@
         
                
     </head>
-    <body oncontextmenu="return false" onkeydown="return false"  style="background-color: #F6FADE">
+    <body >
  
  
        <?php include("view/modulos/head.php"); ?>
@@ -294,6 +319,12 @@
 		   $sel_year = 0;
 		   $sel_numero_poliza=0;
 		   
+		   $sel_numero_credito = "";
+		   
+		   $sel_fecha_documento_desde = "";
+		   $sel_fecha_documento_hasta = "";
+		   
+		   
 		   $sel_numero_credito = 0;
 		   
 		   if($_SERVER['REQUEST_METHOD']=='POST' )
@@ -301,8 +332,18 @@
 		      $sel_categorias = $_POST['categorias'];
 		      $sel_subcategorias = $_POST['subcategorias'];
 		      $sel_year = $_POST['year'];
-		      $sel_numero_credito = $_POST['numero_credito'];
+		      //$sel_numero_credito = $_POST['numero_credito'];
 		     
+		   }
+		   else 
+		   {
+			   	$sel_categorias = $_SESSION['categorias'];
+			   	$sel_subcategorias =  $_SESSION['subcategorias'];
+			   	$sel_numero_credito =  $_SESSION['numero_credito'];
+			   	$sel_fecha_documento_hasta = $_SESSION['fecha_documento_hasta'];
+			   	$sel_fecha_documento_desde =  $_SESSION['fecha_documento_desde'];
+			   	$sel_year = $_SESSION['year'];
+			   	
 		   }
 		   
 		?>
@@ -422,7 +463,7 @@
                  		<input type="hidden"  id="numero_credito" name="numero_credito" value="<?php echo  $res->numero_credito_documentos_legal; ?>">	
 					     <?php } } else {?>
 					     
-					     <input type="text" class="form-control" id="txt_numero_credito" name="txt_numero_credito" value=""  placeholder="Ingrese Numero Credito">
+					     <input type="text" class="form-control" id="txt_numero_credito" name="txt_numero_credito" value=""  placeholder="Ingrese Numero Credito"/>
                  		 <input type="hidden"  id="numero_credito" name="numero_credito" value="0">									
 						 <?php } ?>	  
 					
@@ -445,7 +486,7 @@
 		   			
 		   		</td>
 		   		<td>
-		   			<input type="date" name="fecha_documento_hasta"  id="fecha_documento_hasta"  class="form-control"  />
+		   			<input type="date" data-val="0" name="fecha_documento_hasta"  id="fecha_documento_hasta"  class="form-control"  />
 		   		</td>
 		   		
 		   		<td>  	

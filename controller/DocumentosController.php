@@ -479,7 +479,7 @@ class DocumentosController extends ControladorBase{
 										
 						
 					$criterio = $_POST["criterio_busqueda"];
-					$contenido = $_POST["contenido_busqueda"];
+					$contenido = strtoupper($_POST["contenido_busqueda"]);
 					
 					if ($contenido !="")
 					{
@@ -551,7 +551,7 @@ class DocumentosController extends ControladorBase{
 									break;
 								case 13:
 									//Tipo Documento
-									$where_13 = " AND detalle_comprobantes.nombre_detalle_comprobantes LIKE '$contenido' ";
+									$where_13 = " AND detalle_documentos.nombre_detalle_documentos LIKE '$contenido' ";
 									break;
 								case 14:
 									//Tipo Documento
@@ -606,7 +606,7 @@ class DocumentosController extends ControladorBase{
 								$html.='<span class="form-control"><strong>Registros: </strong>'.$cantidadResult.'</span>';
 								$html.='<input type="hidden" value="'.$cantidadResult.'" id="total_query" name="total_query"/>' ;
 								$html.='</div><br>';
-								$html.='<section style="height:515px;  overflow-y:auto;">';
+								$html.='<section style="height:700px;  overflow-y:auto;">';
 								$html.='<table class="table table-hover">';
 								$html.='<thead>';
 								$html.='<tr class="info">';
@@ -1236,6 +1236,21 @@ class DocumentosController extends ControladorBase{
 	
 	
 		}
+		
+		//actualizar corregido
+		
+		if(isset($_POST['btnGuardar']))
+		{
+			$_id_documentos_legal = rtrim($_POST["id_documentos_legal"]);
+			
+			$colval = "corregido_documentos_legal = TRUE ";
+			$tabla  = "documentos_legal";
+			$where  = "id_documentos_legal = '$_id_documentos_legal'  ";
+		
+			$rs_corregido = $documentos_legal->UpdateBy($colval ,$tabla , $where);
+						
+		}
+		
 	
 	}
 	}
@@ -1247,8 +1262,231 @@ class DocumentosController extends ControladorBase{
 	
 	}
 	
+
+	
+	public function InsertarDocumentos(){
+	
+		session_start();
+	
+		$contenido_xml = "";
+		$documentos_legal=new DocumentosLegalModel();
+		
+		$comprobantes=new ComprobantesModel();
+		$cliente_proveedor = new ClienteProveedorModel();
+		$carton_documentos = new CartonDocumentosModel();
+		$lecturas = new LecturasModel();
+		// Categorias
+		
+		$categorias=new CategoriasModel();
+		$resultCat=$categorias->getAll("nombre_categorias");
+		
+		
+		$subcategorias=new SubCategoriasModel();
+		$resultSub=$subcategorias->getAll("nombre_subcategorias");
+		
+		
+		
+		
+		if ($_FILES['archivo_pdf']['tmp_name']!=""  && $_FILES['archivo_xml']['tmp_name']!="" )
+		{
+			 
+			//para la foto
+			$directorio = $_SERVER['DOCUMENT_ROOT'].'/repositorio/';
+			$nombre_pdf = $_FILES['archivo_pdf']['name'];
+			$tipo_pdf = $_FILES['archivo_pdf']['type'];
+			$tamano_pdf = $_FILES['archivo_pdf']['size'];
+			 
+			
+		    $nombre_xml = $_FILES['archivo_xml']['name'];
+			$tipo_xml = $_FILES['archivo_xml']['type'];
+			$tamano_xml = $_FILES['archivo_xml']['size'];
+			
+			move_uploaded_file($_FILES['archivo_pdf']['tmp_name'],$directorio.$nombre_pdf);
+			move_uploaded_file($_FILES['archivo_xml']['tmp_name'],$directorio.$nombre_xml);
+			$data_pdf = file_get_contents($directorio.$nombre_pdf);
+			$data_xml = file_get_contents($directorio.$nombre_xml);
+			
+			
+			
+			
+			///primero vemos si existe
+			
+			$_nombre_cliente = "";
+			$_identificacion_cliente = "";
+			$_nombre_referencial = "";
+			$_numero_credito = "";
+			$_tipo_comprobante = "";
+			$_numero_comprobante = "";
+			$_detalle_comprobante = "";
+			$_fecha = "";
+			$_regionales = "";
+			$_sucursales = "";
+			$_agencias = "";
+			$_numero_carton = "";
+			$_numero_garantia = "";		
+			
+			
+			
+			//echo $data_xml;
+			
+			//$xml = simplexml_load_file();
+			
+			$xmlDoc = new DOMDocument();
+			$xmlDoc->load( $directorio.$nombre_xml );
+			
+			$searchNode = $xmlDoc->getElementsByTagName( "field" );
+			foreach( $searchNode as $searchNode )
+			{
+				$Nombre = $searchNode->getAttribute('name');
+				$Valor = $searchNode->getAttribute('value');
+	
+				echo  $Nombre . ": " . $Valor .  " |";
+				
+				if ($Nombre = 'NOMBRE DEL CLIENTE')
+				{
+					$_nombre_cliente = $Valor;	
+				
+				}
+				if ($Nombre = 'IDENTIFICACION DEL CLIENTE')
+				{
+					$_identificacion_cliente = $Valor;
+				
+				}
+				
+				if ($Nombre = 'NOMBRE REFERENCIAL')
+				{
+					$_nombre_referencial = $Valor;
+				
+				}
+				
+				if ($Nombre = 'NUMERO DE CREDITO')
+				{
+					$_numero_credito= $Valor;
+				
+				}
+				
+				if ($Nombre = 'NUMERO DE CREDITO')
+				{
+					$_numero_credito= $Valor;
+				
+				}
+				
+				if ($Nombre = 'TIPO DE COMPROBANTE')
+				{
+					$_tipo_comprobante= $Valor;
+				
+				}
+				
+				if ($Nombre = 'NUMERO DE COMPROBANTE')
+				{
+					$_numero_comprobante= $Valor;
+				
+				}
+				
+				if ($Nombre = 'DETALLE')
+				{
+					$_detalle_comprobante= $Valor;
+				
+				}
+				
+				if ($Nombre = 'DETALLE')
+				{
+					$_detalle_comprobante= $Valor;
+				
+				}
+				
+				if ($Nombre = 'FECHA')
+				{
+					$_fecha= $Valor;
+				
+				}
+				
+				if ($Nombre = 'REGIONALES')
+				{
+					$_regionales= $Valor;
+				
+				}
+				
+				if ($Nombre = 'SUCURSALES')
+				{
+					$_sucursales= $Valor;
+				
+				}
+				
+				if ($Nombre = 'AGENCIAS')
+				{
+					$_agencias= $Valor;
+				
+				}
+				
+				if ($Nombre = 'NUMERO DE CARPETA')
+				{
+					$_numero_carton  = $Valor;
+				
+				}
+				
+				if ($Nombre = 'NUMERO DE CARPETA')
+				{
+					$_numero_carton  = $Valor;
+				
+				}
+				
+				if ($Nombre = 'NUMERO DE CARPETA')
+				{
+					$_numero_garantia  = $Valor;
+				
+				}
+			
+			}
+		
+			
+			$contenido_xml = array('_nombre_cliente'=>$_nombre_cliente, '_identificacion_cliente'=>$_identificacion_cliente, 
+					'_nombre_referencial'=>$_nombre_referencial, '_numero_credito'=>$_numero_credito,
+					'_tipo_comprobante' =>$_tipo_comprobante, '_numero_comprobante' => $_numero_comprobante,
+					'_detalle_comprobante' => $_detalle_comprobante, '_fecha' => $_fecha,
+					'_regionales' => $_regionales, '_sucursales' => $_sucursales, '_agencias' => $_agencias,
+					'_numero_carton' => $_numero_carton, '_numero_garantia' => $_numero_garantia  
+					
+			);
+			/*
+			// temporal al directorio definitivo
+			move_uploaded_file($_FILES['archivo_foto_productos']['tmp_name'],$directorio.$nombre);
+			$data = file_get_contents($directorio.$nombre);
+			$archivo_foto_productos= pg_escape_bytea($data);
+			$_descripcion_foto_productos = $_POST["descripcion_foto_productos"];
+			 
+			 
+			$funcion = "ins_fc_foto_productos";
+			$parametros = " '$archivo_foto_productos' ,'$_descripcion_foto_productos' , '$_id_usuarios'";
+			$fc_foto_productos->setFuncion($funcion);
+			$fc_foto_productos->setParametros($parametros);
+			$resultado=$fc_foto_productos->Insert();
+			*/ 
+		}else
+		{
+		
+			///no hace nada
+		}
+		
+		
+		$this->view("InsertarDocumentos",array(
+				"contenidoXML"=>$contenido_xml, "resultCat"=>$resultCat, "resultSub"=>$resultSub
+		));
 	
 	
+	
+	}
+	
+	
+	
+	public function InsertaCliente($_nombre_cliente, $_identificacion_cliente)
+	{
+		$funcion = "ins_cliente_proveedor";
+		$parametros = " '$_identificacion_cliente' ,'$_nombre_cliente' ";
+		$usuarios->setFuncion($funcion);
+		$usuarios->setParametros($parametros);
+		$resultado=$usuarios->Insert();
+	}
 
 	public function ActualizarCartones(){
 	
@@ -1305,8 +1543,10 @@ class DocumentosController extends ControladorBase{
 					
 					$_id_categorias = $_POST["categorias"];
 					$_id_subcategorias = $_POST["subcategorias"];
-					$_id_cliente_proveedor = $_POST["ruc_cliente_proveedor"];
-					$_id_tipo_documentos = $_POST["tipo_documentos"];
+					$_id_cliente_proveedor = $_POST["txt_ruc_cliente_proveedor"];
+					$_nombre_cliente_proveedor = strtoupper($_POST["txt_nombre_cliente_proveedor"]);
+					
+					$_id_tipo_documentos = strtoupper($_POST["txt_tipo_documentos"]);
 					$_id_carton_documentos = $_POST["carton_documentos"];
 					$_numero_poliza  = $_POST["numero_poliza"];
 					$_id_soat  = $_POST["cierre_ventas_soat"];
@@ -1332,20 +1572,26 @@ class DocumentosController extends ControladorBase{
 						$where_2 = " AND subcategorias.id_subcategorias = '$_id_subcategorias' ";
 					
 					}
-					if ($_id_cliente_proveedor > 0)
+					if ($_id_cliente_proveedor != "")
 					{
 						
-						$where_4 = " AND cliente_proveedor.id_cliente_proveedor = '$_id_cliente_proveedor' ";
+						$where_4 = " AND cliente_proveedor.ruc_cliente_proveedor like '$_id_cliente_proveedor' ";
 					}	
-					if ($_id_tipo_documentos > 0    )
+					
+					if ($_nombre_cliente_proveedor != "")
 					{
 					
-						$where_5 = " AND tipo_documentos.id_tipo_documentos = '$_id_tipo_documentos' ";
+						$where_3 = " AND cliente_proveedor.nombre_cliente_proveedor like '$_nombre_cliente_proveedor' ";
 					}
-					if ($_id_carton_documentos > 0)
+					if ($_id_tipo_documentos != ""    )
+					{
+					
+						$where_5 = " AND tipo_documentos.nombre_tipo_documentos like '$_id_tipo_documentos' ";
+					}
+					if ($_id_carton_documentos != "" )
 					{
 							
-						$where_6 = " AND carton_documentos.id_carton_documentos = '$_id_carton_documentos' ";
+						$where_6 = " AND carton_documentos.numero_carton_documentos like '$_id_carton_documentos' ";
 					}
 					
 					if ($_numero_poliza > 0)
@@ -1364,6 +1610,23 @@ class DocumentosController extends ControladorBase{
 					}
 					
 					
+					if($_fecha_documento_desde != "" && $_fecha_documento_hasta == ""){
+						
+						$_fecha_documento_hasta='2018/01/01';
+						$where_8 = " AND DATE(documentos_legal.fecha_documentos_legal) BETWEEN '$_fecha_documento_desde' AND '$_fecha_documento_hasta'  ";
+						
+					}
+					
+					
+					if($_fecha_documento_desde == "" && $_fecha_documento_hasta != ""){
+					
+						$_fecha_documento_desde='1800/01/01';
+						$where_8 = " AND DATE(documentos_legal.fecha_documentos_legal) BETWEEN '$_fecha_documento_desde' AND '$_fecha_documento_hasta'  ";
+					
+					}
+					
+					
+					
 		
 					if ($_fecha_subida_desde != "" && $_fecha_subida_hasta != "")
 					{
@@ -1380,8 +1643,7 @@ class DocumentosController extends ControladorBase{
 						$where_11 = "  AND TO_CHAR(documentos_legal.fecha_documentos_legal,'YYYY') = '$_year' ";
 					}
 					if ($_id_soat > 0)
-					{
-							
+					{		
 						$where_12 = "  AND soat.id_soat = '$_id_soat' ";
 					}
 					$resul = $_year;
@@ -1433,7 +1695,7 @@ class DocumentosController extends ControladorBase{
 							$html.='<span class="form-control"><strong>Registros: </strong>'.$cantidadResult.'</span>';
 							$html.='<input type="hidden" value="'.$cantidadResult.'" id="total_query" name="total_query"/>' ;
 							$html.='</div><br>';
-							$html.='<section style="height:515px;  overflow-y:auto;">';
+							$html.='<section style="height:700px;  overflow-y:auto;">';
 							$html.='<table class="table table-hover">';
 							$html.='<thead>';
 							$html.='<tr class="info">';

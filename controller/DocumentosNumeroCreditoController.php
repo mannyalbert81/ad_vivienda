@@ -6,6 +6,14 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 	public function index(){
 		session_start();
 		
+		$_SESSION['categorias'] = "";
+		$_SESSION['subcategorias'] = "";
+		$_SESSION['numero_credito'] = "";
+		$_SESSION['fecha_documento_desde'] = "";
+		$_SESSION['fecha_documento_hasta'] = "";
+		$_SESSION['year'] = "";
+			
+		
 		$documentos_legal = new DocumentosLegalModel();
 		
 		if (isset(  $_SESSION['usuario_usuario']) )
@@ -63,10 +71,15 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 						
 				}
 			
-				if (isset ($_POST["categorias"]) && isset ($_POST["subcategorias"])  && isset($_POST["numero_credito"])  && isset($_POST["fecha_documento_desde"]) && isset($_POST["fecha_documento_hasta"])  && isset($_POST["fecha_subida_desde"])  && isset($_POST["fecha_subida_hasta"])   )
+				if (isset ($_POST["categorias"]) && isset ($_POST["subcategorias"])  && isset($_POST["numero_credito"])  && isset($_POST["fecha_documento_desde"]) && isset($_POST["fecha_documento_hasta"])       )
 				
 				{
-					
+					$_SESSION['categorias'] = $_POST["categorias"];
+					$_SESSION['subcategorias'] = $_POST["subcategorias"];
+					$_SESSION['numero_credito'] = $_POST["numero_credito"];
+					$_SESSION['fecha_documento_desde'] = $_POST["fecha_documento_desde"];
+					$_SESSION['fecha_documento_hasta'] = $_POST["fecha_documento_hasta"];
+					$_SESSION['year'] = $_POST["year"];
 					///creo el array con los valores seleccionados
 		
 					
@@ -248,7 +261,7 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 	
 			if (!empty($resultPer))
 			{
-				if (isset ($_POST["categorias"]) && isset ($_POST["subcategorias"])  && isset($_POST["numero_credito"])  && isset($_POST["fecha_documento_desde"]) && isset($_POST["fecha_documento_hasta"])  && isset($_POST["fecha_subida_desde"])  && isset($_POST["fecha_subida_hasta"])   )
+				if (isset ($_POST["categorias"]) && isset ($_POST["subcategorias"])  && isset($_POST["txt_numero_credito"])  && isset($_POST["fecha_documento_desde"]) && isset($_POST["fecha_documento_hasta"])  && isset($_POST["fecha_subida_desde"])  && isset($_POST["fecha_subida_hasta"])   )
 				{						
 	
 					$arraySel = "";
@@ -273,7 +286,10 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 						
 					$_id_categorias = $_POST["categorias"];
 					$_id_subcategorias = $_POST["subcategorias"];
-					$_numero_credito  = $_POST["numero_credito"];
+					$_numero_credito  = $_POST["txt_numero_credito"];
+					
+					
+					
 					$_year            = $_POST["year"];
 						
 					$_fecha_documento_desde = $_POST["fecha_documento_desde"];
@@ -294,10 +310,10 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 						$where_2 = " AND subcategorias.id_subcategorias = '$_id_subcategorias' ";
 							
 					}
-					if ($_numero_credito != '--TODOS--' && $_numero_credito != '0')
+					if ($_numero_credito != "")
 					{
 					    
-						$where_4 = " AND documentos_legal.numero_credito_documentos_legal = '$_numero_credito' ";
+						$where_4 = " AND documentos_legal.numero_credito_documentos_legal LIKE '$_numero_credito' ";
 					}
 					else 
 					{
@@ -307,6 +323,21 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 					if ($_fecha_documento_desde != "" && $_fecha_documento_hasta != "")
 					{
 						$where_8 = " AND DATE(documentos_legal.fecha_documentos_legal) BETWEEN '$_fecha_documento_desde' AND '$_fecha_documento_hasta'";
+					}
+					
+					if($_fecha_documento_desde != "" && $_fecha_documento_hasta == ""){
+					
+						$_fecha_documento_hasta='2018/01/01';
+						$where_8 = " AND DATE(documentos_legal.fecha_documentos_legal) BETWEEN '$_fecha_documento_desde' AND '$_fecha_documento_hasta'  ";
+					
+					}
+						
+						
+					if($_fecha_documento_desde == "" && $_fecha_documento_hasta != ""){
+							
+						$_fecha_documento_desde='1800/01/01';
+						$where_8 = " AND DATE(documentos_legal.fecha_documentos_legal) BETWEEN '$_fecha_documento_desde' AND '$_fecha_documento_hasta'  ";
+							
 					}
 					
 					if ($_fecha_subida_desde != "" && $_fecha_subida_hasta != "")
@@ -358,7 +389,7 @@ class DocumentosNumeroCreditoController extends ControladorBase{
 							$html.='<span class="form-control"><strong>Registros: </strong>'.$cantidadResult.'</span>';
 							$html.='<input type="hidden" value="'.$cantidadResult.'" id="total_query" name="total_query"/>' ;
 							$html.='</div><br>';
-							$html.='<section style="height:515px;  overflow-y:auto;">';
+							$html.='<section style="height:700px;  overflow-y:auto;">';
 							$html.='<table class="table table-hover">';
 							$html.='<thead>';
 							$html.='<tr class="info">';

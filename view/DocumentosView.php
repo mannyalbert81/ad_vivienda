@@ -2,6 +2,12 @@
 <html lang="es">
      <head>
      
+     <script>
+
+		if (history.forward(1)){location.replace(history.forward(1))}
+
+	</script> 
+
 <?php //require_once 'config/global.php';?> 
 <?php //echo json_encode($resultCli);?>
      
@@ -142,13 +148,33 @@
 			}
 	</script>
 	
+	
+	 
+	
+	
+	
  <script type="text/javascript">
 	$(document).ready(function(){
 
 		
 		$("#btnBuscar").click(function(){
+
+			var datafecha= $("#fecha_documento_hasta").data();
 			
+	    	if(datafecha.val==0)
+	    	{
+		    				
 			load_Documentos(1);
+
+
+			
+	    	}else
+	    	{
+	    		datafecha.val=0;
+	    	}
+	    	
+
+	
 			});
 
 		load_nombre_cliente();
@@ -162,9 +188,9 @@
 		//iniciar variables
 		 var doc_categorias=$("#categorias").val();
 		 var doc_subcategorias=$("#subcategorias").val();
-		 var doc_ruc_cli=$("#ruc_cliente_proveedor").val();
-		 var doc_nombre_cli=$("#nombre_cliente_proveedor").val();
-		 var doc_tipo_doc=$("#tipo_documentos").val();
+		 var doc_ruc_cli=$("#txt_ruc_cliente_proveedor").val();
+		 var doc_nombre_cli=$("#txt_nombre_cliente_proveedor").val();
+		 var doc_tipo_doc=$("#txt_tipo_documentos").val();
 		 var doc_cartones_doc=$("#carton_documentos").val();
 		 var doc_fecha_doc_desde=$("#fecha_documento_desde").val();
 		 var doc_fecha_doc_hasta=$("#fecha_documento_hasta").val();
@@ -180,9 +206,9 @@
 		  var con_datos={
 				  categorias:doc_categorias,
 				  subcategorias:doc_subcategorias,
-				  ruc_cliente_proveedor:doc_ruc_cli,
-				  tipo_documentos:doc_tipo_doc,
-				  nombre_cliente_proveedor:doc_nombre_cli,
+				  txt_ruc_cliente_proveedor:doc_ruc_cli,
+				  txt_tipo_documentos:doc_tipo_doc,
+				  txt_nombre_cliente_proveedor:doc_nombre_cli,
 				  carton_documentos:doc_cartones_doc,
 				  numero_poliza:doc_numero_poliza,
 				  fecha_documento_desde:doc_fecha_doc_desde,
@@ -210,12 +236,14 @@
 			success:function(data){
 				$(".Documentos").html(data).fadeIn('slow');
 				$("#Documentos").html("");
+				resetfecha();
 			}
 		})
 	}
 
 	function load_nombre_cliente()
 	{
+		/*
 		
 	    var _resultCli='';<?php  //echo json_encode($resultCli); ?>
 	    var _sel_nombre_cliente_proveedor = $("#nombre_cliente_proveedor");
@@ -233,13 +261,14 @@
 	    }else{
 	    	console.log('no hay datos');
 		    }
-	    
+	    */
 	}
 
 	</script>
 	
 	
      <script>
+     /*
 	$(document).ready(function(){
  	
 	$("#txt_nombre_cliente_proveedor").autocomplete({
@@ -273,11 +302,12 @@
 	});
 						
 	});
-		
+		*/
 					
     </script>
     
     <script>
+    /*
 	$(document).ready(function(){
  	
 	$("#txt_ruc_cliente_proveedor").autocomplete({
@@ -311,11 +341,12 @@
 						
 	});
 	});
-		
+		*/
 					
     </script>
     
     <script>
+    /*
 	$(document).ready(function(){
  	
 	$("#txt_tipo_documentos").autocomplete({
@@ -339,51 +370,129 @@
 						
 	});
 	});
-		
-					
+		*/
+				
     </script>
-       
-       
+      
+	  
+	  
+	 
        <script>
 
 		$(document).ready(function(){
 
 		    $("#fecha_documento_hasta").change(function() {
 
-
-		    	var startDate = new Date($('#fecha_documento_desde').val());
-		    	var endDate = new Date($('#fecha_documento_hasta').val());
-
-		    	if (startDate > endDate){
-
-		    		$("#fecha_documento_hasta").val("");
-		    		alert('Fecha documento DESDE mayor a  fecha FINAL');
-		    		die();
-		    	}
-
-		    	var fecha_actual = new Date();
-		    	if (endDate>fecha_actual){
-
-		    		$("#fecha_documento_hasta").val("");
-		    		alert('Fecha documento mayor a fecha actual');
-		    		die();
-		    	}
+		    	
+		    	return validarFecha();
 		    	
 			  });
+
+		    $fecha=$('#fecha_documento_hasta');
+		    if ($fecha[0].type!="date"){
+		    	$fecha.attr('readonly','readonly');
+		    	$fecha.datepicker({
+		    		changeMonth: true,
+		    		changeYear: true,
+		    		dateFormat: "yy-mm-dd",
+		    		yearRange: "1990:2017"
+		    		});
+		    }
+
+		    $fecha=$('#fecha_documento_desde');
+		    if ($fecha[0].type!="date"){
+		    $fecha.attr('readonly','readonly');
+		    $fecha.datepicker({
+	    		changeMonth: true,
+	    		changeYear: true,
+	    		dateFormat: "yy-mm-dd",
+	    		yearRange: "1990:2017"
+	    		});
+		    }
 
 		}); 
 
 	</script>
+	
+	<script type="text/javascript">
+	function validarFecha()
+	{
+		    var startDate = new Date($('#fecha_documento_desde').val());
+	    	var endDate = new Date($('#fecha_documento_hasta').val());
+			var datafecha= $("#fecha_documento_hasta").data();
+
+			if (startDate > endDate){
+
+	    		$("#fecha_documento_hasta").val("");
+	    		datafecha.val=1;
+	    		alert('Fecha documento DESDE mayor a  fecha FINAL');	    		
+	    	}else
+	    	{
+	    		datafecha.val=0;
+	    	}
+
+	    	var fecha_actual = new Date();
+	    	
+	    	if (endDate > fecha_actual){
+
+	    		$("#fecha_documento_hasta").val("");
+	    		datafecha.val=1;
+	    		alert('Fecha documento mayor a fecha actual');
+	    		
+	    	}else
+	    	{
+	    		datafecha.val=0;
+	    	}
+	    	
+	    }
+
+	 function resetfecha()
+	    {
+	    	$('#fecha_documento_desde').val("");
+	    	$('#fecha_documento_hasta').val("");
+	    }
+	</script>
 		
 
+   <script type="text/javascript">
+      
+/*
+      function validar(obj) {
+
+  		var startDate = new Date($('#fecha_documento_desde').val());
+	    var endDate = new Date($('#fecha_documento_hasta').val());
+	   
+	    
+		if(startDate == /^\d{2}\/\d{2}\/\d{4}$/){
+				
+			
+		}else {
+			 $("#fecha_documento_desde").val("");
+		        
+		        alert("Formato Fecha no Valido Ingrese (DD/MM/YYYY)");
+
+	     }
+		
+		if(endDate == /^\d{2}\/\d{2}\/\d{4}$/){
+			
+		}else {
+			 $("#fecha_documento_desde").val("");
+		        
+		        alert("Formato Fecha no Valido Ingrese (DD/MM/YYYY)");
+
+	     }
+      
+      }
+
+      */
+      </script>
 	
 	<script>
 
 		$(document).ready(function(){
 
 		    $("#fecha_poliza_hasta").change(function() {
-
-
+			    
 		    	var startDate = new Date($('#fecha_poliza_desde').val());
 		    	var endDate = new Date($('#fecha_poliza_hasta').val());
 
@@ -432,10 +541,40 @@
 		    		die();
 		    	}
 			  });
+			  
+		   
 		}); 
 
 	</script>
        
+      
+      
+      
+  
+
+
+    
+       
+       
+    <script type="text/javascript">
+    $(document).ready(function(){
+
+	    $("#fecha_subida_hasta").keypress(function() {
+
+		    alert('hola');
+
+		 if($(this).val().lenght<=10)
+		 {
+	    if ($(this).val().length == 2 || $(this).val().length == 5){
+	         $(this).val($(this).val() + "/");
+	      }
+		 }else{
+			 return false;
+		 }
+	    });
+	}); 
+
+    </script>   
        
        <style>
             input{
@@ -452,7 +591,7 @@
         
                
     </head>
-    <body oncontextmenu="return false" onkeydown="return false"   style="background-color: #F6FADE">
+    <body >
  
  
        <?php include("view/modulos/head.php"); ?>
@@ -668,13 +807,13 @@
             	
             	  <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
 						
-				 <input type="date" name="fecha_documento_desde" id="fecha_documento_desde"  class="form-control"  value="<?php echo  date('d/m/Y', strtotime($resEdit->fecha_documentos_legal));  ?>"     /> 	
+				 <input type="date"  name="fecha_documento_desde" id="fecha_documento_desde"  class="form-control"  value="<?php echo  date('d/m/Y', strtotime($resEdit->fecha_documentos_legal));  ?>"     /> 	
 						    
 				  <?php } } else {?>
 				   	 <?php if ($sel_fecha_subida_desde == "" ) { ?>	
-				   		<input type="date" name="fecha_documento_desde" id="fecha_documento_desde"  class="form-control"   />
+				   		<input type="date"  name="fecha_documento_desde" id="fecha_documento_desde"  class="form-control"   />
 					 <?php } else {?>	
-					 	<input type="date" value="<?php echo $sel_fecha_documento_desde ?>"  name="fecha_documento_desde" id="fecha_documento_desde"   class="form-control"   />
+					 	<input type="date"  value="<?php echo $sel_fecha_documento_desde ?>"  name="fecha_documento_desde" id="fecha_documento_desde"   class="form-control"   />
 					 <?php }?>        
 				  <?php } ?>
 		
@@ -683,9 +822,9 @@
 		   		</td>
 		   		<td>
 		   			<?php if ($sel_fecha_subida_desde == "" ) { ?>	
-				   		<input type="date" name="fecha_documento_hasta"  id="fecha_documento_hasta"  class="form-control"  />
+				   		<input type="date" data-val="0" name="fecha_documento_hasta"  id="fecha_documento_hasta"  class="form-control" />
 					 <?php } else {?>	
-					 	<input type="date" value="<?php echo $sel_fecha_documento_hasta ?>"  name="fecha_documento_hasta" id="fecha_documento_hasta"   class="form-control"   />
+					 	<input type="date" data-val="0" value="<?php echo $sel_fecha_documento_hasta ?>"  name="fecha_documento_hasta" id="fecha_documento_hasta"   class="form-control"   />
 					 <?php }?>        
 		   			
 		   			
@@ -729,7 +868,10 @@
 		   		</td>
 		
 		   		<td>
-		   			<select name="carton_documentos" id="carton_documentos"  class="form-control">
+		   		
+		   		 <input type="text" class="form-control" id="carton_documentos" name="carton_documentos" value=""  placeholder="Ingrese Número Carpeta">
+                 		 
+		   			<!-- <select name="carton_documentos" id="carton_documentos"  class="form-control">
 							<option value="0"  > --TODOS--</option>
 					      <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
 							 <?php foreach($resultCar as $resCar) {?>
@@ -754,6 +896,8 @@
 					</select>
 					<?php unset($resultCar);
 						  unset($resCar); ?>
+						  
+						   -->
 		   		</td>
 		
 		

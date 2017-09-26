@@ -135,7 +135,7 @@
 		
 
 	<script>
-
+/*
 		$(document).ready(function(){
 
 		    $("#ruc_cliente_proveedor").change(function() {
@@ -155,12 +155,12 @@
 			    });
 
 		}); 
-
+*/
 	</script>
 		
 		
     <script>
-
+/*
 		$(document).ready(function(){
 
 		    $("#nombre_cliente_proveedor").change(function() {
@@ -182,7 +182,7 @@
 			    });
 
 		}); 
-
+*/
 	</script>		
 	
 	
@@ -195,46 +195,35 @@
 
 		    $("#fecha_documento_hasta").change(function() {
 
+		    	return validarFecha();
+		    });
 
-		    	var startDate = new Date($('#fecha_documento_desde').val());
-		    	var endDate = new Date($('#fecha_documento_hasta').val());
+		    $fecha=$('#fecha_documento_hasta');
+		    if ($fecha[0].type!="date"){
+		    	$fecha.attr('readonly','readonly');
+		    $fecha.datepicker({
+	    		changeMonth: true,
+	    		changeYear: true,
+	    		dateFormat: "yy-mm-dd",
+	    		yearRange: "1990:2017"
+	    		});
+		    }
 
-		    	if (startDate > endDate){
-
-		    		$("#fecha_documento_hasta").val("");
-		    		alert('Fecha documento DESDE mayor a  fecha FINAL');
-		    		die();
-		    	}
-
-		    	var fecha_actual = new Date();
-		    	if (endDate>fecha_actual){
-
-		    		$("#fecha_documento_hasta").val("");
-		    		alert('Fecha documento mayor a fecha actual');
-		    		die();
-		    	}
-
-		    	
-			  });
+		    $fecha=$('#fecha_documento_desde');
+		    if ($fecha[0].type!="date"){
+		    	$fecha.attr('readonly','readonly');
+		    $fecha.datepicker({
+	    		changeMonth: true,
+	    		changeYear: true,
+	    		dateFormat: "yy-mm-dd",
+	    		yearRange: "1990:2017"
+	    		});
+		    }
 
 		}); 
 
 	</script>
-		
-
 	
-	
-
-	
-	
-
-	
-	
-
-		
-		
-		
-		
 		
      <script>
 			function myFunction() {
@@ -249,8 +238,19 @@
 	$(document).ready(function(){
 		
 		$("#btnBuscar").click(function(){
+          var datafecha= $("#fecha_documento_hasta").data();
 			
-			load_DocumentosClienteProv(1);
+	    	if(datafecha.val==0)
+	    	{
+		    				
+	    	load_DocumentosClienteProv(1);
+			
+	    	}else
+	    	{
+	    		datafecha.val=0;
+	    	}
+	    	
+			
 			});
 	});
 
@@ -261,8 +261,8 @@
 		//iniciar variables
 		 var doc_categorias=$("#categorias").val();
 		 var doc_subcategorias=$("#subcategorias").val();
-		 var doc_ruc_cli=$("#ruc_cliente_proveedor").val();
-		 var doc_nombre_cli=$("#nombre_cliente_proveedor").val();
+		 var doc_ruc_cli=$("#txt_ruc_cliente_proveedor").val();
+		 var doc_nombre_cli=$("#txt_nombre_cliente_proveedor").val();
 		 var doc_id_agencias=$("#id_agencias").val();
 		 var doc_id_sucursales=$("#id_sucursales").val();
 		 var doc_id_regionales=$("#id_regionales").val();
@@ -280,8 +280,8 @@
 		  var con_datos={
 				  categorias:doc_categorias,
 				  subcategorias:doc_subcategorias,
-				  ruc_cliente_proveedor:doc_ruc_cli,
-				  nombre_cliente_proveedor:doc_nombre_cli,
+				  txt_ruc_cliente_proveedor:doc_ruc_cli,
+				  txt_nombre_cliente_proveedor:doc_nombre_cli,
 				  id_agencias:doc_id_agencias,
 				  id_sucursales:doc_id_sucursales,
 				  id_regionales:doc_id_regionales,
@@ -306,8 +306,12 @@
 			$("#DocumentosClienteProv").html('<img src="view/images/ajax-loader.gif"> Cargando...');
 			},
 			success:function(data){
+
+				
 				$(".DocumentosClienteProv").html(data).fadeIn('slow');
 				$("#DocumentosClienteProv").html("");
+
+				resetfecha();
 			}
 		})
 	}
@@ -315,6 +319,7 @@
 	</script>
 	
 	 <script>
+	 /*
 	$(document).ready(function(){
  	
 	$("#txt_nombre_cliente_proveedor").autocomplete({
@@ -348,11 +353,12 @@
 	});
 						
 	});
-		
+		*/
 					
     </script>
     
     <script>
+    /*
 	$(document).ready(function(){
  	
 	$("#txt_ruc_cliente_proveedor").autocomplete({
@@ -387,10 +393,11 @@
 	});
 	});
 		
-					
+		*/			
     </script>
        
         <script>
+        /*
 	       	$(document).ready(function(){ 	
 				$( "#numero_comprobantes" ).autocomplete({
       				source: "<?php echo $helper->url("DocumentosClienteProveedor","AutocompleteNumeroComprobantes"); ?>",
@@ -398,8 +405,47 @@
     			});
 	
     		});
-
+*/
      </script>
+     
+     <script type="text/javascript">
+	function validarFecha()
+	{
+		    var startDate = new Date($('#fecha_documento_desde').val());
+	    	var endDate = new Date($('#fecha_documento_hasta').val());
+			var datafecha= $("#fecha_documento_hasta").data();
+
+			if (startDate > endDate){
+
+	    		$("#fecha_documento_hasta").val("");
+	    		datafecha.val=1;
+	    		alert('Fecha documento DESDE mayor a  fecha FINAL');	    		
+	    	}else
+	    	{
+	    		datafecha.val=0;
+	    	}
+
+	    	var fecha_actual = new Date();
+	    	
+	    	if (endDate > fecha_actual){
+
+	    		$("#fecha_documento_hasta").val("");
+	    		datafecha.val=1;
+	    		alert('Fecha documento mayor a fecha actual');
+	    		
+	    	}else
+	    	{
+	    		datafecha.val=0;
+	    	}
+	    	
+	    }
+
+	 function resetfecha()
+	    {
+	    	$('#fecha_documento_desde').val("");
+	    	$('#fecha_documento_hasta').val("");
+	    }
+	</script>
        
        <style>
             input{
@@ -446,7 +492,7 @@
 		      $sel_categorias = $_POST['categorias'];
 		      $sel_subcategorias = $_POST['subcategorias'];
 		      $sel_year = $_POST['year'];
-		      $sel_cliente_proveedor = $_POST['nombre_cliente_proveedor'];
+		      //$sel_cliente_proveedor = $_POST['nombre_cliente_proveedor'];
 		      $sel_agencias = $_POST['id_agencias'];
 		      $sel_sucursales = $_POST['id_sucursales'];
 		      $sel_regionales = $_POST['id_regionales'];
@@ -600,7 +646,7 @@
       
             <tr>
 	    		
-	    		 <th># Comprobante</th>
+	    		 <th>Comprobante</th>
 	    		
 	    		<th >Regionales</th>
 	    		<th >Sucursales</th>
@@ -617,7 +663,7 @@
             
      
 				            <td>
-			    <input type="text"  class="form-control" id="numero_comprobantes" name="numero_comprobantes" placeholder="# Comprobante" >
+			    <input type="text"  class="form-control" id="numero_comprobantes" name="numero_comprobantes" placeholder="Comprobante" >
             </td>
             
             	<td>
@@ -693,7 +739,7 @@
 		   			
 		   		</td>
 		   		<td>
-		   			<input type="date" name="fecha_documento_hasta"  id="fecha_documento_hasta"  class="form-control"  />
+		   			<input type="date" data-val="0" name="fecha_documento_hasta"  id="fecha_documento_hasta"  class="form-control"  />
 		   		</td>
 		   		
 		   		
@@ -709,9 +755,6 @@
 		        	
 		        	
 				</td>
-
-
-
 
      	</tr>
       

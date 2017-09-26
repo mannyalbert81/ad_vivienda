@@ -5,43 +5,10 @@
       <head>
         <meta charset="utf-8"/>
         <title>Actualizar Documentos - aDocument 2015</title>
-   
-   
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		   
-          <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-		  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-		  <link rel="stylesheet" href="/resources/demos/style.css">
-		
-		<link rel="stylesheet" href="http://jqueryvalidation.org/files/demo/site-demos.css">
-        <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
-        <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
- 
- 		
-		<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
-         
-         
-         <script type="text/javascript">
-function vaciar(control)
-{
-  control.value='';
-}
-function verificarEntrada(control)
-{
-  if (control.value <= 0)
-
-	  alert('Debe ingresar datos');
-	  
-    
-}
-</script>
-          
-          
-         
+            
          
     </head>
-    <body oncontextmenu="return false" onkeydown="return false"  style="background-color: #F6FADE">
+    <body   style="background-color: #F6FADE">
     
        
        
@@ -65,7 +32,7 @@ function verificarEntrada(control)
   
   	  <div class="row" style="background-color: #FAFAFA;">
        
-      <form onsubmit="return formulario(this)"  action="<?php echo $helper->url("Documentos","ActualizarDocumentos"); ?>" method="post" class="col-lg-5">
+      <form action="<?php echo $helper->url("Documentos","ActualizarDocumentos"); ?>" method="post" class="col-lg-5">
             <h4 style="color:#ec971f;">Actualizar Documentos</h4>
             <hr/>
             
@@ -77,7 +44,7 @@ function verificarEntrada(control)
             	</tr>
         		<tr>
 				
-		           <td>	<input type="text" id="id_documentos_legal" onFocus="vaciar(this)" onBlur="verificarEntrada(this)"  value="0" name="id_documentos_legal" class="form-control"/> 
+		           <td>	<input type="text" id="id_documentos_legal"  name="id_documentos_legal"  value="<?php echo $sel_id_documentos_legal?> " class="form-control"/> 
 		           </td>
 		         
 		           
@@ -263,30 +230,30 @@ function verificarEntrada(control)
         </div>
         <section class="col-lg-7 usuario" style="height:600px;overflow-y:scroll;">
         <table class="table table-hover">
-	         <tr>
-	    		<th>Id</th>
-	    		<th>Agéncia</th>
-	    		<th>Sucursal</th>
-	    		<th>Regional</th>
-	    		<th>Subcategoría</th>
-	    		<th>Tipo de Documentos</th>
-	    		<th>RUC/CI</th>
-	    		<th>Nombre</th>
-	    		<th>Fecha</th>
+	         <tr class="info">
+	    		<th style="text-align: left;  font-size: 13px;">Id</th>
+	    		<th style="text-align: left;  font-size: 13px;">Agéncia</th>
+	    		<th style="text-align: left;  font-size: 13px;">Sucursal</th>
+	    		<th style="text-align: left;  font-size: 13px;">Regional</th>
+	    		<th style="text-align: left;  font-size: 13px;">Subcategoría</th>
+	    		<th style="text-align: left;  font-size: 13px;">Tipo de Documentos</th>
+	    		<th style="text-align: left;  font-size: 13px;">RUC/CI</th>
+	    		<th style="text-align: left;  font-size: 13px;">Nombre</th>
+	    		<th style="text-align: left;  font-size: 13px;">Fecha</th>
 	    		
 	  		  </tr>
             
 	          <tr>
-	              <td> <?php echo $res->id_documentos_legal; ?>  </td>
-	               <td> <?php echo $res->nombre_agencias; ?>  </td>
-	                <td> <?php echo $res->nombre_sucursales; ?>  </td>
-	                 <td> <?php echo $res->nombre_regionales; ?>  </td>
-	              <td> <?php echo $res->nombre_subcategorias; ?>  </td>
-		          <td> <?php echo $res->nombre_tipo_documentos; ?>     </td> 
-		          <td> <?php echo $res->ruc_cliente_proveedor; ?>  </td>
-		          <td> <?php echo $res->nombre_cliente_proveedor; ?>  </td>
+	              <td style="font-size: 11px;"> <?php echo $res->id_documentos_legal; ?>  </td>
+	               <td style="font-size: 11px;"> <?php echo $res->nombre_agencias; ?>  </td>
+	                <td style="font-size: 11px;"> <?php echo $res->nombre_sucursales; ?>  </td>
+	                 <td style="font-size: 11px;"> <?php echo $res->nombre_regionales; ?>  </td>
+	              <td style="font-size: 11px;"> <?php echo $res->nombre_subcategorias; ?>  </td>
+		          <td style="font-size: 11px;"> <?php echo $res->nombre_tipo_documentos; ?>     </td> 
+		          <td style="font-size: 11px;"> <?php echo $res->ruc_cliente_proveedor; ?>  </td>
+		          <td style="font-size: 11px;"> <?php echo $res->nombre_cliente_proveedor; ?>  </td>
 		          
-		          <td> <?php echo $res->fecha_documentos_legal; ?>  </td>
+		          <td style="font-size: 11px;"> <?php echo $res->fecha_documentos_legal; ?>  </td>
 		          
 		   		</tr>
 	      

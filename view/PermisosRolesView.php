@@ -1,9 +1,17 @@
+     <?php include("view/modulos/head.php"); ?>
+
 <!DOCTYPE HTML>
 <html lang="es">
       <head>
         <meta charset="utf-8"/>
         <title>Permisos Rol - aDocument 2015</title>
-   
+   <link rel="stylesheet" href="view/css/bootstrap.css">
+          <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.7.2.custom.css" />
+          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>  
+          <script src="view/css/jquery.js"></script>
+		  <script src="view/css/bootstrapValidator.min.js"></script>
+		  <script src="view/css/ValidarPermisosRoles.js"></script>
   
 		
       <script>
@@ -122,7 +130,7 @@
     </head>
     <body style="background-color: #F6FADE">
     
-       <?php include("view/modulos/head.php"); ?>
+  
        
        <?php include("view/modulos/menu.php"); ?>
   
@@ -146,29 +154,69 @@
        <div class="container">
       <div class="row" style="background-color: #FAFAFA;">
       
-      <form action="<?php echo $helper->url("PermisosRoles","InsertaPermisosRoles"); ?>" method="post" class="col-lg-5">
-            <h4 style="color:#ec971f;">Insertar Permisos Roles</h4>
-            <hr/>
-            	
-		   		
+      <form id="form-Permisos-Roles" action="<?php echo $helper->url("PermisosRoles","InsertaPermisosRoles"); ?>" method="post" class="col-lg-5">
+           
+           
+		  
             
              <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
+             
+              	<div class="panel panel-info">
+	         <div class="panel-heading">
+	         <h4><i class='glyphicon glyphicon-edit'></i> Actualizar Permisos Roles</h4>
+	         </div>
+	         <div class="panel-body">	
+	         
+	         
+	        <div class="row">
+		    <div class="col-xs-12 col-md-12">
+		    <div class="form-group">
+                                  <label for="nombre_permisos_rol" class="control-label">Nombre Permisos Rol:</label>
+                                  <input type="text" class="form-control" id="nombre_permisos_rol" name="nombre_permisos_rol" value="<?php echo $resEdit->nombre_permisos_rol; ?>"  placeholder="Nombre Permiso Rol">
+                                  <span class="help-block"></span>
+            </div>
+		    </div>
+		     </div>
+	         
 	            	
-	            	Nombre Permisos Rol: <input type="text" id="nombre_permisos_rol" name="nombre_permisos_rol" value="<?php echo $resEdit->nombre_permisos_rol; ?>" class="form-control"/>
+	       <div class="row">  
+		   <div class="col-xs-12 col-md-12">
+		   <div class="form-group">
+                                  <label for="id_rol" class="control-label">Rol: </label>
+                                  <select name="id_rol" id="id_rol"  class="form-control" >
+                                  <option value="" selected="selected">--Seleccione--</option>
+									<?php foreach($resultRol as $res) {?>
+										<option value="<?php echo $res->id_rol; ?>" <?php if ($res->id_rol == $resEdit->id_rol )  echo  ' selected="selected" '  ;  ?>><?php echo $res->nombre_rol; ?> </option>
+							    
+							        <?php } ?>
+								   </select> 
+                                  <span class="help-block"></span>
+            </div>
+            </div>
+		    </div> 
+		    
+		    
+		   <div class="row">  
+		   <div class="col-xs-12 col-md-12">
+		   <div class="form-group">
+                                  <label for="id_controladores" class="control-label">Nombre Controladores: </label>
+                                  <select name="id_controladores" id="id_controladores"  class="form-control" >
+                                  <option value="" selected="selected">--Seleccione--</option>
+									<?php foreach($resultCon as $res) {?>
+										<option value="<?php echo $res->id_controladores; ?>" <?php if ($res->id_controladores == $resEdit->id_controladores )  echo  ' selected="selected" '  ;  ?>><?php echo $res->nombre_controladores; ?> </option>
+							    
+							        <?php } ?>
+								   </select> 
+                                  <span class="help-block"></span>
+            </div>
+            </div>
+		    </div>   	
 	            	
-	            	Nombre Rol: <select name="id_rol" id="id_rol"  class="form-control">
-									<?php foreach($resultRol as $resRol) {?>
-				 						<option value="<?php echo $resRol->id_rol; ?>" <?php if ($resRol->id_rol == $resEdit->id_rol )  echo  ' selected="selected" '  ;  ?> ><?php echo $resRol->nombre_rol; ?> </option>
-						            <?php } ?>
-								    	
-									</select>
+	            	
+	            	
+	            	
 		   		   
-	            	 Nombre Controlador: <select name="id_controladores" id="id_controladores"  class="form-control">
-									<?php foreach($resultCon as $resCon) {?>
-				 						<option value="<?php echo $resCon->id_controladores; ?>" <?php if ($resCon->id_controladores == $resEdit->id_controladores )  echo  ' selected="selected" '  ;  ?> ><?php echo $resCon->nombre_controladores; ?> </option>
-						            <?php } ?>
-								    	
-									</select>
+	            	
 		   		   
 		   		   <table class="table">
 		   		   	<tr>
@@ -198,27 +246,74 @@
 		   		
 		   		   	</tr>
 		   		   </table>
+		   		   
+		   		   
+		    <div class="row">
+		    <div class="col-xs-12 col-md-12 col-lg-12" style="text-align: center; margin-top:40px">
+		    <div class="form-group">
+                                  <button type="submit" id="Guardar" name="Guardar" class="btn btn-success">Actualizar</button>
+                                
+            </div>
+		    </div>
+		    </div>
+		   		   
+		   		   
+		   		   </div>
+		   		   </div>
 		    
 		     <?php } } else {?>
 		    
 		     		
+		     <div class="panel panel-info">
+	         <div class="panel-heading">
+	         <h4><i class='glyphicon glyphicon-edit'></i> Insertar Permisos Roles</h4>
+	         </div>
+	         <div class="panel-body">
 		     		
-		     		
-		     		Nombre Permisos Rol: <input type="text" id="nombre_permisos_rol" name="nombre_permisos_rol" value="" class="form-control"/>
-	            	
-	            	Nombre Rol: <select name="id_rol" id="id_rol"  class="form-control">
-									<?php foreach($resultRol as $resRol) {?>
-				 						<option value="<?php echo $resRol->id_rol; ?>" ><?php echo $resRol->nombre_rol; ?> </option>
-						            <?php } ?>
-								    	
-									</select>
-		   		   
-	            	 Nombre Controlador: <select name="id_controladores" id="id_controladores"  class="form-control">
-									<?php foreach($resultCon as $resCon) {?>
-				 						<option value="<?php echo $resCon->id_controladores; ?>"  ><?php echo $resCon->nombre_controladores; ?> </option>
-						            <?php } ?>
-								    	
-									</select>
+		     <div class="row">
+		    <div class="col-xs-12 col-md-12">
+		    <div class="form-group">
+                                  <label for="nombre_permisos_rol" class="control-label">Nombre Permisos Rol:</label>
+                                  <input type="text" class="form-control" id="nombre_permisos_rol" name="nombre_permisos_rol" value=""  placeholder="Nombre Permiso Rol">
+                                  <span class="help-block"></span>
+            </div>
+		    </div>
+		     </div>
+		     
+		    <div class="row">  
+		   <div class="col-xs-12 col-md-12">
+		   <div class="form-group">
+                                  <label for="id_rol" class="control-label">Rol: </label>
+                                  <select name="id_rol" id="id_rol"  class="form-control" >
+                                  <option value="" selected="selected">--Seleccione--</option>
+									<?php foreach($resultRol as $res) {?>
+										<option value="<?php echo $res->id_rol; ?>" ><?php echo $res->nombre_rol; ?> </option>
+							    
+							        <?php } ?>
+								   </select> 
+                                  <span class="help-block"></span>
+            </div>
+            </div>
+		    </div> 
+		    
+		    
+		   <div class="row">  
+		   <div class="col-xs-12 col-md-12">
+		   <div class="form-group">
+                                  <label for="id_controladores" class="control-label">Nombre Controladores: </label>
+                                  <select name="id_controladores" id="id_controladores"  class="form-control" >
+                                  <option value="" selected="selected">--Seleccione--</option>
+									<?php foreach($resultCon as $res) {?>
+										<option value="<?php echo $res->id_controladores; ?>" ><?php echo $res->nombre_controladores; ?> </option>
+							    
+							        <?php } ?>
+								   </select> 
+                                  <span class="help-block"></span>
+            </div>
+            </div>
+		    </div> 
+		    
+		    
 		   		   
 		    	   <table class="table">
 		   		   	<tr>
@@ -247,16 +342,40 @@
 		   		   		</td>
 		   		   	</tr>
 		   		   </table>
+		   		   
+		   		   
+		    <div class="row">
+		    <div class="col-xs-12 col-md-12 col-lg-12" style="text-align: center; margin-top:40px">
+		    <div class="form-group">
+                                  <button type="submit" id="Guardar" name="Guardar" class="btn btn-success">Guardar</button>
+                                
+            </div>
+		    </div>
+		    </div>
+		   		   
+		   		   
+		   		   </div>
+		   		   </div>
 		        
 		     <?php } ?>
 		        
-           <input type="submit" value="Guardar" class="btn btn-success"/>
+          
           </form>
+      
+      
+      
        
        
-        <div class="col-lg-7">
-            <h4 style="color:#ec971f;">Permisos Rol</h4>
-            <form action="<?php echo $helper->url("PermisosRoles","index"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-12">
+       
+           
+            <form action="<?php echo $helper->url("PermisosRoles","index"); ?>" method="post" enctype="multipart/form-data"  class="col-lg-7">
+           
+            <div class="panel panel-info">
+	         <div class="panel-heading">
+	         <h4><i class='glyphicon glyphicon-edit'></i> Lista de  Permisos Rol</h4>
+	         </div>
+	         <div class="panel-body">
+           
            
            <div class="col-lg-4">
            <input type="text"  name="contenido" id="contenido" value="" class="form-control"/>
@@ -278,42 +397,44 @@
            
           
            <div class="col-lg-2">
-           <input type="submit" id="Buscar" name="Buscar" value="Buscar" class="btn btn-default"/>
+            <button type="submit" id="Buscar" name="Buscar" value="Buscar" class="btn btn-primary"/><span class="glyphicon glyphicon-search" ></span></button>
+          
            </div>
-           
+           </div></div>
          
           </form>
-        </div>
+        
+        <div class="panel-body">
         <section class="col-lg-7 usuario" style="height:400px;overflow-y:scroll;">
         <table class="table table-hover">
-	         <tr>
-	    		<th style="font-size:90%;">Id</th>
-	    		<th style="font-size:90%;">Nombre Permisos Rol</th>
-	    		<th style="font-size:90%;">Nombre Rol</th>
-	    		<th style="font-size:90%;">Nombre Controlador</th>
-	    		<th style="font-size:90%;">Ver</th>
-	    		<th style="font-size:90%;">Editar</th>
-	    		<th style="font-size:90%;">Borrar</th>
-	    		<th></th>
-	    		<th></th>
+	         <tr class="info">
+	    		<th style="text-align: left;  font-size: 13px;">Id</th>
+	    		<th style="text-align: left;  font-size: 13px;">Nombre Permisos Rol</th>
+	    		<th style="text-align: left;  font-size: 13px;">Nombre Rol</th>
+	    		<th style="text-align: left;  font-size: 13px;">Nombre Controlador</th>
+	    		<th style="text-align: left;  font-size: 13px;">Ver</th>
+	    		<th style="text-align: left;  font-size: 13px;">Editar</th>
+	    		<th style="text-align: left;  font-size: 13px;">Borrar</th>
+	    		<th style="text-align: left;  font-size: 13px;"></th>
+	    		<th style="text-align: left;  font-size: 13px;"></th>
 	  		</tr>
             
 	            <?php if (!empty($resultSet)) {  foreach($resultSet as $res) {?>
 	        		<tr>
-	                   <td style="color:#000000;font-size:80%;"> <?php echo $res->id_permisos_rol; ?>  </td>
-		               <td style="color:#000000;font-size:80%;"> <?php echo $res->nombre_permisos_rol; ?>     </td>
-		               <td style="color:#000000;font-size:80%;"> <?php echo $res->nombre_rol; ?>     </td> 
-		               <td style="color:#000000;font-size:80%;"> <?php echo $res->nombre_controladores; ?>  </td>
-		               <td style="color:#000000;font-size:80%;"> <?php if ($res->ver_permisos_rol =="t"){ echo "Si";}else{echo "No";}; ?>     </td>
-		               <td style="color:#000000;font-size:80%;"> <?php if ($res->editar_permisos_rol == "t"){ echo "Si";}else{echo "No";}; ?>     </td>
-		               <td style="color:#000000;font-size:80%;"> <?php if ($res->borrar_permisos_rol == "t"){ echo "Si";}else{echo "No";}; ?>     </td>
-		           	   <td>
+	                   <td style="font-size: 11px;"> <?php echo $res->id_permisos_rol; ?>  </td>
+		               <td style="font-size: 11px;"> <?php echo $res->nombre_permisos_rol; ?>     </td>
+		               <td style="font-size: 11px;"> <?php echo $res->nombre_rol; ?>     </td> 
+		               <td style="font-size: 11px;"> <?php echo $res->nombre_controladores; ?>  </td>
+		               <td style="font-size: 11px;"> <?php if ($res->ver_permisos_rol =="t"){ echo "Si";}else{echo "No";}; ?>     </td>
+		               <td style="font-size: 11px;"> <?php if ($res->editar_permisos_rol == "t"){ echo "Si";}else{echo "No";}; ?>     </td>
+		               <td style="font-size: 11px;"> <?php if ($res->borrar_permisos_rol == "t"){ echo "Si";}else{echo "No";}; ?>     </td>
+		           	   <td style="font-size: 11px;">
 			           		<div class="right">
 			                    <a href="<?php echo $helper->url("PermisosRoles","index"); ?>&id_permisos_rol=<?php echo $res->id_permisos_rol; ?>" class="btn btn-warning" style="font-size:65%;"><i class='glyphicon glyphicon-edit'></i></a>
 			                </div>
 			            
 			             </td>
-			             <td>   
+			             <td style="font-size: 11px;">   
 			                	<div class="right">
 			                    <a href="<?php echo $helper->url("PermisosRoles","borrarId"); ?>&id_permisos_rol=<?php echo $res->id_permisos_rol; ?>" class="btn btn-danger" style="font-size:65%;"><i class="glyphicon glyphicon-trash"></i></a>
 			                </div>
@@ -330,6 +451,14 @@
             
        	</table>     
       </section>
+       </div>
+       
+       <br>
+        <br>
+         <br>
+          <br>
+           <br>
+       
       </div>
        </div>
        

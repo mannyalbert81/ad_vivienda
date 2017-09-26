@@ -55,6 +55,7 @@ $controladores=$_SESSION['controladores'];
 			<li style="<?php echo getcontrolador("Roles",$controladores) ?>">
 			<a href="index.php?controller=Roles&action=index"> <span class=" glyphicon glyphicon-asterisk" aria-hidden="true"> Roles de Usuario</span> </a>
 			</li>
+			
 			<li style="<?php echo getcontrolador("PermisosRoles",$controladores) ?>">
 			<a href="index.php?controller=PermisosRoles&action=index"><span class="glyphicon glyphicon-plus" aria-hidden="true"> Permisos Roles</span> </a>
             </li>
@@ -69,8 +70,10 @@ $controladores=$_SESSION['controladores'];
          
 			<li><a href="index.php?controller=Documentos&action=index"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Búsqueda de Documentos</span> </a>
 			</li>
+		
 			<li><a href="index.php?controller=DocumentosClienteProveedor&action=index"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Búsqueda Categorias + Cliente / Proveedor + Agencias</span> </a>
 			</li>
+		
 			<li><a href="index.php?controller=DocumentosNumeroCredito&action=index"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Búsqueda Categorias + Número de Crédito</span> </a>
 			</li>
 			
@@ -78,6 +81,7 @@ $controladores=$_SESSION['controladores'];
           </ul>
         </li>
         <li class="dropdown" >
+        
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-print	" ><?php echo " Informes" ;?> </span> <span class="caret"></span></a>
           <ul class="dropdown-menu">
         	<li><a href="index.php?controller=Categorias&action=ReporteTotal" target="blank"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"> Documentos por Categorías</span> </a>
@@ -99,7 +103,17 @@ $controladores=$_SESSION['controladores'];
           <ul class="dropdown-menu">
            
 			<li><a href="index.php?controller=Documentos&action=ActualizarDocumentos"><span class="glyphicon glyphicon-refresh" aria-hidden="true"> Actualizar Documentos</span> </a>
+			
 			</li>
+		
+			<li><a href="index.php?controller=RegistroCartonDocumentos&action=index"><span class="glyphicon glyphicon-refresh" aria-hidden="true"> Registrar Carpeta</span> </a>
+			
+			</li>
+		    <li><a href="index.php?controller=Categorias&action=index">Categorias</a>
+		    </li>
+			<li><a href="index.php?controller=SubCategorias&action=index">Subcategorias</a>
+			</li>
+		
 		  </ul>
         </li>
       </ul>
@@ -112,7 +126,7 @@ $controladores=$_SESSION['controladores'];
 		    
 		    <div class="col-xs-12 col-md-2">
 		    <div class="form-group">
-                                <input type="text" class="form-control" id="criterio_busqueda" name="contenido_busqueda" value=""  placeholder="Texto a Buscar">
+                                <input type="text" class="form-control" id="contenido_busqueda" name="contenido_busqueda" value=""  placeholder="Texto a Buscar">
             </div>
             </div>
             <div class="col-xs-12 col-md-2">
@@ -128,7 +142,7 @@ $controladores=$_SESSION['controladores'];
         							
 									<option value="10"  >Referencia</option>
 									<option value="11"  >Tipo Comprobante</option>
-									<option value="12"  ># Comprobante</option>
+									<option value="12"  >Comprobante</option>
 									<option value="13"  >Detalle Comprobante</option>
 									<option value="14"  >Regionales</option>
 									<option value="15"  >Sucursales</option>
@@ -139,7 +153,7 @@ $controladores=$_SESSION['controladores'];
             </div>
 		    </div>
 		    <div class="col-xs-12 col-md-1" style="margin-left: 10px">
-		    <button type="submit"  name="btn_buscar" class="btn btn-default"><span class="glyphicon glyphicon-search" ></span></button>
+		    <button type="submit"  name="btn_buscar" class="btn btn-primary"><span class="glyphicon glyphicon-search" ></span></button>
             </div>
 			</div> 
   			
