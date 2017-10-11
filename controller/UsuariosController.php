@@ -209,8 +209,9 @@ public function index(){
 			$id_usuario=(int)$_GET["id_usuario"];
 	
 			$usuarios=new UsuariosModel();
-				
-			$usuarios->deleteBy(" id_usuario",$id_usuario);
+			$sesiones =new SesionesModel();
+			$sesiones->deleteBy("id_usuario",$id_usuario);
+			$usuarios->deleteBy("id_usuario",$id_usuario);
 				
 				
 		}
@@ -265,7 +266,7 @@ public function index(){
     		
     		
     		
-    		$where = "  usuario_usuario = '$_usuario' AND  clave_usuario ='$_clave' ";
+    		$where = "  usuario_usuario = '$_usuario' AND  clave_usuario ='$_clave' AND id_estado=1";
     	
     		$result=$usuarios->getBy($where);
 
