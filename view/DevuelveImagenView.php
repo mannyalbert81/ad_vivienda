@@ -15,6 +15,7 @@ $image = "";
 
 $conn  = pg_connect("user=postgres port=5432 password=.Romina.2012 dbname=ad_vivienda host=186.4.203.42");
 
+
 if(!$conn)
 {
 	echo  "No se pudo conectar";
