@@ -183,6 +183,7 @@ public function index(){
 		    $_id_estado          = $_POST["id_estado"];
 		    $_usuario_usuario     = $_POST["usuario_usuario"];
 	
+		    
 	
 			$funcion = "ins_usuarios";
 			$parametros = " '$_nombre_usuario' ,'$_clave_usuario' , '$_telefono_usuario', '$_celular_usuario', '$_correo_usuario' , '$_id_rol', '$_id_estado' , '$_usuario_usuario'";
@@ -354,7 +355,7 @@ public function index(){
 			//Creamos el objeto usuario
 			$usuarios = new UsuariosModel();
 		
-						
+					//die('llego');	
 					
 				$resultEdit = "";
 					
