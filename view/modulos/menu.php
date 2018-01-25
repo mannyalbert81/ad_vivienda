@@ -59,9 +59,7 @@ $controladores=$_SESSION['controladores'];
 			<li style="<?php echo getcontrolador("PermisosRoles",$controladores) ?>">
 			<a href="index.php?controller=PermisosRoles&action=index"><span class="glyphicon glyphicon-plus" aria-hidden="true"> Permisos Roles</span> </a>
             </li>
-		    
-		
-	          
+		          
           </ul>
         </li>
         <li class="dropdown" >
