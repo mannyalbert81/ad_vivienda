@@ -605,7 +605,7 @@ class DocumentosController extends ControladorBase{
 								$html.='<div class="pull-left">';
 								$html.='<span class="form-control"><strong>Registros: </strong>'.$cantidadResult.'</span>';
 								$html.='<input type="hidden" value="'.$cantidadResult.'" id="total_query" name="total_query"/>' ;
-								$html.='</div><br>';
+								$html.='</div><br><br>';
 								$html.='<section style="height:700px;  overflow-y:auto;">';
 								$html.='<table class="table table-hover">';
 								$html.='<thead>';

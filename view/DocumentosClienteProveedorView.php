@@ -663,11 +663,11 @@
             
      
 				            <td>
-			    <input type="text"  class="form-control" id="numero_comprobantes" name="numero_comprobantes" placeholder="Comprobante" >
+			    <input style="HEIGHT: 40px" type="text"  class="form-control" id="numero_comprobantes" name="numero_comprobantes" placeholder="Comprobante" >
             </td>
             
             	<td>
-	            <select name="id_regionales" id="id_regionales"  class="form-control"   >
+	            <select style="HEIGHT: 40px" name="id_regionales" id="id_regionales"  class="form-control"   >
 	                <option value="0"  > --TODOS--</option>
 			    	 <?php foreach($resultReg as $res) {?>
 					 		<?php if ($sel_regionales > 0){?>
@@ -685,7 +685,7 @@
             	
             	
             	<td>
-	            <select name="id_sucursales" id="id_sucursales"  class="form-control"   >
+	            <select style="HEIGHT: 40px" name="id_sucursales" id="id_sucursales"  class="form-control"   >
 	                <option value="0"  > --TODOS--</option>
 			    	 <?php foreach($resultSuc as $res) {?>
 					 		<?php if ($sel_sucursales > 0){?>
@@ -702,7 +702,7 @@
 				</td>
 				
 				<td>
-	            <select name="id_agencias" id="id_agencias"  class="form-control"   >
+	            <select style="HEIGHT: 40px" name="id_agencias" id="id_agencias"  class="form-control"   >
 	                <option value="0"  > --TODOS--</option>
 			    	 <?php foreach($resultAgen as $res) {?>
 					 		<?php if ($sel_agencias > 0){?>
@@ -727,19 +727,19 @@
             	
             	  <?php if ($resultEdit !="" ) { foreach($resultEdit as $resEdit) {?>
 						
-						<input type="date" name="fecha_documento_desde" id="fecha_documento_desde"  class="form-control"  value="<?php echo $resEdit->fecha_documentos_legal ?>"     /> 	
+						<input style="HEIGHT: 40px" type="date" name="fecha_documento_desde" id="fecha_documento_desde" class="form-control"  value="<?php echo $resEdit->fecha_documentos_legal ?>" /> 	
 						    
 				  <?php } } else {?>
 				   		
-				   		<input type="date" name="fecha_documento_desde" id="fecha_documento_desde"  class="form-control"   />
+				   		<input style="HEIGHT: 40px" type="date" name="fecha_documento_desde" id="fecha_documento_desde"  class="form-control"   />
 						        
 				  <?php } ?>
 		
             	
 		   			
 		   		</td>
-		   		<td>
-		   			<input type="date" data-val="0" name="fecha_documento_hasta"  id="fecha_documento_hasta"  class="form-control"  />
+		   		<td >
+		   			<input style="HEIGHT: 40px" type="date" data-val="0" name="fecha_documento_hasta"  id="fecha_documento_hasta"  class="form-control"  />
 		   		</td>
 		   		
 		   		
@@ -788,10 +788,10 @@
 		 </div>
         
         
-        <input type="hidden" name="fecha_subida_desde" id="fecha_subida_desde"  class="form-control"   />
+        <input style="HEIGHT: 40px" type="hidden" name="fecha_subida_desde" id="fecha_subida_desde"  class="form-control"   />
 						        
 				   
-		   			<input type="hidden" name="fecha_subida_hasta" id="fecha_subida_hasta" class="form-control"  />
+		   			<input style="HEIGHT: 40px" type="hidden" name="fecha_subida_hasta" id="fecha_subida_hasta" class="form-control"  />
 		   		
       <!--termina paginacion ajax -->
      

@@ -13,7 +13,7 @@ if (isset ($_GET["id_documentos_legal"]))
 $image = "";
 //$conn  = pg_connect("user=postgres port=5432 password=.Romina.2012 dbname=coactiva host=192.168.100.3");
 
-$conn  = pg_connect("user=postgres port=5432 password=.Romina.2012 dbname=ad_vivienda host=186.4.203.42");
+$conn  = pg_connect("user=postgres port=5432 password=.Romina.2012 dbname=ad_vivienda host=192.168.0.102");
 
 
 if(!$conn)
