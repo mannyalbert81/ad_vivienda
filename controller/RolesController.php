@@ -112,23 +112,18 @@ class RolesController extends ControladorBase{
 			//_nombre_categorias character varying, _path_categorias character varying
 			if (isset ($_POST["nombre_rol"])   )
 				
-			{
-				
+			{	
 				$_nombre_rol = $_POST["nombre_rol"];
-				
 				 
 				$funcion = "ins_rol";
 				$parametros = " '$_nombre_rol'  ";
 					
 				$roles->setFuncion($funcion);
-		
 				$roles->setParametros($parametros);
-		
-		
 				$resultado=$roles->Insert();
 		
-		
 			}
+		
 			$this->redirect("Roles", "index");
 
 		}
@@ -158,16 +153,12 @@ class RolesController extends ControladorBase{
 			if(isset($_GET["id_rol"]))
 			{
 				$id_rol=(int)$_GET["id_rol"];
-		
 				$roles=new RolesModel();
-				
 				$roles->deleteBy(" id_rol",$id_rol);
-				
 				
 			}
 			
 			$this->redirect("Roles", "index");
-			
 			
 		}
 		else
@@ -186,11 +177,7 @@ class RolesController extends ControladorBase{
 		//Creamos el objeto usuario
 		$roles=new RolesModel();
 		//Conseguimos todos los usuarios
-		
-	
-	
 		session_start();
-	
 	
 		if (isset(  $_SESSION['usuario']) )
 		{
